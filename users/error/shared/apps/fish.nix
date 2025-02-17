@@ -60,8 +60,8 @@
                     argparse 'd' 'l' 'p' 's' -- $argv
                     if set -ql _flag_d
                         echo "Setting default backgrounds."
-                        swww img -o DP-3 -t random ~/xdg/pictures/backgrounds/primary.*
-                        swww img -o DP-1 -t random ~/xdg/pictures/backgrounds/secondary.*
+                        swww img -o DP-3 -t random --transition-fps 120 ~/xdg/pictures/backgrounds/primary.*
+                        swww img -o DP-1 -t random --transition-fps 120 ~/xdg/pictures/backgrounds/secondary.*
                         return 0
                     end
 
@@ -73,12 +73,12 @@
 
                     if set -ql _flag_p
                         set -a monitors PRIMARY
-                        set PRIMARY DP-3
+                        set PRIMARY DP_3
                     end
 
                     if set -ql _flag_s
                         set -a monitors SECONDARY
-                        set SECONDARY DP-1
+                        set SECONDARY DP_1
                     end
 
                     for monitor in $monitors
@@ -87,7 +87,7 @@
 
                     for monitor in $monitors
                         if test -n $$$monitor
-                            swww img -o $$monitor -t any $search_dir/$$$monitor
+                            swww img -o (echo $$monitor | sed -e 's/_/-/g' ) -t any --transition-fps 120 $search_dir/$$$monitor
                         end
                     end
                 '';
