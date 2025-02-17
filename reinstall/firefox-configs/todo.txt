@@ -1,0 +1,2 @@
+have run-me.sh leave a file in the full install home dir with final steps, instead of having them in the readme
+    have a hidden home.file, and cat it into a real file?
