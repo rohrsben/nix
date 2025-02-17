@@ -97,10 +97,6 @@ in {
                                     url = "https://umassboston.instructure.com";
                                 }
                                 {
-                                    name = "blackboard";
-                                    url = "https://umb.umassonline.net/auth-saml/saml/login?apId=_11_1&redirectUrl=https%3A%2F%2Fumb.umassonline.net%2Fultra";
-                                }
-                                {
                                     name = "gradescope";
                                     url = "https://www.gradescope.com";
                                 }
@@ -108,22 +104,22 @@ in {
                                     name = "wiser";
                                     url = "https://campus.sa.umasscs.net/psp/csm/EMPLOYEE/SA/c/SA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL?PORTALPARAM_PTCNAV=HC_SSS_STUDENT_CENTER&EOPP.SCNode=SA&EOPP.SCPortal=EMPLOYEE&EOPP.SCName=CO_EMPLOYEE_SELF_SERVICE&EOPP.SCLabel=Self_Service&EOPP.SCPTfname=CO_EMPLOYEE_SELF_SERVICE&FolderPath=PORTAL_ROOT_OBJECT.CO_EMPLOYEE_SELF_SERVICE.HC_SSS_STUDENT_CENTER&IsFolder=false&gsmobile=1";
                                 }
-                                {
-                                    name = "piazza";
-                                    url = "https://piazza.com";
-                                }
                             ];
                         }
                         {
                             name = "lang";
                             bookmarks = [
                                 {
+                                    name = "prof. site";
+                                    url = "https://cs.umb.edu/~stchang/cs450/s25";
+                                }
+                                {
                                     name = "book";
                                     url = "https://htdp.org/2024-11-6/Book/index.html";
                                 }
                                 {
-                                    name = "prof. site";
-                                    url = "https://cs.umb.edu/~stchang/cs450/s25";
+                                    name = "piazza";
+                                    url = "https://piazza.com";
                                 }
                             ];
                         }
