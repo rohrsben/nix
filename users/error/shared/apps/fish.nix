@@ -60,58 +60,34 @@
                     argparse 'd' 'l' 'p' 's' -- $argv
                     if set -ql _flag_d
                         echo "Setting default backgrounds."
-                        swww img -o DP-1 -t random ~/xdg/pictures/backgrounds/dp1.jpg
-                        swww img -o DP-3 -t random ~/xdg/pictures/backgrounds/dp3.jpg
+                        swww img -o DP-3 -t random ~/xdg/pictures/backgrounds/primary.*
+                        swww img -o DP-1 -t random ~/xdg/pictures/backgrounds/secondary.*
                         return 0
                     end
 
+                    set search_dir ~/xdg/pictures/backgrounds
+
                     if set -ql _flag_l
-                        if set -ql _flag_p
-                            set primary (ls | rg -i '.png|.jpg' | fzf --prompt "PRIMARY > " --height ~30%)
-                            swww img -o DP-3 -t any $primary
-                        end
-
-                        if set -ql _flag_s
-                            set secondary (ls | rg -i '.png|.jpg' | fzf --prompt "SECONDARY > " --height ~30%)
-                            swww img -o DP-1 -t any $secondary
-                        end
-
-                        if not test -n "$_flag_s"; and not test -n "$_flag_p"
-                            set primary (ls | rg -i '.png|.jpg' | fzf --prompt "PRIMARY > " --height ~30%)
-                            set secondary (ls | rg -i '.png|.jpg' | fzf --prompt "SECONDARY > " --height ~30%)
-                            
-                            if test -n "$primary"
-                                swww img -o DP-3 -t any $primary
-                            end
-
-                            if test -n "$secondary"
-                                swww img -o DP-1 -t any $secondary
-                            end
-                        end
-
-                        return 0
+                        set search_dir .
                     end
 
                     if set -ql _flag_p
-                        set primary (ls ~/xdg/pictures/backgrounds | rg -i '.png|.jpg' | fzf --prompt "PRIMARY > " --height ~30%)
-                        swww img -o DP-3 -t any ~/xdg/pictures/backgrounds/$primary
+                        set -a monitors PRIMARY
+                        set PRIMARY DP-3
                     end
 
                     if set -ql _flag_s
-                        set secondary (ls ~/xdg/pictures/backgrounds | rg -i '.png|.jpg' | fzf --prompt "SECONDARY > " --height ~30%)
-                        swww img -o DP-1 -t any ~/xdg/pictures/backgrounds/$secondary
+                        set -a monitors SECONDARY
+                        set SECONDARY DP-1
                     end
 
-                    if not test -n "$_flag_s"; and not test -n "$_flag_p"
-                        set primary (ls ~/xdg/pictures/backgrounds | rg -i '.png|.jpg' | fzf --prompt "PRIMARY > " --height ~30%)
-                        set secondary (ls ~/xdg/pictures/backgrounds | rg -i '.png|.jpg' | fzf --prompt "SECONDARY > " --height ~30%)
-                        
-                        if test -n "$primary"
-                            swww img -o DP-3 -t any ~/xdg/pictures/backgrounds/$primary
-                        end
+                    for monitor in $monitors
+                        set $$monitor (ls $search_dir | rg -i '.png|.jpg' | fzf --prompt "$monitor > " --height ~30%)
+                    end
 
-                        if test -n "$secondary"
-                            swww img -o DP-1 -t any ~/xdg/pictures/backgrounds/$secondary
+                    for monitor in $monitors
+                        if test -n $$$monitor
+                            swww img -o $$monitor -t any $search_dir/$$$monitor
                         end
                     end
                 '';
