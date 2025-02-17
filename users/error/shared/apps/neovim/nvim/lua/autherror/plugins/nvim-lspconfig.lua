@@ -4,7 +4,7 @@ return {
     dependencies = {
         'saghen/blink.cmp',
     },
-    config = function()
+    config = function ()
         local signs = { Error = '●', Warn = '●', Hint = '●', Info = '●'}
         for type, icon in pairs(signs) do
             local hl = "DiagnosticSign" .. type
@@ -13,7 +13,7 @@ return {
 
         local default_settings = {
             capabilities = require('blink.cmp').get_lsp_capabilities(),
-            on_attach = function(client, bufnr)
+            on_attach = function (client, bufnr)
                 local function map(mode, lhs, rhs, opts)
                     local options = vim.tbl_extend('force', opts, { noremap = true, silent = true, buffer = bufnr})
                     vim.keymap.set(mode, lhs, rhs, options)

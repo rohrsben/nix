@@ -4,7 +4,7 @@ local function map(mode, lhs, rhs, opts)
 end
 
 
-local on_attach = function(client, bufnr)
+local on_attach = function (client, bufnr)
     local opts = { buffer = bufnr }
 
     opts.desc = 'Show line diagnostics'

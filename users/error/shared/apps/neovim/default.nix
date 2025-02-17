@@ -69,7 +69,7 @@ in {
             return {
                 'chomosuke/typst-preview.nvim',
                 ft = 'typst',
-                config = function()
+                config = function ()
                     require('typst-preview').setup {
                         debug = false,
                         dependencies_bin = {

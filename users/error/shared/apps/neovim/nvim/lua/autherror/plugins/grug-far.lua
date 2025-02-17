@@ -5,7 +5,7 @@ return {
         }
     end,
     keys = {
-        { '<leader>q', function()
+        { '<leader>q', function ()
             require("grug-far").open {
                 transient = true,
                 prefills = {

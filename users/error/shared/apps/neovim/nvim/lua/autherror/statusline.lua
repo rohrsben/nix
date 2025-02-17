@@ -129,7 +129,7 @@ vim.api.nvim_set_hl(0, 'CSL2', {fg = '#859289', bg = '#343f44'})
 vim.api.nvim_set_hl(0, 'CSL3', {fg = '#d3c6aa', bg = '#343f44'})
 vim.api.nvim_set_hl(0, 'CSL4', {fg = '#e67e80', bg = '#343f44'})
 
-Statusline.active = function()
+Statusline.active = function ()
     return table.concat {
         mode(),
 
