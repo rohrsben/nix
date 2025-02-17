@@ -1,0 +1,39 @@
+# Take a look at the mako manpage with the command:
+#   man 5 mako
+# To view all configuration options.
+
+font=JetBrainsMonoNerdFont 12
+layer=top
+anchor=top-right
+output=DP-3
+
+width=500
+height=200
+
+padding=15
+outer-margin=20
+border-radius=10
+border-size=5
+
+icon-location=right
+max-icon-size=64
+
+text-color=#70665C
+border-color=#5C845F
+background-color=#EDEBE9
+
+default-timeout=4500
+
+
+
+[urgency=low]
+border-color=#70665C
+background-color=#d1d0c7
+
+[urgency=high]
+border-color=#C67B6C
+background-color=#F8EBE9
+default-timeout=0
+
+[app-name="Spotify"]
+max-icon-size=200

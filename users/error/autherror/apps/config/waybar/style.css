@@ -1,0 +1,55 @@
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 15px;
+}
+
+window#waybar {
+    background: rgba(209, 208, 199, 0.5);
+    border-radius: 6px;
+    color: rgb(50, 50, 50)
+}
+
+.modules-left {
+    background: linear-gradient(90deg, rgba(209, 208, 199, 0.9) 85%, rgba(209, 208, 199, 0));
+    border-radius: 6px;
+    padding-right: 35px;
+}
+
+.modules-center {
+    background: linear-gradient(90deg, rgba(209, 208, 199, 0), rgba(209, 208, 199, 0.9) 15%, rgba(209, 208, 199, 0.9) 85%, rgba(209, 208, 199, 0));
+    padding-left: 45px;
+    padding-right: 45px
+}
+
+window#waybar.bar1 .modules-right {
+    background: linear-gradient(270deg, rgba(209, 208, 199, 0.9) 85%, rgba(209, 208, 199, 0));
+    border-radius: 6px;
+}
+
+#tray {
+    padding-left: 45px;
+}
+
+#mpris {
+    padding-right: 30px;
+}
+
+#workspaces button {
+    color: rgb(123, 112, 101);
+}
+
+#workspaces button:hover {
+    box-shadow: none;
+    text-shadow: none;
+    background: none;
+    transition: none;
+    border-color: rgba(0, 0, 0, 0)
+}
+
+#workspaces button.visible {
+    color: rgb(198, 123, 108)
+}
+
+#workspaces button.active {
+    color: rgb(92, 132, 95);
+}

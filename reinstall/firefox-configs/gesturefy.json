@@ -1,0 +1,216 @@
+{
+  "Gestures": [
+    {
+      "pattern": [
+        [
+          27,
+          -292
+        ],
+        [
+          -8,
+          -20
+        ],
+        [
+          -9,
+          -6
+        ],
+        [
+          -258,
+          30
+        ]
+      ],
+      "command": {
+        "name": "FocusLeftTab",
+        "settings": {
+          "cycling": true,
+          "excludeDiscarded": false
+        }
+      }
+    },
+    {
+      "pattern": [
+        [
+          38,
+          -240
+        ],
+        [
+          17,
+          -14
+        ],
+        [
+          188,
+          -15
+        ]
+      ],
+      "command": {
+        "name": "FocusRightTab",
+        "settings": {
+          "cycling": true,
+          "excludeDiscarded": false
+        }
+      }
+    },
+    {
+      "pattern": [
+        [
+          0,
+          1
+        ]
+      ],
+      "command": {
+        "name": "OpenLinkInNewTab",
+        "settings": {
+          "position": "default",
+          "focus": false,
+          "emptyTab": false
+        }
+      }
+    },
+    {
+      "pattern": [
+        [
+          0,
+          -1
+        ]
+      ],
+      "command": {
+        "name": "OpenLinkInNewTab",
+        "settings": {
+          "position": "default",
+          "focus": true,
+          "emptyTab": false
+        }
+      }
+    },
+    {
+      "pattern": [
+        [
+          1,
+          0
+        ]
+      ],
+      "command": {
+        "name": "PageForth"
+      }
+    },
+    {
+      "pattern": [
+        [
+          -1,
+          0
+        ]
+      ],
+      "command": {
+        "name": "PageBack"
+      }
+    },
+    {
+      "pattern": [
+        [
+          -64,
+          17
+        ],
+        [
+          -61,
+          52
+        ],
+        [
+          -49,
+          107
+        ],
+        [
+          1,
+          25
+        ],
+        [
+          11,
+          19
+        ],
+        [
+          19,
+          15
+        ],
+        [
+          182,
+          20
+        ],
+        [
+          30,
+          -10
+        ],
+        [
+          15,
+          -17
+        ],
+        [
+          -2,
+          -137
+        ],
+        [
+          -21,
+          -80
+        ],
+        [
+          -23,
+          -23
+        ],
+        [
+          -10,
+          -3
+        ],
+        [
+          -24,
+          8
+        ]
+      ],
+      "command": {
+        "name": "ReloadTab",
+        "settings": {
+          "cache": true
+        }
+      }
+    },
+    {
+      "pattern": [
+        [
+          -15,
+          169
+        ],
+        [
+          2,
+          13
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          155,
+          -19
+        ]
+      ],
+      "command": {
+        "name": "CloseTab",
+        "settings": {
+          "nextFocus": "default",
+          "closePinned": true
+        }
+      }
+    }
+  ],
+  "Settings": {
+    "Gesture": {
+      "Trace": {
+        "display": true,
+        "Style": {
+          "strokeStyle": "#000000cc",
+          "lineGrowth": false,
+          "lineWidth": 2
+        }
+      },
+      "Command": {
+        "display": false
+      }
+    }
+  }
+}

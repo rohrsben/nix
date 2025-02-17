@@ -1,0 +1,117 @@
+[{
+    "layer": "bottom",
+    "output": "DP-3",
+    "fixed-center": true,
+    "position": "bottom",
+    "margin-left": 12,
+    "margin-bottom": 12,
+    "margin-right": 12,
+    "exclusive": true,
+    "name": "bar1",
+
+    "include": [
+        "~/.config/waybar/shared.json",
+    ],
+
+    "modules-left": [
+        "hyprland/workspaces",
+        "mpris"
+    ],
+
+    "modules-center": [
+        "clock#1",
+        "custom/at",
+        "clock#2",
+    ],
+
+    "modules-right": [
+        "tray",
+        "custom/separator",
+        "network",
+        "custom/separator",
+        "wireplumber",
+        "custom/separator",
+        "custom/mouseBat",
+    ],
+    
+    "mpris": {
+        "format": "<span color='#C67B6C'>|</span> {artist} ~ {title}<span color='#5C845F'><b>@</b></span>{player}",
+        "format-paused": "<span color='#C67B6C'>|</span> {artist} ~ {title}<span color='#C67B6C'><b>@</b></span>{player}",
+        "max-length": 150,
+    },
+
+    "custom/at": {
+        "format": " <span color='#5C845F'><b>@</b></span> "
+    },
+
+    "clock#1": {
+        "format": "{:%A}",
+        "tooltip-format": "{calendar}",
+        "calendar": {
+            "format": { "today": "<span color='#C67B6C'><b>{}</b></span>" }
+        },
+    },
+
+    "clock#2": {
+        "format": "{:%R}",
+        "tooltip-format": "{:%F}"
+    },
+
+    "tray": {
+        "spacing": 10,
+        "icon-size": 20,
+    },
+
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": "wifi<span color='#5C845F'><b>@</b></span>{signalStrength}",
+        "format-disconnected": "disconnected",
+        "tooltip-format-wifi": "{essid}",
+        "tooltip-format": "{bandwidthDownBytes}{bandwidthUpBytes}",
+    },
+
+    "wireplumber": {
+        "format": "vol<span color='#5C845F'><b>@</b></span>{volume}",
+        "format-muted": "vol<span color='#5C845F'><b>@</b></span>muted",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "hyprctl dispatch exec uwsm app -- pavucontrol", 
+        "scroll-step": 2,
+
+    },
+
+    "custom/mouseBat": {
+        "format": "mouse<span color='#5C845F'><b>@</b></span>{} ",
+        "interval": 1800,
+        "exec": "cat /home/error/.scripts/outputs/mouseBat",
+        "tooltip": false,
+    },
+
+    "custom/separator": {
+        "format": " <span color='#C67B6C'>|</span> ",
+    },
+}, {
+    "layer": "bottom",
+    "output": "DP-1",
+    "position": "bottom",
+    "margin-left": 12,
+    "margin-right": 12,
+    "margin-bottom": 12,
+    "exclusive": true,
+    "name": "bar2",
+
+    "include": [
+        "~/.config/waybar/shared.json",
+    ],
+
+    "modules-left": [
+        "clock#1"
+    ],
+
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+
+    "clock#1": {
+        "format": "   {:%R}",
+    },
+}]
