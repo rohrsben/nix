@@ -11,6 +11,17 @@ return {
             }
         }
 
+        require('mini.jump2d').setup {
+            spotter = require('mini.jump2d').builtin_opts.word_start.spotter,
+            view = {
+                dim = true,
+                n_steps_ahead = 2,
+            },
+            mappings = {
+                start_jumping = '<Tab>',
+            },
+        }
+
         vim.o.listchars = 'tab:> ,extends:…,precedes:…,nbsp:␣'
         vim.o.list = true
         if vim.fn.exists('syntax_on') ~= 1 then vim.cmd([[syntax enable]]) end
