@@ -67,16 +67,13 @@ in {
                     "installation_mode" = "normal_installed";
                     "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/everforest-dark-official/latest.xpi";
                 };
-
-                # sidebery
-                "{3c078156-979c-498b-8990-85f7987dd929}" = {
-                    "installation_mode" = "normal_installed";
-                    "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/sidebery/latest.xpi";
-                };
             };
         };
 
         profiles.error = {
+            settings = {
+                "extensions.autoDisableScopes" = 0;
+            };
             bookmarks = [
                 {
                     toolbar = true;
