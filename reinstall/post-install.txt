@@ -1,0 +1,20 @@
+firefox:
+ - rearrange toolbar (TODO: automate?)
+ - log in to bitwarden
+ - import configs from firefox-configs
+ - default zoom -> 120%
+
+gh:
+ > gh auth login
+
+tailscale:
+ - remove previous desktop from tailscale web console, if necessary
+ > sudo tailscale up
+  - sign in with github
+ > sudo tailscale set --ssh
+
+spotify:
+ - login
+
+thunderbird:
+ - login
