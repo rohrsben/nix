@@ -1,9 +1,0 @@
-{ ... }:
-
-{
-    security = {
-        pam = {
-            services.hyprlock = {};
-        };
-    };
-}

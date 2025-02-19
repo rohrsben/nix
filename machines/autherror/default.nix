@@ -17,7 +17,6 @@
         ./bluetooth.nix
         ./fonts.nix
         ./graphics.nix
-        ./security.nix
         ./sops.nix
         ./ssh.nix
     ] ++ [
