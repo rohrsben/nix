@@ -28,13 +28,24 @@
                             "--perf-no_write_workqueue"
                         ];
                         content = {
-                            type = "filesystem";
-                            format = "btrfs";
-                            mountpoint = "/";
-                            mountOptions = [
-                                "compress"
-                                "noatime" 
-                            ];
+                            type = "btrfs";
+                            extraArgs = [ "-f" ];
+                            subvolumes = {
+                                "@" = {
+                                    mountpoint = "/";
+                                    mountOptions = [
+                                        "compress=zstd"
+                                        "noatime"
+                                    ];
+                                };
+                                "@home" = {
+                                    mountpoint = "/home";
+                                    mountOptions = [
+                                        "compress=zstd"
+                                        "noatime"
+                                    ];
+                                };
+                            };
                         };
                     };
                 };
