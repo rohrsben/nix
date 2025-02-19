@@ -2,7 +2,7 @@
 
 let
     app = "fuzzel";
-    configDir = ./config/${app};
+    configDir = ./config;
 in {
     programs.fuzzel = {
         enable = true;

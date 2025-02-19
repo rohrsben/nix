@@ -2,7 +2,7 @@
 
 let
     app = "waybar";
-    configDir = ./config/${app};
+    configDir = ./config;
 in {
     home.packages = [
         pkgs.${app}
