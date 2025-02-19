@@ -1,0 +1,10 @@
+[package]
+name = "math-notes"
+version = "1.0.0"
+entrypoint = "lib.typ"
+authors = ["Ben Rohrs"]
+description = "Notes template for math"
+
+[template]
+path = "template"
+entrypoint = "main.typ"

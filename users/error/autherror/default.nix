@@ -32,6 +32,7 @@ lib.optionalAttrs(conf.hostName == "autherror") {
             ../shared/apps/fzf.nix
             ../shared/apps/nix-index.nix
             ../shared/apps/neovim
+            ../shared/apps/typst
             ../shared/apps/yazi.nix
             ../shared/apps/zoxide.nix
         ];
