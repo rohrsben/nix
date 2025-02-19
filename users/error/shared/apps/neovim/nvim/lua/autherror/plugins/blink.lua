@@ -12,6 +12,9 @@ return {
             ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
         },
         completion = {
+            keyword = {
+                range = 'full',
+            },
             list = {
                 selection = { preselect = false, auto_insert = true },
             },
