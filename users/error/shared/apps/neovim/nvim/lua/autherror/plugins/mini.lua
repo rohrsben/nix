@@ -21,6 +21,7 @@ return {
                 start_jumping = '<Tab>',
             },
         }
+        vim.api.nvim_set_hl(0, "MiniJump2dSpot", {link = "MiniJump2dSpotUnique"})
 
         vim.o.listchars = 'tab:> ,extends:…,precedes:…,nbsp:␣'
         vim.o.list = true
