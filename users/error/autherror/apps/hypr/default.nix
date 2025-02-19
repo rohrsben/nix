@@ -2,7 +2,7 @@
 
 let
     app = "hypr";
-    configDir = ./config/;
+    configDir = ./config;
     mainMonitor = "DP-3";
     secondaryMonitor = "DP-1";
     xdgpics = "/home/error/xdg/pictures";
@@ -10,7 +10,7 @@ in {
     home.packages = [
         inputs.hyprlock.packages.${pkgs.system}.default
         inputs.hypridle.packages.${pkgs.system}.default
-        inputs.hyprland-contrib.packages.${pkgs.system}.grimblast; 
+        inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
         inputs.swww.packages.${pkgs.system}.swww
         pkgs.jq
     ];

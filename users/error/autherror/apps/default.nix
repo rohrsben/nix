@@ -6,7 +6,6 @@
         ./hypr
         ./kitty
         ./mako
-        ./tofi
         ./waybar
 
         ./direnv.nix
