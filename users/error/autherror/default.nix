@@ -9,10 +9,10 @@ lib.optionalAttrs(conf.hostName == "autherror") {
         initialPassword = "password";
         hashedPasswordFile = config.sops.secrets.error-pass.path;
         extraGroups = [
-            "wheel"
-            "networkmanager"
-            "keys"
             "dialout"
+            "keys"
+            "networkmanager"
+            "wheel"
         ];
     };
 
@@ -30,8 +30,8 @@ lib.optionalAttrs(conf.hostName == "autherror") {
 
             ../shared/apps/fish.nix
             ../shared/apps/fzf.nix
-            ../shared/apps/nix-index.nix
             ../shared/apps/neovim
+            ../shared/apps/nix-index.nix
             ../shared/apps/typst
             ../shared/apps/yazi.nix
             ../shared/apps/zoxide.nix
@@ -47,47 +47,48 @@ lib.optionalAttrs(conf.hostName == "autherror") {
                 coreutils
                 eza
                 fd
+                gnused
                 lazygit
+                libnotify
+                libsForQt5.qt5.qtwayland
+                lua
+                p7zip
+                pass
+                python3
+                kdePackages.qtwayland
                 ripgrep
                 sops
-                libsForQt5.qt5.qtwayland
-                qt6.qtwayland
-                libnotify
                 xdg-utils
-                python3
-                lua
-                pass
-                p7zip
-                gnused
 
                 # command line
-                typst
-                gh
-                pandoc
-                ttyper
-                cargo
-                rustc
-                playerctl
-                wev
-                imagemagick
-                tdf
                 age
-                rsync
                 btop
+                cargo
+                gh
                 grim
-                slurp
                 hyprpicker
+                imagemagick
+                pandoc
+                playerctl
+                rsync
+                rustc
+                slurp
                 sshfs
+                tdf
+                ttyper
+                typst
+                wev
+                zellij
 
                 # graphical
-                thunderbird
+                dolphin-emu
+                foliate
+                kdePackages.okular
+                localsend
                 mpv
                 pavucontrol
-                kdePackages.okular
                 telegram-desktop
-                foliate
-                dolphin-emu
-                localsend
+                thunderbird
 
                 # supporting / desktop environment
                 udiskie
