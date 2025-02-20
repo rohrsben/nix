@@ -11,7 +11,7 @@ in {
         profile = "error";
         config = {
             font = {
-                family = "Fira Code";
+                family = "JetBrainsMono Nerd Font";
                 size = "15px";
             };
             tabs = {
