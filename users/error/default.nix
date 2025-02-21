@@ -3,6 +3,7 @@
 {
     imports = [
         ./autherror
+        ./authmac
         ./minimal
     ];
 }

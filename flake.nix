@@ -19,6 +19,20 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+        homebrew-bundle = {
+            url = "github:homebrew/homebrew-bundle";
+            flake = false;
+        };
+        homebrew-core = {
+            url = "github:homebrew/homebrew-core";
+            flake = false;
+        };
+        homebrew-cask = {
+            url = "github:homebrew/homebrew-cask";
+            flake = false;
+        };
+
         disko = {
             url = "github:nix-community/disko";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -56,6 +70,7 @@
 
         textfox.url = "github:adriankarlen/textfox";
         grub2-themes.url = "github:vinceliuice/grub2-themes";
+        mac-app-util.url = "github:hraban/mac-app-util";
     };
 
     outputs = { self, ... } @inputs:
@@ -72,22 +87,40 @@
                     platform = "x86_64-linux";
                     stateVer = "24.11";
                 };
+
+                authmac = {
+                    hostName = "authmac";
+                    platform = "aarch64-darwin";
+                    stateVer = 6;
+                };
             };
 
-            mkNixosHost = { hostName, platform, stateVer }@conf:
-                inputs.nixpkgs.lib.nixosSystem {
-                    specialArgs = { inherit inputs conf; };
+            mkNixosHost = { hostName, platform, stateVer }@conf: inputs.nixpkgs.lib.nixosSystem {
+                specialArgs = { inherit inputs conf; };
 
-                    modules = [
-                        inputs.home-manager.nixosModules.home-manager
-                        ./machines/${hostName}
-                    ];
-                };
+                modules = [
+                    inputs.home-manager.nixosModules.home-manager
+                    ./machines/${hostName}
+                ];
+            };
 
+            mkDarwinHost = { hostName, platform, stateVer }@conf: inputs.darwin.lib.darwinSystem {
+                specialArgs = {inherit inputs conf; };
+
+                modules = [
+                    inputs.mac-app-util.darwinModules.default
+                    inputs.home-manager.darwinModules.home-manager
+                    ./machines/${hostName}
+                ];
+            };
         in {
             nixosConfigurations = {
                 "autherror" = mkNixosHost hosts.desktop;
                 "minimal" = mkNixosHost hosts.minimal;
+            };
+
+            darwinConfigurations = {
+                "authmac" = mkDarwinHost hosts.authmac;
             };
         };
 }

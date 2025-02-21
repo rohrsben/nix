@@ -30,6 +30,7 @@ lib.optionalAttrs(conf.hostName == "autherror") {
 
             ../shared/apps/fish.nix
             ../shared/apps/fzf.nix
+            ../shared/apps/kitty
             ../shared/apps/neovim
             ../shared/apps/nix-index.nix
             ../shared/apps/typst
@@ -76,7 +77,6 @@ lib.optionalAttrs(conf.hostName == "autherror") {
                 sshfs
                 tdf
                 ttyper
-                typst
                 wev
                 zellij
 

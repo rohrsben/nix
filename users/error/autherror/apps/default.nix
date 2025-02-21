@@ -4,7 +4,6 @@
     imports = [
         ./fuzzel
         ./hypr
-        ./kitty
         ./mako
         ./waybar
 

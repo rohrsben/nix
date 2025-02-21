@@ -1,10 +1,14 @@
-{ inputs, config, ... }:
+{ inputs, config, lib, conf, ... }:
 
-{
+lib.optionalAttrs(conf.platform == "x86_64-linux") {
     imports = [
         inputs.sops-nix.nixosModules.sops
     ];
-
+} // lib.optionalAttrs(conf.platform == "aarch64-darwin") {
+    imports = [
+        inputs.sops-nix.darwinModules.sops
+    ];
+} // {
     sops = {
         defaultSopsFile = ../../secrets/secrets.yaml;
         validateSopsFiles = false;

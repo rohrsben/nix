@@ -2,8 +2,8 @@
 
 {
     imports = [
-        ../shared/disko
         ../shared/boot.nix
+        ../shared/disko
         ../shared/hm.nix
         ../shared/lix.nix
         ../shared/locale.nix
@@ -19,6 +19,7 @@
         ./graphics.nix
         ./sops.nix
         ./ssh.nix
+        ./virtualization.nix
     ] ++ [
         ../../users/error
     ];
