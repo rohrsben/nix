@@ -4,6 +4,7 @@
     imports = [
         ../shared/boot.nix
         ../shared/disko
+        ../shared/fonts.nix
         ../shared/hm.nix
         ../shared/lix.nix
         ../shared/locale.nix
@@ -15,7 +16,6 @@
         ./apps.nix
         ./audio.nix
         ./bluetooth.nix
-        ./fonts.nix
         ./graphics.nix
         ./sops.nix
         ./ssh.nix
