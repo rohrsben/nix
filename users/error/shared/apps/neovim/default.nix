@@ -7,10 +7,16 @@ let
     plugins = "nvim/lua/autherror/plugins";
     lazyLock = "/home/error/nix/users/error/shared/apps/neovim/lazy-lock.json";
 in {
-    home.packages = [
-        pkgs.tinymist
-        pkgs.websocat
-    ];
+    home = {
+        packages = [
+            pkgs.tinymist
+            pkgs.websocat
+        ];
+
+        sessionVariables = {
+            MANPAGER = "nvim +Man!";
+        };
+    };
 
     programs.neovim = {
         enable = true;
