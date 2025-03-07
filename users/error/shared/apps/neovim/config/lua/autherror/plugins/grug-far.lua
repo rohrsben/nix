@@ -18,4 +18,5 @@ return {
             }
         end, desc = "Grug Farrer" }
     },
+    config = true
 }
