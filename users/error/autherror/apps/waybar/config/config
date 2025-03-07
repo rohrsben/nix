@@ -38,6 +38,7 @@
         "format": "<span color='#C67B6C'>|</span> {artist} ~ {title}<span color='#5C845F'><b>@</b></span>{player}",
         "format-paused": "<span color='#C67B6C'>|</span> {artist} ~ {title}<span color='#C67B6C'><b>@</b></span>{player}",
         "max-length": 150,
+        "ignored-players": ["firefox"],
     },
 
     "custom/at": {
