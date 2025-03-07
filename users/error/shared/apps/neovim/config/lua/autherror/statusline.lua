@@ -1,92 +1,99 @@
-vim.api.nvim_set_hl(0, 'ins', {fg = '#232a2e', bg = '#a7c080'})
-vim.api.nvim_set_hl(0, 'vis', {fg = '#232a2e', bg = '#e67e80'})
-vim.api.nvim_set_hl(0, 'rand', {fg = '#232a2e', bg = '#d3c6aa'})
-vim.api.nvim_set_hl(0, 'CSL1', {fg = '#859289', bg = '#3d484d'})
-vim.api.nvim_set_hl(0, 'modified', {fg = "#7fbbb3", bg = '#343f44'})
-
 local modes = {
-    ['n'] = '%#CSL1# NORMAL',
-    ['no'] = '%#CSL1# NORMAL',
-    ['v'] = '%#vis# VISUAL',
-    ['V'] = '%#vis# V-LINE',
-    [''] = '%#vis# V-BLOCK',
-    ['s'] = '%#rand# SELECT',
-    ['S'] = '%#rand# SELECT LINE',
-    [''] = '%#rand# SELECT BLOCK',
-    ['i'] = '%#ins# INSERT',
-    ['ic'] = '%#ins# INSERT',
-    ['R'] = '%#rand# REPLACE',
-    ['Rv'] = '%#rand# V-REPLACE',
-    ['c'] = '%#rand# COMMAND',
-    ['cv'] = '%#rand# VIM EX',
-    ['ce'] = '%#rand# EX',
-    ['r'] = '%#rand# PROMPT',
-    ['rm'] = '%#rand# MOAR',
-    ['r?'] = '%#rand# CONFIRM',
-    ['!'] = '%#rand# SHELL',
-    ['t'] = '%#term# TERMINAL',
+    ['n']  = { hl = 'sl_mode_normal', text = 'NORMAL',       short_text = 'N' },
+    ['i']  = { hl = 'sl_mode_insert', text = 'INSERT',       short_text = 'I' },
+    ['ic'] = { hl = 'sl_mode_insert', text = 'INSERT',       short_text = 'I' },
+    ['no'] = { hl = 'sl_mode_normal', text = 'NORMAL',       short_text = 'N' },
+    ['v']  = { hl = 'sl_mode_visual', text = 'VISUAL',       short_text = 'V' },
+    ['V']  = { hl = 'sl_mode_visual', text = 'V-LINE',       short_text = 'VL' },
+    [''] = { hl = 'sl_mode_visual', text = 'V-BLOCK',      short_text = 'VB' },
+    ['s']  = { hl = 'sl_mode_misc',   text = 'SELECT',       short_text = 'S' },
+    ['S']  = { hl = 'sl_mode_misc',   text = 'SELECT LINE',  short_text = 'SL' },
+    [''] = { hl = 'sl_mode_misc',   text = 'SELECT BLOCK', short_text = 'SB' },
+    ['R']  = { hl = 'sl_mode_misc',   text = 'REPLACE',      short_text = 'R' },
+    ['Rv'] = { hl = 'sl_mode_misc',   text = 'V-REPLACE',    short_text = 'VR' },
+    ['c']  = { hl = 'sl_mode_misc',   text = 'COMMAND',      short_text = 'C' },
+    ['cv'] = { hl = 'sl_mode_misc',   text = 'VIM EX',       short_text = 'VE' },
+    ['ce'] = { hl = 'sl_mode_misc',   text = 'EX',           short_text = 'E' },
+    ['r']  = { hl = 'sl_mode_misc',   text = 'PROMPT',       short_text = 'P' },
+    ['rm'] = { hl = 'sl_mode_misc',   text = 'MORE',         short_text = 'M' },
+    ['r?'] = { hl = 'sl_mode_misc',   text = 'CONFIRM',      short_text = 'CF' },
+    ['!']  = { hl = 'sl_mode_misc',   text = 'SHELL',        short_text = 'S' },
+    ['t']  = { hl = 'sl_mode_misc',   text = 'TERMINAL',     short_text = 'T' },
 }
 
 local function mode()
-    return modes[vim.api.nvim_get_mode().mode] .. ' '
+    local info = modes[vim.api.nvim_get_mode().mode]
+    return '%#' .. info.hl .. '# ' .. info.text .. ' '
+end
+
+local function mode_short()
+    local info = modes[vim.api.nvim_get_mode().mode]
+    return '%#' .. info.hl .. '# ' .. info.short_text .. ' '
 end
 
 local function filepath()
     local fpath = vim.fn.fnamemodify(vim.fn.expand '%', ':~:.:h')
-    local dirs = vim.split(fpath, '/')
 
-    if fpath == '.' or vim.fn.winwidth(0) < 70 then
-        return ''
-    elseif #dirs > 3 then
-        return string.format(' .../%s/%s/%s/', dirs[#dirs-2], dirs[#dirs-1], dirs[#dirs])
+    local dirs = vim.split(fpath, '/')
+    if #dirs > 3 then
+        fpath = string.format(' .../%s/%s/%s', dirs[#dirs-2], dirs[#dirs-1], dirs[#dirs])
     end
 
-    return string.format(' %s/', fpath)
+    return '%#sl_filepath#' .. string.format(' %s/', fpath)
 end
 
 local function filename()
-    local fname = vim.fn.expand '%:t'
+    return '%#sl_filename# ' .. vim.fn.expand('%:t')
+end
+
+local function buffer_info()
+    local info = ''
 
     if vim.bo.modified then
-        fname = fname .. ' %#modified#󰐗%#CSL3#'
+        info = ' %#sl_modified#󰐗'
     end
 
     if vim.bo.readonly then
-        fname = fname .. ' %#CSL4#[RO]'
+        info = info .. ' %#sl_readonly#[RO]'
     end
 
-    return fname
+    return info
 end
 
-vim.api.nvim_set_hl(0, 'DiagError', {fg = '#e67e80', bg = '#343f44'})
-vim.api.nvim_set_hl(0, 'DiagWarn', {fg = '#dbbc7f', bg = '#343f44'})
-vim.api.nvim_set_hl(0, 'DiagInfo', {fg = '#7fbbb3', bg = '#343f44'})
-vim.api.nvim_set_hl(0, 'DiagHint', {fg = '#a7c080', bg = '#343f44'})
-
 local function lsp_and_branch()
-    local diagnostics = {}
+    local diagnostics = ''
 
-    local errs = #vim.diagnostic.get(0, {severity = 1})
-    local warns = #vim.diagnostic.get(0, {severity = 2})
-    local infos = #vim.diagnostic.get(0, {severity = 3})
-    local hints = #vim.diagnostic.get(0, {severity = 4})
+    local diag_info = {
+        {
+            type = 'err',
+            count = #vim.diagnostic.get(0, {severity = 1}),
+            symbol = '●'
+        },
+        {
+            type = 'warn',
+            count = #vim.diagnostic.get(0, {severity = 2}),
+            symbol = '●'
+        },
+        {
+            type = 'info',
+            count = #vim.diagnostic.get(0, {severity = 3}),
+            symbol = '●'
+        },
+        {
+            type = 'hint',
+            count = #vim.diagnostic.get(0, {severity = 4}),
+            symbol = '●'
+        },
+    }
 
-    if errs > 0 then
-        table.insert(diagnostics, '%#DiagError#● ' .. tostring(errs))
-    end
-    if warns > 0 then
-        table.insert(diagnostics, '%#DiagWarn#● ' .. tostring(warns))
-    end
-    if infos > 0 then
-        table.insert(diagnostics, '%#DiagInfo#● ' .. tostring(infos))
-    end
-    if hints > 0 then
-        table.insert(diagnostics, '%#DiagHint#● ' .. tostring(hints))
+    for _, diag in ipairs(diag_info) do
+        if diag.count > 0 then
+            diagnostics = diagnostics .. string.format('%%#sl_diag_%s#%s %d ', diag.type, diag.symbol, diag.count)
+        end
     end
 
-    local diagnostics = table.concat(diagnostics, ' ')
     local branch = vim.b.gitsigns_head
-    branch = branch ~= nil and branch or ''
+    branch = branch ~= nil and '%#sl_branch#' .. branch or ''
 
     if branch ~= '' and diagnostics ~= '' then
         return branch .. ' | ' .. diagnostics
@@ -104,7 +111,7 @@ local function lsp_name()
             return name
         end)
 
-        return string.format('%s', table.concat(it:totable(), ',')) .. ' '
+        return '%#sl_lsp#' .. table.concat(it:totable(), ', ') .. ' '
     end
 
     return ''
@@ -112,55 +119,71 @@ end
 
 local function filetype()
     local ft = vim.bo.filetype
-    return ft == "" and '' or string.format(' %s |', ft)
+    return ft == '' and '' or '%#sl_filetype# ' .. ft .. ' |'
 end
 
 local function lineinfo()
     if vim.bo.filetype == 'alpha' then
         return ''
     end
-    return ' %P %l:%c '
+    return '%#sl_lineinfo# %P %l:%c '
 end
 
-Statusline = {}
+function Active()
+    local width = vim.fn.winwidth(0)
 
-vim.api.nvim_set_hl(0, 'CSL1', {fg = '#859289', bg = '#3d484d'})
-vim.api.nvim_set_hl(0, 'CSL2', {fg = '#859289', bg = '#343f44'})
-vim.api.nvim_set_hl(0, 'CSL3', {fg = '#d3c6aa', bg = '#343f44'})
-vim.api.nvim_set_hl(0, 'CSL4', {fg = '#e67e80', bg = '#343f44'})
+    if width > 100 then
+        return table.concat {
+            mode(),
+            filepath(),
+            filename(),
+            buffer_info(),
 
-Statusline.active = function ()
-    return table.concat {
-        mode(),
+            '%=',
+            lsp_and_branch(),
 
-        '%#CSL2#',
-        filepath(),
+            '%=',
+            lsp_name(),
 
-        '%#CSL3# ',
-        filename(),
+            filetype(),
+            lineinfo(),
+        }
+    elseif width > 60 then
+        return table.concat {
+            mode(),
+            filename(),
+            buffer_info(),
 
-        '%#CSL2#%=',
-        lsp_and_branch(),
+            '%=',
+            lsp_and_branch(),
 
-        '%=',
+            '%=',
+            lsp_name(),
 
-        '%#CSL2#',
-        lsp_name(),
+            filetype(),
+            lineinfo(),
+        }
+    else
+        return table.concat {
+            mode_short(),
+            filename(),
+            buffer_info(),
 
-        '%#CSL1#',
-        filetype(),
-        lineinfo(),
-    }
+            '%=',
+            filetype(),
+            lineinfo(),
+        }
+    end
 end
 
-function Statusline.inactive()
+function Inactive()
     return '%=%F%='
 end
 
 vim.cmd([[
     augroup Statusline
     au!
-    au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()
-    au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()
+    au WinEnter,BufEnter * setlocal statusline=%!v:lua.Active()
+    au WinLeave,BufLeave * setlocal statusline=%!v:lua.Inactive()
     augroup END
 ]])
