@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ inputs, pkgs, config, ... }:
 
 let
     app = "nvim";
@@ -14,6 +14,7 @@ in {
 
     programs.neovim = {
         enable = true;
+        package = inputs.neovim-nightly.packages.${pkgs.system}.default;
 
         viAlias = true;
         vimAlias = true;

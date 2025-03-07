@@ -59,6 +59,8 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
+
         swww.url = "github:LGFae/swww";
 
         hyprlock.url = "github:hyprwm/hyprlock";
