@@ -12,7 +12,6 @@ in {
         config = {
             font = {
                 family = "JetBrainsMono Nerd Font";
-                size = "15px";
             };
             tabs = {
                 vertical = {
