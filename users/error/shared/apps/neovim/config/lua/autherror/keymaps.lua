@@ -36,6 +36,6 @@ map('n', 'R', 'ciw') -- replace word
 
 -- mappings for visual mode
 
-map('v', 'p', '"_dP') -- don't overwrite the copy when pasting in visual mode
-map('v', '<', '<gv') -- don't deselect on indentation operations
-map('v', '>', '>gv') -- same deal
+map('x', 'p', '"_dP') -- don't overwrite the copy when pasting in visual mode
+map('x', '<', '<gv') -- don't deselect on indentation operations
+map('x', '>', '>gv') -- same deal
