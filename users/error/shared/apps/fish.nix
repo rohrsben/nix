@@ -55,6 +55,24 @@
                 '';
             };
 
+            cdd = {
+                body = ''
+                    argparse 'h' -- $argv
+
+                    set hidden
+                    if set -ql _flag_h
+                        set hidden -H
+                    end
+
+                    set dir .
+                    if test -n "$argv"
+                        set dir "$argv"
+                    end
+
+                    cd (fd $hidden --type d --base-directory $dir | fzf --height ~20)
+                '';
+            };
+
             add-idents = {
                 body = ''
                     set idents /home/error/.ssh/gh-rohrsben /home/error/.ssh/umb-cs
