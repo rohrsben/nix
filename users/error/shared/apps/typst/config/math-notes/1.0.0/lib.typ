@@ -47,3 +47,10 @@
 
 #let trans = text(fill: olive, $thick thick thin arrow.r.filled thick thick thin $)
 #let spc = text($thick thin$)
+
+#let ex = thmbox(
+  "exercise",
+  "Exercise",
+  base_level: 0,
+  stroke: rgb("#000000") + 1pt
+).with(numbering: "1")
