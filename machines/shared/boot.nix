@@ -29,7 +29,7 @@
                         insmod fat
                         insmod chain
                         set root='(hd2,gpt1)'
-                        search --no-floppy --fs-uuid --set=root 90C5-A03A
+                        search --no-floppy --fs-uuid --set=root 0A13-1C9C
                         chainloader /EFI/Microsoft/Boot/bootmgfw.efi
                     }
                 '';
