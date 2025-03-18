@@ -69,7 +69,7 @@
                         set dir "$argv"
                     end
 
-                    cd (fd $hidden --type d --base-directory $dir | fzf --height ~20)
+                    cd $dir/(fd $hidden --type d --base-directory $dir | fzf --height ~20)
                 '';
             };
 
