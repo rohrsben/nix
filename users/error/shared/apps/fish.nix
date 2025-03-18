@@ -59,9 +59,9 @@
                 body = ''
                     argparse 'h' -- $argv
 
-                    set hidden
+                    set hidden -H
                     if set -ql _flag_h
-                        set hidden -H
+                        set hidden
                     end
 
                     set dir .
