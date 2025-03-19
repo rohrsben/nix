@@ -66,3 +66,25 @@
   base_level: 0,
   stroke: rgb("#000000") + 1pt
 ).with(numbering: "1")
+
+#let i = thmbox(
+  "issue",
+  "Issue",
+  base_level: 0,
+  stroke: rgb("#e06060") + 1pt
+)
+
+#let about(section, remarks, current_score) = {
+  list(
+    text(strong("Section: ") + section),
+    text(strong("Grader remarks: ") + remarks),
+    text(strong("Current score: ") + current_score)
+  )
+}
+
+#let r = thmplain(
+  "rebuttal",
+  "Rebuttal",
+  base_level: 0,
+  titlefmt: smallcaps,
+).with(numbering: none)
