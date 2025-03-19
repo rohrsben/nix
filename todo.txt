@@ -1,3 +1,2 @@
 backups:
-    - home dir
     - real backgrounds dir -> repo backgrounds dir
