@@ -1,11 +1,6 @@
 { pkgs, ... }:
 
 let
-    mkdir =  "${pkgs.coreutils}/bin/mkdir";
-    head =   "${pkgs.coreutils}/bin/head";
-    cut =    "${pkgs.coreutils}/bin/cut";
-    solaar = "${pkgs.solaar}/bin/solaar";
-    rg =     "${pkgs.ripgrep}/bin/rg";
     outputs = "/home/error/.scripts/outputs";
 in {
     systemd.timers."mouseBat" = {
@@ -21,15 +16,20 @@ in {
     };
 
     systemd.services."mouseBat" = {
+        path = [
+            pkgs.coreutils
+            pkgs.solaar
+            pkgs.ripgrep
+        ];
+
         script = ''
             set -eu
-            ${mkdir} -p ${outputs}
+            mkdir -p outputs
 
-            output=$(${solaar} show G502 | ${rg} --trim --max-count=1 Battery | ${cut} -c 10-11)
-            if [ ! -z "$output" ]
-                then
-                    echo "$output" > ${outputs}/mouseBat
-                    fi
+            output=$(solaar show G502 | rg --trim --max-count=1 Battery | cut -c 10-11)
+            if [ ! -z "$output" ]; then
+                echo "$output" > ${outputs}/mouseBat
+            fi
         '';
 
         serviceConfig = {
