@@ -1,10 +1,11 @@
 { inputs, pkgs, conf, lib, ... }:
 
-lib.optionalAttrs(conf.hostName == "authmac") {
+{
     users.users.error = {
         home = "/Users/error";
         description = "error";
     };
+
     home-manager.users.error = {
         programs.home-manager.enable = true;
 

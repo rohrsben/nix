@@ -21,7 +21,7 @@
         ./ssh.nix
         ./virtualization.nix
     ] ++ [
-        ../../users/error
+        ../../users/error/autherror
     ];
 
     users.mutableUsers = false;

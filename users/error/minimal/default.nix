@@ -1,6 +1,6 @@
 { inputs, pkgs, conf, lib, ... }:
 
-lib.optionalAttrs(conf.hostName == "minimal") {
+{
     users.users.error = {
         isNormalUser = true;
         shell = pkgs.fish;

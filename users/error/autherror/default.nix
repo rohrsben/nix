@@ -1,12 +1,11 @@
 { lib, pkgs, conf, config, ... }:
 
-lib.optionalAttrs(conf.hostName == "autherror") {
+{
     sops.secrets.error-pass.neededForUsers = true;
 
     users.users.error = {
         isNormalUser = true;
         shell = pkgs.fish;
-        initialPassword = "password";
         hashedPasswordFile = config.sops.secrets.error-pass.path;
         extraGroups = [
             "dialout"

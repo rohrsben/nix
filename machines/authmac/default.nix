@@ -6,7 +6,7 @@
         ../shared/nix-config.nix
         ../shared/fonts.nix
     ] ++ [
-        ../../users/error
+        ../../users/error/authmac
     ];
 
     environment.systemPackages = [

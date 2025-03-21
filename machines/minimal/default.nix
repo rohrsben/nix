@@ -10,7 +10,7 @@
         ../shared/networking.nix
         ../shared/nix-config.nix
     ] ++ [
-        ../../users/error
+        ../../users/error/minimal
     ];
 
     programs.fish.enable = true;
