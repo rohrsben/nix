@@ -9,6 +9,7 @@
         timerConfig = {
             Unit = "homeBackup.service";
             OnCalendar = "daily";
+            Persistent = true;
         };
     };
 
