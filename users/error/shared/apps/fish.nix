@@ -23,6 +23,7 @@
             rebuild = "nh os switch /home/error/nix --hostname autherror";
             rebuild-boot = "nh os boot /home/error/nix --hostname autherror";
             icat = "kitten icat";
+            ssh = "kitten ssh";
             cd = "z";
             restart = "systemctl stop tailscaled.service && systemctl reboot";
         };
@@ -69,7 +70,12 @@
                         set dir "$argv"
                     end
 
-                    cd $dir/(fd $hidden --type d --base-directory $dir | fzf --height ~20)
+                    set target (fd $hidden --type d --base-directory "$dir" | fzf --height ~20)
+                    if test -z "$target"
+                        return 1
+                    end
+
+                    cd "$target"
                 '';
             };
 
