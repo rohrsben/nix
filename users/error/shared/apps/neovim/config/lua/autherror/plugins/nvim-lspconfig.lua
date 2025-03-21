@@ -5,11 +5,17 @@ return {
         'saghen/blink.cmp',
     },
     config = function ()
-        local signs = { Error = '●', Warn = '●', Hint = '●', Info = '●'}
-        for type, icon in pairs(signs) do
-            local hl = "DiagnosticSign" .. type
-            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
-        end
+        vim.diagnostic.config({
+            signs = {
+                text = {
+                    [vim.diagnostic.severity.ERROR] = '●',
+                    [vim.diagnostic.severity.WARN]  = '●',
+                    [vim.diagnostic.severity.HINT]  = '●',
+                    [vim.diagnostic.severity.INFO]  = '●',
+                },
+            },
+            virtual_text = false,
+        })
 
         local default_settings = {
             capabilities = require('blink.cmp').get_lsp_capabilities(),
@@ -18,6 +24,10 @@ return {
                     local options = vim.tbl_extend('force', opts, { noremap = true, silent = true, buffer = bufnr})
                     vim.keymap.set(mode, lhs, rhs, options)
                 end
+
+                -- default
+
+                -- custom
 
                 map('n', 'gR', function() Snacks.picker.lsp_references() end, {desc = 'Show LSP references'})
                 map('n', 'gD', vim.lsp.buf.declaration, {desc = 'Go to declaration'})
@@ -28,8 +38,6 @@ return {
                 map('n', '<leader>rn', vim.lsp.buf.rename, {desc = 'Smart rename'})
                 map('n', '<leader>D', function() Snacks.picker.diagnostics_buffer() end, {desc = 'Show buffer diagnostics'})
                 map('n', '<leader>d', vim.diagnostic.open_float, {desc = 'Show line diagnostics'})
-                map('n', '[d', function() vim.diagnostic.goto_prev {float = false} end, {desc = 'Go to previous diagnostic'})
-                map('n', ']d', function() vim.diagnostic.goto_next {float = false} end, {desc = 'Go to next diagnostic'})
                 map('n', 'K', vim.lsp.buf.hover, {desc = 'Show documentation for what is under cursor'})
             end
         }
@@ -58,7 +66,7 @@ return {
                 on_init = function (client)
                     if client.workspace_folders then
                         local path = client.workspace_folders[1].name
-                        if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.json') then
+                        if path ~= vim.fn.stdpath('config') and (vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.json')) then
                             return
                         end
                     end

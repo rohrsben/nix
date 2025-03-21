@@ -60,37 +60,36 @@ local function buffer_info()
     return info
 end
 
-local function lsp_and_branch()
-    local diagnostics = ''
-
-    local diag_info = {
-        {
-            type = 'err',
-            count = #vim.diagnostic.get(0, {severity = 1}),
-            symbol = '●'
-        },
-        {
-            type = 'warn',
-            count = #vim.diagnostic.get(0, {severity = 2}),
-            symbol = '●'
-        },
-        {
-            type = 'info',
-            count = #vim.diagnostic.get(0, {severity = 3}),
-            symbol = '●'
-        },
-        {
-            type = 'hint',
-            count = #vim.diagnostic.get(0, {severity = 4}),
-            symbol = '●'
-        },
-    }
-
-    for _, diag in ipairs(diag_info) do
-        if diag.count > 0 then
-            diagnostics = diagnostics .. string.format('%%#sl_diag_%s#%s %d ', diag.type, diag.symbol, diag.count)
-        end
+local function lsp_info(request)
+    local info = vim.lsp.get_clients({bufnr = 0})
+    if next(info) == nil then
+        return ''
     end
+
+    if request == 'names' then
+        local names = vim.iter(info):map(function (client)
+            local name = client.name:gsub('language.server', 'ls')
+            return name
+        end):totable()
+
+        return '%#sl_lsp#' .. table.concat(names, ', ') .. ' '
+    else
+        local formatted_diags = ''
+
+        local signs = vim.diagnostic.config().signs.text
+        local diags = vim.diagnostic.count(0)
+
+        for severity, count in pairs(diags) do
+            formatted_diags = formatted_diags .. string.format('%%#sl_diag_%d#%s %d ', severity, signs[severity], count)
+        end
+
+        return formatted_diags
+    end
+end
+
+
+local function diags_and_branch()
+    local diagnostics = lsp_info('diagnostics')
 
     local branch = vim.b.gitsigns_head
     branch = branch ~= nil and '%#sl_branch#' .. branch or ''
@@ -102,27 +101,12 @@ local function lsp_and_branch()
     return branch .. diagnostics
 end
 
-
-local function lsp_name()
-    if rawget(vim, 'lsp') then
-        local it = vim.iter(vim.lsp.get_clients {bufnr = 0})
-        it:map(function (client)
-            local name = client.name:gsub('language.server', 'ls')
-            return name
-        end)
-
-        return '%#sl_lsp#' .. table.concat(it:totable(), ', ') .. ' '
-    end
-
-    return ''
-end
-
 local function filetype()
     local ft = vim.bo.filetype
     return ft == '' and '' or '%#sl_filetype# ' .. ft .. ' |'
 end
 
-local function lineinfo()
+local function pos_info()
     if vim.bo.filetype == 'alpha' then
         return ''
     end
@@ -140,13 +124,13 @@ function Active()
             buffer_info(),
 
             '%=',
-            lsp_and_branch(),
+            diags_and_branch(),
 
             '%=',
-            lsp_name(),
+            lsp_info('names'),
 
             filetype(),
-            lineinfo(),
+            pos_info(),
         }
     elseif width > 60 then
         return table.concat {
@@ -155,13 +139,13 @@ function Active()
             buffer_info(),
 
             '%=',
-            lsp_and_branch(),
+            diags_and_branch(),
 
             '%=',
-            lsp_name(),
+            lsp_info('names'),
 
             filetype(),
-            lineinfo(),
+            pos_info(),
         }
     else
         return table.concat {
@@ -171,7 +155,7 @@ function Active()
 
             '%=',
             filetype(),
-            lineinfo(),
+            pos_info(),
         }
     end
 end

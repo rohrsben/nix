@@ -51,23 +51,23 @@ return {
                 bg = dark
             },
 
-            sl_diag_err = {
-                fg = hl('Red').fg,
+            sl_diag_1 = {
+                fg = hl('DiagnosticError').fg,
                 bg = dark
             },
 
-            sl_diag_warn = {
-                fg = hl('Yellow').fg,
+            sl_diag_2 = {
+                fg = hl('DiagnosticWarn').fg,
                 bg = dark
             },
 
-            sl_diag_info = {
-                fg = hl('Blue').fg,
+            sl_diag_3 = {
+                fg = hl('DiagnosticInfo').fg,
                 bg = dark
             },
 
-            sl_diag_hint = {
-                fg = hl('Green').fg,
+            sl_diag_4 = {
+                fg = hl('DiagnosticHint').fg,
                 bg = dark
             },
 
