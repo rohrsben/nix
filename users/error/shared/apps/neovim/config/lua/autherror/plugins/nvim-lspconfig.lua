@@ -25,20 +25,7 @@ return {
                     vim.keymap.set(mode, lhs, rhs, options)
                 end
 
-                -- default
-
-                -- custom
-
-                map('n', 'gR', function() Snacks.picker.lsp_references() end, {desc = 'Show LSP references'})
-                map('n', 'gD', vim.lsp.buf.declaration, {desc = 'Go to declaration'})
-                map('n', 'gd', function() Snacks.picker.lsp_definitions() end, {desc = 'Show LSP definitions'})
-                map('n', 'gi', function() Snacks.picker.lsp_implementations() end, {desc = 'Show LSP implementations'})
-                map('n', 'gt', function() Snacks.picker.lsp_type_definitions() end, {desc = 'Show LSP type definitions'})
-                map({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {desc = 'See available code actions'})
-                map('n', '<leader>rn', vim.lsp.buf.rename, {desc = 'Smart rename'})
-                map('n', '<leader>D', function() Snacks.picker.diagnostics_buffer() end, {desc = 'Show buffer diagnostics'})
                 map('n', '<leader>d', vim.diagnostic.open_float, {desc = 'Show line diagnostics'})
-                map('n', 'K', vim.lsp.buf.hover, {desc = 'Show documentation for what is under cursor'})
             end
         }
 
