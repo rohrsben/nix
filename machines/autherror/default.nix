@@ -2,23 +2,22 @@
 
 {
     imports = [
-        ../shared/boot.nix
-        ../shared/disko
-        ../shared/fonts.nix
-        ../shared/hm.nix
-        ../shared/lix.nix
-        ../shared/locale.nix
-        ../shared/networking.nix
-        ../shared/nix-config.nix
-
         ./services
 
         ./apps.nix
         ./audio.nix
         ./bluetooth.nix
+        ./boot.nix
+        ./fonts.nix
         ./graphics.nix
+        ./hm.nix
+        ./lix.nix
+        ./locale.nix
+        ./networking.nix
+        ./nix-config.nix
         ./sops.nix
         ./ssh.nix
+        ./storage.nix
         ./virtualization.nix
     ] ++ [
         ../../users/error/autherror

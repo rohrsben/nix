@@ -1,4 +1,21 @@
+{ inputs, ... }:
+
 {
+    imports = [
+        inputs.disko.nixosModules.disko
+    ];
+
+    fileSystems."/mnt/lts" = {
+        device = "/dev/disk/by-label/lts";
+        fsType = "btrfs";
+        options = [
+            "compress"
+            "noatime"
+        ];
+    };
+
+    swapDevices = [ ];
+
     disko.devices.disk.main = {
         type = "disk";
         device = "/dev/disk/by-id/nvme-Samsung_SSD_970_EVO_Plus_2TB_S59CNJ0N400844P_1";

@@ -5,4 +5,4 @@ if [ "$EUID" -ne 0 ]; then
     exit
 fi
 
-nix --extra-experimental-features "nix-command flakes" run github:nix-community/disko/latest -- -m disko ../machines/shared/disko/autherror.nix && nixos-install --flake github:rohrsben/nix#minimal && systemctl reboot
+nix --extra-experimental-features "nix-command flakes" run github:nix-community/disko/latest -- -m disko ../machines/autherror/storage.nix && nixos-install --flake github:rohrsben/nix#reinstall && systemctl reboot
