@@ -77,77 +77,75 @@ in {
             settings = {
                 "extensions.autoDisableScopes" = 0;
             };
-            bookmarks = [
-                {
-                    toolbar = true;
-                    bookmarks = [
-                        {
-                            name = "rust-book";
-                            url = "https://rust-book.cs.brown.edu/";
-                        }
-                        {
-                            name = "june";
-                            url = "https://junehomes.com";
-                        }
-                        {
-                            name = "school";
-                            bookmarks = [
-                                {
-                                    name = "canvas";
-                                    url = "https://umassboston.instructure.com";
-                                }
-                                {
-                                    name = "gradescope";
-                                    url = "https://www.gradescope.com";
-                                }
-                                {
-                                    name = "wiser";
-                                    url = "https://campus.sa.umasscs.net/psp/csm/EMPLOYEE/SA/c/SA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL?PORTALPARAM_PTCNAV=HC_SSS_STUDENT_CENTER&EOPP.SCNode=SA&EOPP.SCPortal=EMPLOYEE&EOPP.SCName=CO_EMPLOYEE_SELF_SERVICE&EOPP.SCLabel=Self_Service&EOPP.SCPTfname=CO_EMPLOYEE_SELF_SERVICE&FolderPath=PORTAL_ROOT_OBJECT.CO_EMPLOYEE_SELF_SERVICE.HC_SSS_STUDENT_CENTER&IsFolder=false&gsmobile=1";
-                                }
-                            ];
-                        }
-                        {
-                            name = "lang";
-                            bookmarks = [
-                                {
-                                    name = "prof. site";
-                                    url = "https://cs.umb.edu/~stchang/cs450/s25";
-                                }
-                                {
-                                    name = "book";
-                                    url = "https://htdp.org/2024-11-6/Book/index.html";
-                                }
-                                {
-                                    name = "piazza";
-                                    url = "https://piazza.com";
-                                }
-                            ];
-                        }
-                        {
-                            name = "os";
-                            bookmarks = [
-                                {
-                                    name = "prof. site";
-                                    url = "https://cs.umb.edu/~hdeblois";
-                                }
-                            ];
-                        }
-                        {
-                            name = "nix";
-                            bookmarks = [
-                                {
-                                    name = "nix packages";
-                                    url = "https://search.nixos.org/packages";
-                                }
-                                {
-                                    name = "hm options";
-                                    url = "https://home-manager-options.extranix.com";
-                                }
-                            ];
-                        }
-                    ];
-                }
-            ];
+            bookmarks = {
+                force = true;
+                settings = [
+                    {
+                        name = "rust-book";
+                        url = "https://rust-book.cs.brown.edu/";
+                    }
+                    {
+                        name = "june";
+                        url = "https://junehomes.com";
+                    }
+                    {
+                        name = "school";
+                        bookmarks = [
+                            {
+                                name = "canvas";
+                                url = "https://umassboston.instructure.com";
+                            }
+                            {
+                                name = "gradescope";
+                                url = "https://www.gradescope.com";
+                            }
+                            {
+                                name = "wiser";
+                                url = "https://campus.sa.umasscs.net/psp/csm/EMPLOYEE/SA/c/SA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL?PORTALPARAM_PTCNAV=HC_SSS_STUDENT_CENTER&EOPP.SCNode=SA&EOPP.SCPortal=EMPLOYEE&EOPP.SCName=CO_EMPLOYEE_SELF_SERVICE&EOPP.SCLabel=Self_Service&EOPP.SCPTfname=CO_EMPLOYEE_SELF_SERVICE&FolderPath=PORTAL_ROOT_OBJECT.CO_EMPLOYEE_SELF_SERVICE.HC_SSS_STUDENT_CENTER&IsFolder=false&gsmobile=1";
+                            }
+                        ];
+                    }
+                    {
+                        name = "lang";
+                        bookmarks = [
+                            {
+                                name = "prof. site";
+                                url = "https://cs.umb.edu/~stchang/cs450/s25";
+                            }
+                            {
+                                name = "book";
+                                url = "https://htdp.org/2024-11-6/Book/index.html";
+                            }
+                            {
+                                name = "piazza";
+                                url = "https://piazza.com";
+                            }
+                        ];
+                    }
+                    {
+                        name = "os";
+                        bookmarks = [
+                            {
+                                name = "prof. site";
+                                url = "https://cs.umb.edu/~hdeblois";
+                            }
+                        ];
+                    }
+                    {
+                        name = "nix";
+                        bookmarks = [
+                            {
+                                name = "nix packages";
+                                url = "https://search.nixos.org/packages";
+                            }
+                            {
+                                name = "hm options";
+                                url = "https://home-manager-options.extranix.com";
+                            }
+                        ];
+                    }
+                ];
+            };
         };
     };
 }
