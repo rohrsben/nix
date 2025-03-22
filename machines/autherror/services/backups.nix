@@ -25,7 +25,7 @@
 
             backupsDir="/mnt/lts/backups/home"
 
-            mkdir /tmp/homeBackup
+            mkdir -p /tmp/homeBackup
             cd /tmp/homeBackup
 
             name="daily-$(date +"%y.%m.%d")"
