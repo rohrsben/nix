@@ -9,7 +9,6 @@
         timerConfig = {
             Unit = "homeBackup.service";
             OnCalendar = "daily";
-            Persistent = true;
         };
     };
 
@@ -37,25 +36,33 @@
             cd "$backupsDir"
 
             while [ "$(ls | rg -c daily)" -gt 3 ]; do
-                current="$(ls | sort | head -n 1)"
-                if (( ''${current: -2} % 7 == 1 )); then
-                    mv "$current" "''${current//daily/weekly}"
-                else
+                current="$(ls | rg daily | sort | head -n 1)"
+                asWeekly="weekly-''${current: 6:6}$(( ((10#''${current: -2} - 1) / 7) + 1 ))"
+                if test -d "$asWeekly"; then
                     btrfs subvolume delete "$current"
+                else
+                    mv "$current" "$asWeekly"
                 fi
             done
 
             while [ "$(ls | rg -c weekly)" -gt 3 ]; do
-                current="$(ls | sort | head -n 1)"
-                if [[ ''${current: -2} == "01" ]]; then
-                    mv "$current" "''${current//weekly/monthly}"
-                else
+                current="$(ls | rg weekly | sort | head -n 1)"
+                asMonthly="monthly-''${current: 7:5}"
+                if test -d "$asMonthly"; then
                     btrfs subvolume delete "$current"
+                else
+                    mv "$current" "$asMonthly"
                 fi
             done
 
             while [ "$(ls | rg -c monthly)" -gt 3 ]; do
-                btrfs subvolume delete "$(ls | sort | head -n 1)"
+                current="$(ls | rg monthly | sort | head -n 1)"
+                asYearly="yearly-''${current: 8:2}"
+                if test -d "$asYearly"; then
+                    btrfs subvolume delete "$current"
+                else
+                    mv "$current" "$asYearly"
+                fi
             done
         '';
 
