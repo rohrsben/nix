@@ -6,11 +6,13 @@ let
     mainMonitor = "DP-3";
     secondaryMonitor = "DP-1";
     xdgpics = "/home/error/xdg/pictures";
+    grimblast = inputs.hyprland-contrib.packages.${pkgs.system}.grimblast;
+
 in {
     home.packages = [
         inputs.hyprlock.packages.${pkgs.system}.default
         inputs.hypridle.packages.${pkgs.system}.default
-        inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+        grimblast
         inputs.swww.packages.${pkgs.system}.swww
         pkgs.jq
     ];
@@ -205,8 +207,8 @@ in {
             bind = ,XF86AudioPrev, exec, playerctl previous
             bind = ,XF86AudioNext, exec, playerctl next
 
-            bind = Shift,Print, exec, grimblast --notify --freeze save area ${xdgpics}/screenshots/$(date +'%b%d-%T.png')
-            bind = ,Print, exec, grimblast --notify save area ${xdgpics}/screenshots/$(date +'%b%d-%T.png')
+            bind = Shift,Print, exec, ${grimblast}/bin/grimblast --notify --freeze save area ${xdgpics}/screenshots/$(date +'%b%d-%T.png')
+            bind = ,Print, exec, ${grimblast}/bin/grimblast --notify save area ${xdgpics}/screenshots/$(date +'%b%d-%T.png')
         '';
     };
 }
