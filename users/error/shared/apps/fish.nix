@@ -75,7 +75,7 @@
                         return 1
                     end
 
-                    cd "$target"
+                    cd "$dir/$target"
                 '';
             };
 
