@@ -47,13 +47,14 @@ local function filename()
 end
 
 local function buffer_info()
+    local bufnr = vim.api.nvim_win_get_buf(vim.g.statusline_winid)
     local info = ''
 
-    if vim.bo.modified then
+    if vim.api.nvim_get_option_value("modified", {buf = bufnr}) then
         info = ' %#sl_modified#󰐗'
     end
 
-    if vim.bo.readonly then
+    if vim.api.nvim_get_option_value("readonly", {buf = bufnr}) then
         info = info .. ' %#sl_readonly#[RO]'
     end
 
@@ -161,7 +162,11 @@ function Active()
 end
 
 function Inactive()
-    return '%=%F%='
+    return table.concat {
+        '%=%F',
+        buffer_info(),
+        '%='
+    }
 end
 
 vim.cmd([[
