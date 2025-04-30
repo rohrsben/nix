@@ -12,6 +12,10 @@ map('', '<Space>', '<Nop>')
 vim.g.maplocalleader = ' '
 vim.g.mapleader = ' '
 
+-- comments using C-/ instead of gc[c]
+map('n', '<C-/>', 'gcc', {remap = true})
+map('x', '<C-/>', 'gc', {remap = true})
+
 -- various blackhole remaps
 map('n', 'x', '"_x')
 map('n', 'c', '"_c')
@@ -19,8 +23,8 @@ map('n', 'cc', '"_cc')
 map('n', 'C', '"_C')
 
 -- interchange ; and :, since i use : more often and hate shift
-map('n', ';', ':', { silent = false })
-map('n', ':', ';')
+map({'n', 'v'}, ';', ':', { silent = false })
+map({'n', 'v'}, ':', ';')
 
 -- leader / custom mappings
 
