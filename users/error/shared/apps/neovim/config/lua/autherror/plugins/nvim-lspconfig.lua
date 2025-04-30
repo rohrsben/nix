@@ -21,11 +21,20 @@ return {
             capabilities = require('blink.cmp').get_lsp_capabilities(),
             on_attach = function (client, bufnr)
                 local function map(mode, lhs, rhs, opts)
-                    local options = vim.tbl_extend('force', opts, { noremap = true, silent = true, buffer = bufnr})
+                    local options = vim.tbl_extend('force', opts, {noremap = true, silent = true, buffer = bufnr})
                     vim.keymap.set(mode, lhs, rhs, options)
                 end
 
-                map('n', '<leader>d', vim.diagnostic.open_float, {desc = 'Show line diagnostics'})
+                map('n', '<leader>lpr', function() Snacks.picker.lsp_references() end, {desc = 'Show LSP references'})
+                map('n', '<leader>lpd', function() Snacks.picker.lsp_definitions() end, {desc = 'Show LSP definitions'})
+                map('n', '<leader>lpi', function() Snacks.picker.lsp_implementations() end, {desc = 'Show LSP implementations'})
+                map('n', '<leader>lpt', function() Snacks.picker.lsp_type_definitions() end, {desc = 'Show LSP type definitions'})
+                map('n', '<leader>lpD', function() Snacks.picker.diagnostics_buffer() end, {desc = 'Show buffer diagnostics'})
+
+                map('n',        '<leader>lr', vim.lsp.buf.rename,        {desc = 'LSP Rename'})
+                map({'n', 'v'}, '<leader>lc', vim.lsp.buf.code_action,   {desc = 'LSP Code Action'})
+                map('n',        '<leader>lD', vim.diagnostic.open_float, {desc = 'LSP Line Diagnostics'})
+                map('n',        '<leader>ld', vim.lsp.buf.declaration,   {desc = 'Go to declaration'})
             end
         }
 
