@@ -27,6 +27,9 @@ return {
         },
         signature = {
             enabled = true,
+            window = {
+                show_documentation = false,
+            },
         },
         appearance = {
             kind_icons = {
