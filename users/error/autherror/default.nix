@@ -12,6 +12,7 @@
             "keys"
             "networkmanager"
             "wheel"
+            "libvirtd"
         ];
     };
 
