@@ -1,11 +1,10 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, config, ... }:
 
 let
     app = "hypr";
     configDir = ./config;
     mainMonitor = "DP-3";
     secondaryMonitor = "DP-1";
-    xdgpics = "/home/error/xdg/pictures";
     grimblast = inputs.hyprland-contrib.packages.${pkgs.system}.grimblast;
 
 in {
@@ -207,8 +206,8 @@ in {
             bind = ,XF86AudioPrev, exec, playerctl previous
             bind = ,XF86AudioNext, exec, playerctl next
 
-            bind = Shift,Print, exec, ${grimblast}/bin/grimblast --notify --freeze save area ${xdgpics}/screenshots/$(date +'%b%d-%T.png')
-            bind = ,Print, exec, ${grimblast}/bin/grimblast --notify save area ${xdgpics}/screenshots/$(date +'%b%d-%T.png')
+            bind = Shift,Print, exec, ${grimblast}/bin/grimblast --notify --freeze save area ${config.xdg.userDirs.pictures}/screenshots/$(date +'%b%d-%T.png')
+            bind = ,Print, exec, ${grimblast}/bin/grimblast --notify save area ${config.xdg.userDirs.pictures}/screenshots/$(date +'%b%d-%T.png')
         '';
     };
 }
