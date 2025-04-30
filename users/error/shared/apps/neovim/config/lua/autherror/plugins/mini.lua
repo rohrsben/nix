@@ -18,9 +18,10 @@ return {
                 n_steps_ahead = 2,
             },
             mappings = {
-                start_jumping = '<Tab>',
+                start_jumping = '<C-Space>',
             },
         }
+        vim.keymap.set('i', '<C-Space>', function() MiniJump2d.start() end, {noremap = true, silent = true})
         vim.api.nvim_set_hl(0, "MiniJump2dSpot", {link = "MiniJump2dSpotUnique"})
 
         vim.o.listchars = 'tab:> ,extends:…,precedes:…,nbsp:␣'
@@ -40,7 +41,6 @@ return {
             },
             autocommands = {
                 basic = true,
-                relnum_in_visual_mode = true,
             },
         }
 
