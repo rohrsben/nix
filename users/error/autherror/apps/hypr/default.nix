@@ -60,6 +60,7 @@ in {
             exec-once = uwsm app -- waybar 
             exec-once = uwsm app -- udiskie --tray
             exec-once = systemctl --user enable --now hypridle.service
+            exec-once = hyprctl dispatch workspace 6
 
             windowrulev2 = float, class:(firefox), title:(Library)
             windowrulev2 = size 1000 800, class:(firefox), title:(Library)
