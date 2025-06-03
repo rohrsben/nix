@@ -82,6 +82,7 @@ in {
                 sensitivity = -0.7
 
                 numlock_by_default = true
+                repeat_delay = 300
             }
 
             cursor {
@@ -91,6 +92,7 @@ in {
             misc {
                 new_window_takes_over_fullscreen = 2
                 disable_hyprland_logo = true
+                font_family = JetBrainsMono Nerd Font
             }
 
             general {
@@ -106,12 +108,6 @@ in {
 
             decoration {
                 rounding = 6
-
-                blur {
-                    enabled = true
-                    size = 3
-                    passes = 1
-                }
 
                 shadow {
                     enabled = false
