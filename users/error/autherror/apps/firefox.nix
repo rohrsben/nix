@@ -4,11 +4,14 @@ let
     app = "firefox";
     configDir = ./config/${app};
 in {
-    imports = [ inputs.textfox.homeManagerModules.default ];
+    imports = [
+        inputs.textfox.homeManagerModules.default
+    ];
 
     textfox = {
         enable = true;
         profile = "error";
+        useLegacyExtensions = false;
         config = {
             font = {
                 family = "JetBrainsMono Nerd Font";
