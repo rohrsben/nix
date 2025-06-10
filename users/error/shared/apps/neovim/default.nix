@@ -4,7 +4,7 @@ let
     app = "nvim";
     configDir = ./config;
 
-    plugins = "nvim/lua/autherror/plugins";
+    plugins = "nvim/lua/plugins";
     lazyLock = "/home/error/nix/users/error/shared/apps/neovim/lazy-lock.json";
 in {
     home = {
