@@ -40,16 +40,16 @@ return {
         })
 
         require('mini.jump2d').setup {
-            spotter = MiniJump2d.builtin_opts.single_character,
             view = {
                 dim = true,
                 n_steps_ahead = 2,
             },
             mappings = {
-                start_jumping = '<C-Space>',
+                start_jumping = '',
             },
         }
         vim.api.nvim_set_hl(0, "MiniJump2dSpot", {link = "MiniJump2dSpotUnique"})
+        vim.keymap.set({'n', 'v', 'i'}, '<C-Space>', function() MiniJump2d.start(MiniJump2d.builtin_opts.single_character) end, {desc = "Activate Jump2d"})
 
         require('mini.basics').setup {
             options = {
