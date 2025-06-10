@@ -1,4 +1,3 @@
-require "autherror.options"
-require "autherror.keymaps"
-require "autherror.lazy"
-require "autherror.statusline"
+require 'settings'
+require 'lazy-nvim'
+require 'statusline'

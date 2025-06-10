@@ -11,8 +11,36 @@ return {
             }
         }
 
+        require('mini.snippets').setup {
+            snippets = {
+                require('mini.snippets').gen_loader.from_lang()
+            },
+            mappings = { expand = '', jump_next = '', jump_prev = '' },
+            expand = {
+                select = function (s, i)
+                    require('blink.cmp').cancel()
+                    vim.schedule(function() MiniSnippets.default_select(s, i) end)
+                end
+            }
+        }
+        -- exit snippet sessions on entering normal mode
+        vim.api.nvim_create_autocmd('User', {
+            pattern = 'MiniSnippetsSessionStart',
+            callback = function ()
+                vim.api.nvim_create_autocmd('ModeChanged', {
+                    pattern = '*:n',
+                    once = true,
+                    callback = function ()
+                        while MiniSnippets.session.get() do
+                            MiniSnippets.session.stop()
+                        end
+                    end
+                })
+            end
+        })
+
         require('mini.jump2d').setup {
-            spotter = require('mini.jump2d').builtin_opts.word_start.spotter,
+            spotter = MiniJump2d.builtin_opts.single_character,
             view = {
                 dim = true,
                 n_steps_ahead = 2,
@@ -21,12 +49,8 @@ return {
                 start_jumping = '<C-Space>',
             },
         }
-        vim.keymap.set('i', '<C-Space>', function() MiniJump2d.start() end, {noremap = true, silent = true})
         vim.api.nvim_set_hl(0, "MiniJump2dSpot", {link = "MiniJump2dSpotUnique"})
 
-        vim.o.listchars = 'tab:> ,extends:…,precedes:…,nbsp:␣'
-        vim.o.list = true
-        if vim.fn.exists('syntax_on') ~= 1 then vim.cmd([[syntax enable]]) end
         require('mini.basics').setup {
             options = {
                 basic = true,
@@ -43,6 +67,9 @@ return {
                 basic = true,
             },
         }
+        vim.o.listchars = 'tab:> ,extends:…,precedes:…,nbsp:␣'
+        vim.o.list = true
+        if vim.fn.exists('syntax_on') ~= 1 then vim.cmd([[syntax enable]]) end
 
         require('mini.align').setup {
             mappings = {
@@ -67,13 +94,13 @@ return {
 
         require('mini.pairs').setup {
             mappings = {
-                ['('] = { action = 'open', pair = '()', neigh_pattern = '[^\\].' },
-                ['['] = { action = 'open', pair = '[]', neigh_pattern = '[^\\].' },
-                ['{'] = { action = 'open', pair = '{}', neigh_pattern = '[^\\].' },
+                ['('] = { action = 'open', pair = '()', neigh_pattern = '[^\\]%s' },
+                ['['] = { action = 'open', pair = '[]', neigh_pattern = '[^\\]%s' },
+                ['{'] = { action = 'open', pair = '{}', neigh_pattern = '[^\\]%s' },
 
-                [')'] = { action = 'close',  pair = '()', neigh_pattern = '[^\\].' },
-                [']'] = { action = 'close', pair = '[]', neigh_pattern = '[^\\].' },
-                ['}'] = { action = 'close', pair = '{}', neigh_pattern = '[^\\].' },
+                [')'] = { action = 'close', pair = '()', neigh_pattern = '[^\\]%s' },
+                [']'] = { action = 'close', pair = '[]', neigh_pattern = '[^\\]%s' },
+                ['}'] = { action = 'close', pair = '{}', neigh_pattern = '[^\\]%s' },
 
                 ['"'] = { action = 'closeopen', pair = '""', neigh_pattern = '[%[%]%(%){}%s][%[%]%(%){}%s]', register = { cr = false } },
                 ["'"] = { action = 'closeopen', pair = "''", neigh_pattern = '[%[%]%(%){}%s][%[%]%(%){}%s]', register = { cr = false } },

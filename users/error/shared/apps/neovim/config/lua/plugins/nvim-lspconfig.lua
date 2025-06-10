@@ -32,7 +32,7 @@ return {
                 map('n', '<leader>lpD', function() Snacks.picker.diagnostics_buffer() end, {desc = 'Show buffer diagnostics'})
 
                 map('n',        '<leader>lr', vim.lsp.buf.rename,        {desc = 'LSP Rename'})
-                map({'n', 'v'}, '<leader>lc', vim.lsp.buf.code_action,   {desc = 'LSP Code Action'})
+                map({'n', 'v'}, '<leader>la', vim.lsp.buf.code_action,   {desc = 'LSP Code Action'})
                 map('n',        '<leader>lD', vim.diagnostic.open_float, {desc = 'LSP Line Diagnostics'})
                 map('n',        '<leader>ld', vim.lsp.buf.declaration,   {desc = 'Go to declaration'})
             end
