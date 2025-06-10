@@ -20,7 +20,7 @@ return {
             preset = 'mini_snippets',
         },
         fuzzy = {
-            max_typos = function(_) return 0 end,
+            max_typos = 0,
             sorts = {
                 'score',
                 'sort_text'
