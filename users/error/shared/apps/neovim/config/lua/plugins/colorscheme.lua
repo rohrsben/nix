@@ -76,8 +76,13 @@ return {
                 bg = dark
             },
 
-            sl_lsp = {
+            sl_lsp_no_inlay = {
                 fg = hl('Grey').fg,
+                bg = dark
+            },
+
+            sl_lsp_inlay = {
+                fg = hl('Green').fg,
                 bg = dark
             },
 

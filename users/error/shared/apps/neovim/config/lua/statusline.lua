@@ -74,7 +74,9 @@ local function lsp(request)
             return name
         end):totable()
 
-        return fmt('%s%s ', hl('lsp'), table.concat(names, ', '))
+        local inlay_enabled = hl(vim.lsp.inlay_hint.is_enabled() and 'lsp_inlay' or 'lsp_no_inlay')
+
+        return fmt('%s%s ', inlay_enabled, table.concat(names, ', '))
     else
         local formatted = ''
 
