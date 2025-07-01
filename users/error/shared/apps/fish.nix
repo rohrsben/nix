@@ -24,7 +24,7 @@
             rebuild-boot = "nh os boot /home/error/nix --hostname autherror";
             icat = "kitten icat";
             ssh = "kitten ssh";
-            cd = "zi";
+            cd = "z";
             restart = "systemctl stop tailscaled.service && systemctl reboot";
         };
 
