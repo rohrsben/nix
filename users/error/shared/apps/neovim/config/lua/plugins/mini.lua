@@ -11,6 +11,13 @@ return {
             }
         }
 
+        require('mini.notify').setup {
+            lsp_progress = { enable = false, },
+        }
+        vim.notify = require('mini.notify').make_notify()
+
+        require('mini.git').setup()
+
         require('mini.snippets').setup {
             snippets = {
                 require('mini.snippets').gen_loader.from_lang()

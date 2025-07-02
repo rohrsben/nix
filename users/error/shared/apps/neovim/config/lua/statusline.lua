@@ -74,9 +74,9 @@ local function lsp(request)
             return name
         end):totable()
 
-        local inlay_enabled = hl(vim.lsp.inlay_hint.is_enabled() and 'lsp_inlay' or 'lsp_no_inlay')
+        local lsp_hl = hl(vim.lsp.inlay_hint.is_enabled() and 'lsp_inlay' or 'lsp_no_inlay')
 
-        return fmt('%s%s ', inlay_enabled, table.concat(names, ', '))
+        return fmt('%s%s ', lsp_hl, table.concat(names, ', '))
     else
         local formatted = ''
 
@@ -95,7 +95,7 @@ end
 local function diags_and_branch()
     local diagnostics = lsp('diagnostics')
 
-    local branch = vim.b.gitsigns_head
+    local branch = vim.b.minigit_summary_string
     branch = branch ~= nil and hl('branch') .. branch or ''
 
     if branch ~= '' and diagnostics ~= '' then
