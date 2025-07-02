@@ -15,6 +15,7 @@
         ./locale.nix
         ./networking.nix
         ./nix-config.nix
+        ./security.nix
         ./sops.nix
         ./ssh.nix
         ./storage.nix
