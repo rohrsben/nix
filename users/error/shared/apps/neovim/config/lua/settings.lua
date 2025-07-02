@@ -26,6 +26,7 @@ vim.o.fileencoding = 'utf-8'
 
 vim.o.relativenumber = true
 
+vim.o.winborder = 'rounded'
 
 -- space as leader
 map('', '<Space>', '<Nop>')
