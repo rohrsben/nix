@@ -44,7 +44,7 @@ local function filepath()
 end
 
 local function filename()
-    return fmt(' %s%s', hl('filename'), vim.fn.expand('%:t'))
+    return fmt('%s %s', hl('filename'), vim.fn.expand('%:t'))
 end
 
 local function buffer_info()
