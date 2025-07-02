@@ -18,6 +18,17 @@ return {
 
         require('mini.git').setup()
 
+        require('mini.diff').setup {
+            view = {
+                style = 'sign',
+                signs = {
+                    add = '┃',
+                    change = '┃',
+                    delete = '┃',
+                },
+            },
+        }
+
         require('mini.snippets').setup {
             snippets = {
                 require('mini.snippets').gen_loader.from_lang()
