@@ -57,6 +57,14 @@ return {
             end
         })
 
+        -- exit snippets upon reaching final tabstop
+        vim.api.nvim_create_autocmd('User', {
+            pattern = 'MiniSnippetsSessionJump',
+            callback = function (args)
+                if args.data.tabstop_to == '0' then MiniSnippets.session.stop() end
+            end
+        })
+
         require('mini.jump2d').setup {
             view = {
                 dim = true,
