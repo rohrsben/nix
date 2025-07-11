@@ -15,6 +15,8 @@ tailscale:
 
 spotify:
  - login
+ - adjust quality settings
+    - might require opening in terminal to avoid the custom .desktop
 
 thunderbird:
  - login
