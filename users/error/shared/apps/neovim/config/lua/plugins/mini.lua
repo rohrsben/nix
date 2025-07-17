@@ -120,9 +120,9 @@ return {
 
         require('mini.pairs').setup {
             mappings = {
-                ['('] = { action = 'open', pair = '()', neigh_pattern = '[^\\][%)%s]' },
-                ['['] = { action = 'open', pair = '[]', neigh_pattern = '[^\\][%]%s]' },
-                ['{'] = { action = 'open', pair = '{}', neigh_pattern = '[^\\][%}%s]' },
+                ['('] = { action = 'open', pair = '()', neigh_pattern = '[^\\][%)%]%}%s]' },
+                ['['] = { action = 'open', pair = '[]', neigh_pattern = '[^\\][%)%]%}%s]' },
+                ['{'] = { action = 'open', pair = '{}', neigh_pattern = '[^\\][%)%]%}%s]' },
 
                 [')'] = { action = 'close', pair = '()', neigh_pattern = '[^\\][%)%s]' },
                 [']'] = { action = 'close', pair = '[]', neigh_pattern = '[^\\][%]%s]' },
