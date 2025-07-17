@@ -10,8 +10,13 @@ return {
             ['<C-e>']   = {
                 'accept',
                 function ()
-                    MiniSnippets.expand()
-                end
+                    if #MiniSnippets.expand({insert = false}) > 0 then
+                        MiniSnippets.expand()
+                    end
+
+                    return false
+                end,
+                'select_and_accept'
             },
             ['<Tab>']   = { 'snippet_forward', 'fallback' },
             ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
