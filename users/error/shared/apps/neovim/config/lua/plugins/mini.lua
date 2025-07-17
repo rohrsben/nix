@@ -4,6 +4,7 @@ return {
     config = function ()
         require('mini.ai').setup()
         require('mini.surround').setup()
+        require('mini.git').setup()
 
         require('mini.jump').setup {
             mappings = {
@@ -15,8 +16,6 @@ return {
             lsp_progress = { enable = false, },
         }
         vim.notify = require('mini.notify').make_notify()
-
-        require('mini.git').setup()
 
         require('mini.diff').setup {
             view = {
@@ -56,7 +55,6 @@ return {
                 })
             end
         })
-
         -- exit snippets upon reaching final tabstop
         vim.api.nvim_create_autocmd('User', {
             pattern = 'MiniSnippetsSessionJump',
@@ -76,26 +74,6 @@ return {
         }
         vim.api.nvim_set_hl(0, "MiniJump2dSpot", {link = "MiniJump2dSpotUnique"})
         vim.keymap.set({'n', 'v', 'i'}, '<C-Space>', function() MiniJump2d.start(MiniJump2d.builtin_opts.single_character) end, {desc = "Activate Jump2d"})
-
-        require('mini.basics').setup {
-            options = {
-                basic = true,
-                extra_ui = false,
-                win_borders = 'single',
-            },
-            mappings = {
-                basic = true,
-                option_toggle_prefix = '',
-                windows = true,
-                move_with_alt = true,
-            },
-            autocommands = {
-                basic = true,
-            },
-        }
-        vim.o.listchars = 'tab:> ,extends:…,precedes:…,nbsp:␣'
-        vim.o.list = true
-        if vim.fn.exists('syntax_on') ~= 1 then vim.cmd([[syntax enable]]) end
 
         require('mini.align').setup {
             mappings = {
