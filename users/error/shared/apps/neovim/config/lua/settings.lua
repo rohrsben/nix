@@ -39,7 +39,7 @@ vim.o.ruler = false
 vim.o.showmode = false
 vim.o.signcolumn = 'yes'
 vim.o.shortmess = 'ltToOcCWF'
-vim.o.listchars = 'tab:> ,trail:~,extends:…,precedes:…,nbsp:␣'
+vim.o.listchars = 'tab:> ,extends:…,precedes:…,nbsp:␣'
 vim.o.list = true
 
 -- search, indent, etc settings
