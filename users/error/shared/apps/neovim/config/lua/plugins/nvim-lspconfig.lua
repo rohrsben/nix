@@ -40,21 +40,12 @@ return {
 
         local servers = {
             tinymist = {
-                offset_encoding = 'utf-8',
-                root_dir = function (filename, bufnr)
-                    return vim.fn.getcwd()
+                root_dir = function (_, bufnr)
+                    return vim.fs.root(bufnr, { '.git' }) or vim.fn.getcwd()
                 end
             },
 
-            rust_analyzer = {
-                -- settings = {
-                --     ['rust-analyzer'] = {
-                --         diagnostics = {
-                --             enable = false
-                --         }
-                --     }
-                -- }
-            },
+            rust_analyzer = {},
 
             clangd = {},
 
