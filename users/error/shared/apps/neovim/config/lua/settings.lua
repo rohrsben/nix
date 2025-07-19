@@ -86,6 +86,10 @@ map('x', 'p', '"_dP')
 map('x', '<', '<gv')
 map('x', '>', '>gv')
 
+-- cursor centering
+map('i', '<C-z>', '<C-o>zz', { desc = "Center the cursorline in insert"})
+map('n', 'z=', 'z+')
+
 -- j and k operate on visible lines
 map({'n', 'x'}, 'j', [[v:count == 0 ? 'gj' : 'j']], { expr = true })
 map({'n', 'x'}, 'k', [[v:count == 0 ? 'gk' : 'k']], { expr = true })
@@ -167,6 +171,6 @@ autocmd('LspAttach', {
 autocmd('TextYankPost', {
     pattern = '*',
     callback = function ()
-        vim.hl.on_yank { higroup = 'Visual', timeout = 300 }
+        vim.hl.on_yank { higroup = 'CurSearch', timeout = 300 }
     end
 })
