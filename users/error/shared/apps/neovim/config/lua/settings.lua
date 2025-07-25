@@ -12,6 +12,7 @@ vim.o.sidescrolloff = 4
 -- word wrap settings
 vim.o.wrap = true
 vim.o.breakindent = true
+vim.o.linebreak = true
 vim.o.showbreak = '󰘍'
 
 -- tab as 4 spaces
