@@ -21,9 +21,9 @@
 
         imports = [ 
             ./apps
+            ./theme
 
             ./sops.nix
-            ./theme.nix
             ./xdg.nix
 
             ../shared/git.nix
