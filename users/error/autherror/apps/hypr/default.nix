@@ -159,7 +159,7 @@ in {
 
             bind = $mainMod, Return, exec, uwsm app -- kitty
             bind = $mainMod, Q, killactive,
-            bind = $mainMod, M, exec, uwsm stop
+            bind = $mainMod SHIFT, M, exec, uwsm stop
             bind = $mainMod, V, togglefloating,
             bind = $mainMod, code:65, exec, fuzzel
             bind = $mainMod, J, togglesplit, # dwindle
@@ -170,6 +170,8 @@ in {
             bind = $mainMod, Tab, changegroupactive
 
             bind = $mainMod, F, fullscreen
+
+            bind = $mainMod, L, exec, uwsm app -- hyprlock
 
             bind = $mainMod, left, movefocus, l
             bind = $mainMod, right, movefocus, r
@@ -203,7 +205,7 @@ in {
             bind = ,XF86AudioPrev, exec, playerctl previous
             bind = ,XF86AudioNext, exec, playerctl next
 
-            bind = Shift,Print, exec, ${grimblast}/bin/grimblast --notify --freeze save area ${config.xdg.userDirs.pictures}/screenshots/$(date +'%b%d-%T.png')
+            bind = Shift, Print, exec, ${grimblast}/bin/grimblast --notify --freeze save area ${config.xdg.userDirs.pictures}/screenshots/$(date +'%b%d-%T.png')
             bind = ,Print, exec, ${grimblast}/bin/grimblast --notify save area ${config.xdg.userDirs.pictures}/screenshots/$(date +'%b%d-%T.png')
         '';
     };
