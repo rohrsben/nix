@@ -86,8 +86,13 @@ return {
                 bg = dark
             },
 
-            sl_filetype = {
+            sl_filetype_no_color = {
                 fg = hl('Grey').fg,
+                bg = light
+            },
+
+            sl_filetype_color = {
+                fg = hl('Green').fg,
                 bg = light
             },
 

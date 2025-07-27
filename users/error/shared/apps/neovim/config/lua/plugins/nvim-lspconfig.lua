@@ -35,6 +35,14 @@ return {
                 map({'n', 'v'}, '<leader>la', vim.lsp.buf.code_action,   {desc = 'LSP Code Action'})
                 map('n',        '<leader>lD', vim.diagnostic.open_float, {desc = 'LSP Line Diagnostics'})
                 map('n',        '<leader>ld', vim.lsp.buf.declaration,   {desc = 'Go to declaration'})
+                map('n',        '<leader>li', function ()
+                    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+                    vim.api.nvim_command('redrawstatus!')
+                end, { desc = 'Toggle LSP type hints' })
+                map('n',        '<leader>lc', function ()
+                    vim.lsp.document_color.enable(not vim.lsp.document_color.is_enabled(bufnr), bufnr)
+                    vim.api.nvim_command('redrawstatus!')
+                end, { desc = 'Toggle LSP color inlay'})
             end
         }
 

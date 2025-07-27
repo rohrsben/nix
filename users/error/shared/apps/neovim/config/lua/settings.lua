@@ -123,12 +123,6 @@ map({'n', 'v'}, ':', ';')
 -- turn off highlights
 map('n', '<leader>h', '<cmd>nohlsearch<cr>')
 
--- toggle native type inlays
-map('n', '<leader>i', function ()
-    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-    vim.api.nvim_command('redrawstatus!')
-end)
-
 -- U is redo
 map('n', 'U', '<C-r>')
 

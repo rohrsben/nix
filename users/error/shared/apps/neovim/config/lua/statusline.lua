@@ -107,7 +107,10 @@ end
 
 local function filetype()
     local ft = vim.bo.filetype
-    return ft == '' and '' or fmt('%s %s |', hl('filetype'), ft)
+
+    local ft_hl = hl(vim.lsp.document_color.is_enabled(0) and 'filetype_color' or 'filetype_no_color')
+
+    return ft == '' and '' or fmt('%s %s%s |', ft_hl, ft, hl('lineinfo'))
 end
 
 local function pos_info()
