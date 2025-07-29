@@ -3,8 +3,11 @@ return {
     lazy = false,
     config = function ()
         require('mini.ai').setup()
-        require('mini.surround').setup()
         require('mini.git').setup()
+
+        require('mini.surround').setup()
+        vim.keymap.set('n', 'ss', 'saiw', { remap = true, desc = 'Surround inner word' })
+        vim.keymap.set('n', 'sS', 'saiW', { remap = true, desc = 'Surround inner Word' })
 
         require('mini.jump').setup {
             mappings = {
