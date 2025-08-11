@@ -160,7 +160,7 @@ in {
             bind = $mainMod, Return, exec, uwsm app -- kitty
             bind = $mainMod, Q, killactive,
             bind = $mainMod SHIFT, M, exec, uwsm stop
-            bind = $mainMod, V, togglefloating,
+            bind = $mainMod SHIFT, F, togglefloating,
             bind = $mainMod, code:65, exec, fuzzel
             bind = $mainMod, J, togglesplit, # dwindle
 
