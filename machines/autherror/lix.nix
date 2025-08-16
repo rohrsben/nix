@@ -1,7 +1,7 @@
-{ inputs, lib, conf, ... }:
+{ inputs, ... }:
 
 {
-    imports = lib.optionals(conf.platform == "x86_64-linux") [
+    imports = [
         inputs.lix.nixosModules.default
     ];
 }
