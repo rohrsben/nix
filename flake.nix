@@ -29,7 +29,13 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+        hyprland.url = "github:hyprwm/hyprland";
+        hyprlock.url = "github:hyprwm/hyprlock";
+        hypridle.url = "github:hyprwm/hypridle";
+        hyprland-contrib = {
+            url = "github:hyprwm/contrib";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
         hyprsplit =  {
             url = "github:shezdy/hyprsplit";
             inputs.hyprland.follows = "hyprland";
@@ -43,13 +49,6 @@
         neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
 
         swww.url = "github:LGFae/swww";
-
-        hyprlock.url = "github:hyprwm/hyprlock";
-        hypridle.url = "github:hyprwm/hypridle";
-        hyprland-contrib = {
-            url = "github:hyprwm/contrib";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
 
         textfox.url = "github:adriankarlen/textfox";
         grub2-themes.url = "github:vinceliuice/grub2-themes";
