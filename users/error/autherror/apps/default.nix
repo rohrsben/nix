@@ -55,6 +55,7 @@
             ttyper
             wev
             zellij
+            glow
 
             # graphical
             dolphin-emu
