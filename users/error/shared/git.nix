@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+    home.packages = [
+        pkgs.delta
+    ];
+
     programs.git = {
         enable = true;
 
@@ -11,17 +15,33 @@
             init = {
                 defaultBranch = "main";
             };
+            core = {
+                pager = "delta";
+            };
             push = {
-                autosetupremote = "true";
+                autoSetupRemote = "true";
             };
             merge = {
-                conflictstyle = "zdiff3";
+                conflictStyle = "zdiff3";
+            };
+            interactive = {
+                diffFilter = "delta --color-only";
+            };
+            delta = {
+                navigate = "true";
+                dark = "true";
+                side-by-side = "true";
             };
             help = {
                 autocorrect = "prompt";
             };
             diff = {
                 algorithm = "histogram";
+            };
+            url = {
+                "git@github.com:" = {
+                    insteadOf = [ "gh:" "https://github.com/" ];
+                };
             };
         };
     };
