@@ -1,3 +1,4 @@
 {
-    "debugprint": {"prefix": "dp", "body": "println!(\"$1: {:?}\", $1);"}
+    "debugprint": {"prefix": "dp", "body": "println!(\"$1: {:?}\", $1);"},
+    "simpleprint": {"prefix": "sp", "body": "println!(\"$1: {}\", $2);"}
 }
