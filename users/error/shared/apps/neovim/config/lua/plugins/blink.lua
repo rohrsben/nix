@@ -12,6 +12,7 @@ return {
                 function ()
                     if #MiniSnippets.expand({insert = false}) > 0 then
                         MiniSnippets.expand()
+                        return true
                     end
 
                     return false
