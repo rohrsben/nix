@@ -8,6 +8,7 @@ in {
             pkgs.lua-language-server
             pkgs.tinymist
             pkgs.websocat
+            pkgs.tree-sitter
             ts-parsers
         ];
 
