@@ -45,7 +45,7 @@ local function start_blink()
                     -- BUG tracking: saghen/blink.cmp#1932
                     components = {
                         label = {
-                            width = { fill = true, max = 25 },
+                            width = { min = 25, max = 25 },
                         },
                     },
                 },
