@@ -33,6 +33,38 @@
         "type": "github"
       }
     },
+    "colloid-gtk": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1757673428,
+        "narHash": "sha256-BTEUbU70BxsMXt//ZPxohbOnJwdaiue5Woo4GFpYIAs=",
+        "owner": "vinceliuice",
+        "repo": "Colloid-gtk-theme",
+        "rev": "39b5831dede2f28a6f81f252f3ef238bdcd2d433",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vinceliuice",
+        "repo": "Colloid-gtk-theme",
+        "type": "github"
+      }
+    },
+    "colloid-icon": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1758957439,
+        "narHash": "sha256-aSxM0yTvCbrIoJKa6GlJgZ1lhHmKkhbn9HmQnWckMJM=",
+        "owner": "vinceliuice",
+        "repo": "Colloid-icon-theme",
+        "rev": "a33b2ef4f94f743cca5585df973f56edda8dfc00",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vinceliuice",
+        "repo": "Colloid-icon-theme",
+        "type": "github"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -1142,6 +1174,28 @@
         "type": "github"
       }
     },
+    "personal": {
+      "inputs": {
+        "colloid-gtk": "colloid-gtk",
+        "colloid-icon": "colloid-icon",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1759442553,
+        "narHash": "sha256-HyDzUISQLaBHtP3nNGiPSldSI3a18j97gjPIyaMGaLU=",
+        "owner": "rohrsben",
+        "repo": "personal-nix",
+        "rev": "49295fa50abb78ecb6933ea8462567b8b3d07234",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rohrsben",
+        "repo": "personal-nix",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -1181,6 +1235,7 @@
         "nh": "nh",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_6",
+        "personal": "personal",
         "sops-nix": "sops-nix",
         "swww": "swww",
         "textfox": "textfox"

@@ -57,13 +57,24 @@ vim.g.maplocalleader = ' '
 vim.g.mapleader = ' '
 
 -- fold settings
--- vim.o.foldcolumn = '0' -- this is a default
--- vim.o.foldenable = true -- this is a default
 vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.o.foldlevel = 99
 vim.o.foldmethod = 'expr'
 vim.o.foldtext = ''
 vim.o.fillchars = 'fold: ,'
+
+-- diagnostic settings
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = '●',
+            [vim.diagnostic.severity.WARN]  = '●',
+            [vim.diagnostic.severity.HINT]  = '●',
+            [vim.diagnostic.severity.INFO]  = '●',
+        },
+    },
+    virtual_text = false,
+})
 
 
 local function map(mode, lhs, rhs, opts)
@@ -97,8 +108,7 @@ map({'n', 'x'}, 'k', [[v:count == 0 ? 'gk' : 'k']], { expr = true })
 
 -- copy and paste with system clipboard
 map({'n', 'x'}, 'gy', '"+y', { desc = 'Yank to system clipboard'})
-map('n', 'gp', '"+p', { desc = 'Paste from system clipboard'})
-map('x', 'gp', '"+P', { desc = 'Paste from system clipboard'})
+map({'n', 'x'}, 'gp', '"+p', { desc = 'Paste from system clipboard'})
 
 -- reselect latest changed/put/yanked text
 map('n', 'gV', '"`[" . strpart(getregtype(), 0, 1) . "`]"',
@@ -151,14 +161,40 @@ autocmd('VimResized', {
     command = 'wincmd =',
 })
 
--- enable lsp folding per buffer, if supported
+-- general lsp setup
 autocmd('LspAttach', {
     callback = function (args)
+        -- enable lsp folds, if possible
         local client = vim.lsp.get_client_by_id(args.data.client_id)
         if client:supports_method('textDocument/foldingRange') then
             local win = vim.api.nvim_get_current_win()
             vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
         end
+
+        -- keymaps
+        local function map_lsp(mode, lhs, rhs, opts)
+            local options = vim.tbl_extend('force', opts, {noremap = true, silent = true, buffer = bufnr})
+            vim.keymap.set(mode, lhs, rhs, options)
+        end
+
+        map_lsp('n', '<leader>lpr', function() Snacks.picker.lsp_references() end, {desc = 'Show LSP references'})
+        map_lsp('n', '<leader>lpd', function() Snacks.picker.lsp_definitions() end, {desc = 'Show LSP definitions'})
+        map_lsp('n', '<leader>lpi', function() Snacks.picker.lsp_implementations() end, {desc = 'Show LSP implementations'})
+        map_lsp('n', '<leader>lpt', function() Snacks.picker.lsp_type_definitions() end, {desc = 'Show LSP type definitions'})
+        map_lsp('n', '<leader>lpD', function() Snacks.picker.diagnostics_buffer() end, {desc = 'Show buffer diagnostics'})
+
+        map_lsp('n',        '<leader>lr', vim.lsp.buf.rename,        {desc = 'LSP Rename'})
+        map_lsp({'n', 'v'}, '<leader>la', vim.lsp.buf.code_action,   {desc = 'LSP Code Action'})
+        map_lsp('n',        '<leader>lD', vim.diagnostic.open_float, {desc = 'LSP Line Diagnostics'})
+        map_lsp('n',        '<leader>ld', vim.lsp.buf.declaration,   {desc = 'Go to declaration'})
+        map_lsp('n',        '<leader>li', function ()
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+            vim.api.nvim_command('redrawstatus!')
+        end, { desc = 'Toggle LSP type hints' })
+        map_lsp('n',        '<leader>lc', function ()
+            vim.lsp.document_color.enable(not vim.lsp.document_color.is_enabled(bufnr), bufnr)
+            vim.api.nvim_command('redrawstatus!')
+        end, { desc = 'Toggle LSP color inlay'})
     end
 })
 
@@ -169,3 +205,12 @@ autocmd('TextYankPost', {
         vim.hl.on_yank { higroup = 'CurSearch', timeout = 300 }
     end
 })
+
+
+-- lsp servers
+vim.lsp.enable {
+    'lua_ls',
+    'tinymist',
+    'clangd',
+    'rust_analyzer',
+}

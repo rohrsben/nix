@@ -1,7 +1,5 @@
-return {
-    'Saghen/blink.cmp',
-    build = 'nix run .#build-plugin',
-    opts = {
+local function start_blink()
+    require('blink.cmp').setup {
         keymap = {
             preset = 'none',
             ['<C-j>']   = { 'select_next', 'fallback' },
@@ -94,5 +92,56 @@ return {
                 buffer   = { name = 'buff' },
             },
         },
-    },
-}
+    }
+end
+
+vim.api.nvim_create_autocmd('PackChanged', {
+    callback = function (info)
+        if info.data.spec.name == 'blink.cmp' then
+            if vim.g.blink_updated == 1 then
+                return
+            end
+
+            local result
+            if info.data.kind ~= 'deleted' then
+                vim.notify('Building Blink')
+                vim.g.blink_updated = 1
+
+                result = vim.system(
+                    {'nix', 'run', '.#build-plugin'},
+                    { cwd = info.data.path }
+                ):wait()
+            end
+
+            if info.data.kind == 'installed' then
+                if result.code == 0 then
+                    vim.api.nvim_create_autocmd('UIEnter', {
+                        once = true,
+                        callback = function ()
+                            vim.notify('Blink build successful. Starting')
+                            start_blink()
+                        end
+                    })
+                else
+                    vim.api.nvim_create_autocmd('UIEnter', {
+                        once = true,
+                        callback = function ()
+                            vim.notify('Blink build failed. Code: ' .. result.code)
+                        end
+                    })
+                end
+            elseif info.data.kind == 'updated' then
+                if result.code == 0 then
+                    vim.notify('Blink build successful. Starting')
+                    start_blink()
+                else
+                    vim.notify('Blink build failed. Code: ' .. result.code)
+                end
+            end
+        end
+    end
+})
+
+vim.pack.add({'https://github.com/Saghen/blink.cmp'})
+
+if vim.g.blink_updated == nil then start_blink() end

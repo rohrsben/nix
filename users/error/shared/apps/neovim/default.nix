@@ -1,16 +1,14 @@
 { inputs, pkgs, config, ... }:
 
 let
-    app = "nvim";
-    configDir = ./config;
-
-    plugins = "nvim/lua/plugins";
-    lazyLock = "/home/error/nix/users/error/shared/apps/neovim/lazy-lock.json";
+    ts-parsers = inputs.personal.packages.${pkgs.system}.treesitter-parsers;
 in {
     home = {
         packages = [
+            pkgs.lua-language-server
             pkgs.tinymist
             pkgs.websocat
+            ts-parsers
         ];
 
         sessionVariables = {
@@ -25,69 +23,32 @@ in {
         viAlias = true;
         vimAlias = true;
         defaultEditor = true;
-
-        plugins = with pkgs.vimPlugins; [
-            nvim-treesitter.withAllGrammars
-        ];
-
-        extraPackages = with pkgs; [
-            lua-language-server
-        ];
     };
 
-    xdg.configFile."${app}" = {
-        source = "${configDir}";
+    xdg.configFile."nvim" = {
+        source = ./config;
         recursive = true;
     };
 
-    xdg.configFile."treesitter" = {
-        target = "${plugins}/treesitter.lua";
+    xdg.configFile."nvimmisc" = {
+        target = "nvim/lua/misc.lua";
         text = ''
-            return {
-                dir = "${pkgs.vimPlugins.nvim-treesitter.withAllGrammars}",
-                name = "nvim-treesitter",
-                priority = 500,
-                config = function ()
-                    require('nvim-treesitter.configs').setup {
-                        auto_install = false,
-                        highlight = {
-                            enable = true,
-                        },
-                        indent = {
-                            enable = true,
-                        },
-                        incremental_selection = {
-                            enable = true,
-                            keymaps = {
-                                init_selection = "<leader>s",
-                                node_incremental = "<C-=>",
-                                node_decremental = "<C-->",
-                            },
-                        }
-                    }
-                end
-            }
+            vim.opt.runtimepath:prepend('${ts-parsers}')
         '';
     };
 
     xdg.configFile."typstpreview" = {
-        target = "${plugins}/typst-preview.lua";
+        target = "nvim/plugin/typst-preview.lua";
         text = ''
-            return {
-                'chomosuke/typst-preview.nvim',
-                ft = 'typst',
-                config = function ()
-                    require('typst-preview').setup {
-                        debug = false,
-                        dependencies_bin = {
-                            ['tinymist'] = "${pkgs.tinymist}/bin/tinymist",
-                            ['websocat'] = "${pkgs.websocat}/bin/websocat",
-                        },
-                    }
-                end
+            vim.pack.add({'https://github.com/chomosuke/typst-preview.nvim'}, {load = true})
+
+            require('typst-preview').setup {
+                debug = false,
+                dependencies_bin = {
+                    ['tinymist'] = "${pkgs.tinymist}/bin/tinymist",
+                    ['websocat'] = "${pkgs.websocat}/bin/websocat"
+                },
             }
         '';
     };
-
-    xdg.configFile."nvim/lazy-lock.json".source = config.lib.file.mkOutOfStoreSymlink "${lazyLock}";
 }

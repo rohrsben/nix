@@ -4,6 +4,11 @@
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+        personal = {
+            url = "github:rohrsben/personal-nix";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
         lix-source = {
             url = "https://git.lix.systems/lix-project/lix/archive/main.tar.gz";
             flake = false;
