@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 let
-    colloid-gtk = import ./colloid-gtk.nix { inherit pkgs; };
-    colloid-icon = import ./colloid-icon.nix { inherit pkgs; };
+    colloid-gtk = inputs.personal.packages.${pkgs.system}.colloid-gtk;
+    colloid-icon = inputs.personal.packages.${pkgs.system}.colloid-icon;
 in {
     gtk = {
         enable = true;
@@ -20,8 +20,6 @@ in {
 
     qt = {
         enable = true;
-
-
     };
 
     home.pointerCursor = {
