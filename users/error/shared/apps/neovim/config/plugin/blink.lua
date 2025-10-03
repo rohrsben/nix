@@ -41,6 +41,13 @@ local function start_blink()
                 scrolloff = 2,
                 draw = {
                     columns = { {'kind_icon'}, {'label'}, {'source_name'} },
+
+                    -- BUG tracking: saghen/blink.cmp#1932
+                    components = {
+                        label = {
+                            width = { fill = true, max = 25 },
+                        },
+                    },
                 },
             },
         },
