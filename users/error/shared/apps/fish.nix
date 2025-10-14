@@ -38,6 +38,9 @@
 
             fish_greeting = {
                 body = ''
+                    if test "$ADDED_IDENTS" != 1
+                        add-idents
+                    end
                     autols
                 '';
             };
@@ -81,10 +84,11 @@
 
             add-idents = {
                 body = ''
-                    set idents /home/error/.ssh/gh-rohrsben /home/error/.ssh/umb-cs
+                    set idents /home/error/.ssh/gh-rohrsben
                     for ident in $idents
                         ssh-add $ident
                     end
+                    set -U ADDED_IDENTS 1
                 '';
             };
 
