@@ -56,6 +56,7 @@
             wev
             zellij
             glow
+            typst
 
             # graphical
             dolphin-emu
