@@ -33,7 +33,6 @@
             ../shared/apps/kitty
             ../shared/apps/neovim
             ../shared/apps/nix-index.nix
-            ../shared/apps/typst
             ../shared/apps/yazi.nix
             ../shared/apps/zoxide.nix
         ];
