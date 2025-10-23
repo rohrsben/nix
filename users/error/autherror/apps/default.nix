@@ -59,7 +59,7 @@
             typst
 
             # graphical
-            dolphin-emu
+            # dolphin-emu
             foliate
             kdePackages.okular
             localsend
