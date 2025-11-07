@@ -12,7 +12,7 @@ in {
         inputs.hyprlock.packages.${pkgs.system}.default
         inputs.hypridle.packages.${pkgs.system}.default
         grimblast
-        inputs.swww.packages.${pkgs.system}.swww
+        inputs.awww.packages.${pkgs.system}.awww
         pkgs.jq
     ];
 

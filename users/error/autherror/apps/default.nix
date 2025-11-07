@@ -7,11 +7,11 @@
         ./mako
         ./waybar
 
+        ./awww.nix
         ./direnv.nix
         ./discord-canary.nix
         ./firefox.nix
         ./spotify.nix
-        ./swww.nix
     ];
 
     home = {

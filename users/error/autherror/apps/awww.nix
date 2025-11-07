@@ -1,12 +1,12 @@
 { inputs, pkgs, config, ... }:
 
 let
-    swwwDaemon = "${inputs.swww.packages.${pkgs.system}.swww}/bin/swww-daemon";
+    awwwDaemon = "${inputs.awww.packages.${pkgs.system}.awww}/bin/awww-daemon";
     backgrounds = "/home/error/nix/users/error/hm/apps/config/outofstore/backgrounds/";
 in {
-    systemd.user.services.swwwDaemon = {
+    systemd.user.services.awwwDaemon = {
         Unit = {
-            Description = "Swww Daemon";
+            Description = "Awww Daemon";
             After = "graphical-session.target";
             BindsTo = "graphical-session.target";
             PartOf = "graphical-session.target";
@@ -14,7 +14,7 @@ in {
 
         Service = {
             Type = "exec";
-            ExecStart = "${swwwDaemon}";
+            ExecStart = "${awwwDaemon}";
             Restart = "on-failure";
         };
 
@@ -23,19 +23,33 @@ in {
         };
     };
 
-    programs.fish.functions.swww-set = {
+    programs.fish.functions.aw-set = {
         body = ''
             argparse 'd' 'l' 'p' 's' -- $argv
 
             set PRIMARY DP_3
             set SECONDARY DP_1
 
-            set search_dir ~/xdg/pictures/backgrounds
+            set search_dir ${config.xdg.userDirs.pictures}/backgrounds
+
+            if not set -ql _flag_d
+                if not set -ql _flag_s
+                    if not set -ql _flag_p
+                        if not set -ql _flag_d
+                            echo "USAGE"
+                            echo " -d: set default backgrounds"
+                            echo " -l: search for images in the current dir (otherwise, use ${config.xdg.userDirs.pictures}/backgrounds)"
+                            echo " -p: change the background of the primary monitor"
+                            echo " -s: change the background of the secondary monitor"
+                        end
+                    end
+                end
+            end
 
             if set -ql _flag_d
                 echo "Setting default backgrounds."
-                swww img -o (echo $PRIMARY | sed -e 's/_/-/g') --transition-fps 120 $search_dir/primary.*
-                swww img -o (echo $SECONDARY | sed -e 's/_/-/g') --transition-fps 120 $search_dir/secondary.*
+                awww img -o (echo $PRIMARY | sed -e 's/_/-/g') --transition-fps 120 $search_dir/primary.*
+                awww img -o (echo $SECONDARY | sed -e 's/_/-/g') --transition-fps 120 $search_dir/secondary.*
                 return 0
             end
 
@@ -57,7 +71,7 @@ in {
 
             for monitor in $to_change
                 if test -n "$$$monitor"
-                    swww img -o (echo $$monitor | sed -e 's/_/-/g' ) -t any --transition-fps 120 $search_dir/$$$monitor
+                    awww img -o (echo $$monitor | sed -e 's/_/-/g' ) -t any --transition-fps 120 $search_dir/$$$monitor
                 end
             end
         '';
