@@ -74,7 +74,7 @@
             wl-clipboard
             feh
         ] ++ [
-            inputs.nh.packages.${pkgs.system}.default
+            inputs.nh.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
     };
 }

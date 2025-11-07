@@ -5,14 +5,14 @@ let
     configDir = ./config;
     mainMonitor = "DP-3";
     secondaryMonitor = "DP-1";
-    grimblast = inputs.hyprland-contrib.packages.${pkgs.system}.grimblast;
+    grimblast = inputs.hyprland-contrib.packages.${pkgs.stdenv.hostPlatform.system}.grimblast;
 
 in {
     home.packages = [
-        inputs.hyprlock.packages.${pkgs.system}.default
-        inputs.hypridle.packages.${pkgs.system}.default
+        inputs.hyprlock.packages.${pkgs.stdenv.hostPlatform.system}.default
+        inputs.hypridle.packages.${pkgs.stdenv.hostPlatform.system}.default
         grimblast
-        inputs.awww.packages.${pkgs.system}.awww
+        inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
         pkgs.jq
     ];
 
@@ -46,9 +46,9 @@ in {
         enable = true;
         systemd.enable = false;
         
-        package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+        package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
         plugins = [ 
-            inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
+            inputs.hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit
         ];
 
         extraConfig = ''

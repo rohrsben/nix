@@ -38,7 +38,7 @@
                 ripgrep
                 sops
             ] ++ [
-                inputs.nh.packages.${pkgs.system}.default
+                inputs.nh.packages.${pkgs.stdenv.hostPlatform.system}.default
             ];
 
             file."run-me.sh" = {

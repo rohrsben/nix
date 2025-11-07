@@ -1,8 +1,8 @@
 { inputs, pkgs, ... }:
 
 let
-    colloid-gtk = inputs.personal.packages.${pkgs.system}.colloid-gtk;
-    colloid-icon = inputs.personal.packages.${pkgs.system}.colloid-icon;
+    colloid-gtk = inputs.personal.packages.${pkgs.stdenv.hostPlatform.system}.colloid-gtk;
+    colloid-icon = inputs.personal.packages.${pkgs.stdenv.hostPlatform.system}.colloid-icon;
 in {
     gtk = {
         enable = true;

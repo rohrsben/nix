@@ -1,7 +1,7 @@
 { inputs, pkgs, config, ... }:
 
 let
-    ts-parsers = inputs.personal.packages.${pkgs.system}.treesitter-parsers;
+    ts-parsers = inputs.personal.packages.${pkgs.stdenv.hostPlatform.system}.treesitter-parsers;
 in {
     home = {
         packages = [
@@ -19,7 +19,7 @@ in {
 
     programs.neovim = {
         enable = true;
-        package = inputs.neovim-nightly.packages.${pkgs.system}.default;
+        package = inputs.neovim-nightly.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
         viAlias = true;
         vimAlias = true;
