@@ -94,6 +94,10 @@ map('n', 'cc', '"_cc')
 map('n', 'C', '"_C')
 map('x', 'p', '"_dP')
 
+-- commenting
+map('n', '<Ctrl-/>', 'gcc')
+map('v', '<Ctrl-/>', 'gc')
+
 -- don't deselect on indentations
 map('x', '<', '<gv')
 map('x', '>', '>gv')
@@ -213,4 +217,5 @@ vim.lsp.enable {
     'tinymist',
     'clangd',
     'rust_analyzer',
+    'vtsls',
 }
