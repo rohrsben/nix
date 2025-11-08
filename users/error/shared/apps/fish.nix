@@ -38,7 +38,7 @@
 
             fish_greeting = {
                 body = ''
-                    if test "$ADDED_IDENTS" != 1
+                    if test "$ADDED_IDENTS" != (systemctl show --property ActiveEnterTimestamp init.scope)
                         add-idents
                     end
                     autols
@@ -88,7 +88,7 @@
                     for ident in $idents
                         ssh-add $ident
                     end
-                    set -U ADDED_IDENTS 1
+                    set -U ADDED_IDENTS (systemctl show --property ActiveEnterTimestamp init.scope)
                 '';
             };
 
