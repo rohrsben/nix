@@ -61,7 +61,7 @@
 
         neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
 
-        swww.url = "github:LGFae/swww";
+        awww.url = "git+https://codeberg.org/LGFae/awww";
 
         textfox.url = "github:adriankarlen/textfox";
         grub2-themes.url = "github:vinceliuice/grub2-themes";
