@@ -3,6 +3,12 @@ vim.pack.add({'https://github.com/mini-nvim/mini.nvim'})
 require('mini.ai').setup()
 require('mini.git').setup()
 
+require('mini.indentscope').setup {
+    draw = {
+        predicate = function(_) return false end
+    }
+}
+
 require('mini.surround').setup()
 vim.keymap.set('n', 'ss', 'saiw', { remap = true, desc = 'Surround inner word' })
 vim.keymap.set('n', 'sS', 'saiW', { remap = true, desc = 'Surround inner Word' })
