@@ -3,6 +3,12 @@ vim.pack.add({'https://github.com/mini-nvim/mini.nvim'})
 require('mini.ai').setup()
 require('mini.git').setup()
 
+require('mini.splitjoin').setup {
+    mappings = {
+        toggle = 'gs'
+    }
+}
+
 require('mini.indentscope').setup {
     draw = {
         predicate = function(_) return false end
@@ -10,8 +16,6 @@ require('mini.indentscope').setup {
 }
 
 require('mini.surround').setup()
-vim.keymap.set('n', 'ss', 'saiw', { remap = true, desc = 'Surround inner word' })
-vim.keymap.set('n', 'sS', 'saiW', { remap = true, desc = 'Surround inner Word' })
 
 require('mini.jump').setup {
     mappings = {
@@ -71,6 +75,7 @@ vim.api.nvim_create_autocmd('User', {
 })
 
 require('mini.jump2d').setup {
+    labels = 'asdfghjklqwertyuiopzxcvbnm',
     view = {
         dim = true,
         n_steps_ahead = 2,
@@ -80,7 +85,12 @@ require('mini.jump2d').setup {
     },
 }
 vim.api.nvim_set_hl(0, "MiniJump2dSpot", {link = "MiniJump2dSpotUnique"})
-vim.keymap.set({'n', 'v', 'i'}, '<C-Space>', function() MiniJump2d.start(MiniJump2d.builtin_opts.single_character) end, {desc = "Activate Jump2d"})
+vim.keymap.set( {'n', 'v', 'i'}, '<C-Space>', function()
+    MiniJump2d.start(MiniJump2d.builtin_opts.single_character)
+end, {desc = "Activate Jump2d"})
+vim.keymap.set('n', '<leader><leader>', function() 
+    MiniJump2d.start(MiniJump2d.builtin_opts.word_start)
+end, {desc = 'Activate Jump2d, words only'})
 
 require('mini.align').setup {
     mappings = {
@@ -95,7 +105,6 @@ require('mini.move').setup {
         right = '',
         down = '<C-j>',
         up = '<C-k>',
-
         line_left = '',
         line_right = '',
         line_down = '',
