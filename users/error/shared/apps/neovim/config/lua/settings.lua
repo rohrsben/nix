@@ -165,6 +165,13 @@ autocmd('VimResized', {
     command = 'wincmd =',
 })
 
+-- turn off auto-comments
+autocmd('FileType', {
+    callback = function ()
+        vim.opt_local.formatoptions:remove({'c', 'r', 'o'})
+    end
+})
+
 -- general lsp setup
 autocmd('LspAttach', {
     callback = function (args)
