@@ -11,7 +11,6 @@ in {
     textfox = {
         enable = true;
         profile = "error";
-        useLegacyExtensions = false;
         config = {
             font = {
                 family = "JetBrainsMono Nerd Font";
