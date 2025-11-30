@@ -62,9 +62,24 @@ in {
             exec-once = systemctl --user enable --now hypridle.service
             exec-once = hyprctl dispatch workspace 6
 
-            windowrulev2 = float, class:(firefox), title:(Library)
-            windowrulev2 = size 1000 800, class:(firefox), title:(Library)
-            windowrulev2 = center 1, class:(firefox), title:(Library)
+            windowrule {
+                name = ff-library
+
+                match:class = (firefox)
+                match:title = (Library)
+
+                float = on
+                center = on
+                size = 1000 800
+            }
+
+            windowrule {
+                name = launcheranim
+
+                match:namespace = launcher
+
+                no_anim = on
+            }
 
             plugin {
                 hyprsplit {
@@ -90,7 +105,6 @@ in {
             }
 
             misc {
-                new_window_takes_over_fullscreen = 2
                 disable_hyprland_logo = true
                 font_family = JetBrainsMono Nerd Font
             }
@@ -134,8 +148,6 @@ in {
                     col.locked_inactive = rgba(c67b6c80)
                 }
             }
-
-            layerrule = noanim, launcher
 
             animations {
                 enabled = true
