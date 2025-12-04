@@ -73,14 +73,6 @@ in {
                 size = 1000 800
             }
 
-            windowrule {
-                name = launcheranim
-
-                match:namespace = launcher
-
-                no_anim = on
-            }
-
             plugin {
                 hyprsplit {
                     num_workspaces = 5
@@ -154,12 +146,14 @@ in {
 
                 bezier = myBezier, 0.02, 0.14, 0.51, 0.97
 
-                animation = windowsIn, 1, 3, myBezier, slide
-                animation = windowsOut, 1, 3, myBezier, popin
-                animation = windowsMove, 1, 3, myBezier, slide
-                animation = border, 1, 10, default
-                animation = fade, 1, 7, default
-                animation = workspaces, 1, 4, myBezier, slidevert
+                animation = workspaces, 1, 3, myBezier, slidevert
+                animation = windows, 0
+                animation = layers, 0
+                animation = fade, 0
+                animation = border, 0
+                animation = borderangle, 0
+                animation = zoomFactor, 0
+                animation = monitorAdded, 0
             }
 
             dwindle {
