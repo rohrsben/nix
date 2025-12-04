@@ -98,7 +98,7 @@ local function start_blink()
             providers = {
                 lsp      = { name = 'lsp'  },
                 path     = { name = 'path' },
-                snippets = { name = 'snip' },
+                snippets = { enabled = false },
                 buffer   = { name = 'buff' },
             },
         },
