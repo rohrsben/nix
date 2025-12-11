@@ -38,17 +38,13 @@ local function start_blink()
                 selection = { preselect = false, auto_insert = true },
             },
             menu = {
-                -- BUG tracking: saghen/blink.cmp#1932
-                auto_show_delay_ms = 10,
-
                 scrolloff = 2,
                 draw = {
                     columns = { {'kind_icon'}, {'label'}, {'source_name'} },
 
-                    -- BUG tracking: saghen/blink.cmp#1932
                     components = {
                         label = {
-                            width = { min = 25, max = 25 },
+                            width = { min = 30, max = 30 },
                         },
                     },
                 },
