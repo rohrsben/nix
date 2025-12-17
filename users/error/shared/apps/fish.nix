@@ -4,8 +4,6 @@
     home.sessionVariables = {
         hydro_color_pwd = "brblack";
         hydro_color_prompt = "green";
-        school = "/mnt/lts/school/25-spring";
-        media = "/mnt/lts/media";
     };
 
     programs.fish = {
