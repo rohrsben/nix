@@ -11,7 +11,6 @@
         ./fonts.nix
         ./graphics.nix
         ./hm.nix
-        ./lix.nix
         ./locale.nix
         ./networking.nix
         ./nix-config.nix
