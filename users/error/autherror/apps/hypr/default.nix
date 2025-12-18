@@ -163,7 +163,7 @@ in {
             bind = $mainMod, Q, killactive,
             bind = $mainMod SHIFT, M, exec, hyprshutdown
             bind = $mainMod SHIFT, F, togglefloating,
-            bind = $mainMod, code:65, exec, fuzzel
+            bind = $mainMod, code:65, exec, tofi-drun --drun-launch=true
             bind = $mainMod, J, togglesplit, # dwindle
 
             bind = $mainMod, G, togglegroup

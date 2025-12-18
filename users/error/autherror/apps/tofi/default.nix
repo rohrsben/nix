@@ -1,12 +1,12 @@
-{ ... }:
+{ pkgs, ... }:
 
 let
-    app = "fuzzel";
+    app = "tofi";
     configDir = ./config;
 in {
-    programs.fuzzel = {
-        enable = true;
-    };
+    home.packages = [
+        pkgs.${app}
+    ];
 
     xdg.configFile."${app}" = {
         source = "${configDir}";

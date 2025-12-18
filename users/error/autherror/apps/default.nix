@@ -2,9 +2,9 @@
 
 {
     imports = [
-        ./fuzzel
         ./hypr
         ./mako
+        ./tofi
         ./waybar
 
         ./awww.nix
