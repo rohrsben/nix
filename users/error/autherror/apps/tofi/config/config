@@ -4,7 +4,6 @@ font-size = 24
 
 # prompt theme
 prompt-color = #C67B6C
-prompt-background = #
 prompt-background-padding = 0
 prompt-background-corner-radius = 0
 
@@ -13,40 +12,35 @@ prompt-text = " > "
 
 # placeholder text
 placeholder-color = #FFFFFFA8
-placeholder-background = #00000000
 placeholder-background-padding = 0
 placeholder-background-corner-radius = 0
 
 # input text
-input-color = 676251
-input-background = #00000000
+input-color = #676251
 input-background-padding = 0
 input-background-corner-radius = 0
 
 # default result text
 default-result-color = #AFA997
-default-result-background = #
 default-result-background-padding = 0
 default-result-background-corner-radius = 0
 
 # selection text
 selection-color = #5C845F
-selection-background = #00000000
 selection-background-padding = 0
 selection-background-corner-radius = 0
 
 # matching portion of selection text
-selection-match-color = #00000000
+selection-match-color = #0000000
 
 # window themeing
 background-color = #EDEBE9 
-width = 25%
-height = 20%
+width = 512
+height = 288
 
 # border
 border-color = #70665C
 outline-width = 0
-outline-color = #7B7065
 border-width = 8
 corner-radius = 15
 
