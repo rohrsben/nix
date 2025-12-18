@@ -11,28 +11,25 @@ in {
     home.packages = [
         inputs.hyprlock.packages.${pkgs.stdenv.hostPlatform.system}.default
         inputs.hypridle.packages.${pkgs.stdenv.hostPlatform.system}.default
-        grimblast
+        inputs.hyprshutdown.packages.${pkgs.stdenv.hostPlatform.system}.default
         inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
-        pkgs.jq
+        grimblast
+        pkgs.jq # for grimblast
     ];
 
     home.sessionVariables = {
         LIBVA_DRIVER_NAME = "nvidia";
-        GBM_BACKEND = "nvidia-drm";
         __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    };
+        GBM_BACKEND = "nvidia-drm";
 
-    xdg.configFile."uwsm/env" = {
-        text = ''
-            export LIBVA_DRIVER_NAME=nvidia
-            export GBM_BACKEND=nvidia-drm
-            export __GLX_VENDOR_LIBRARY_NAME=nvidia
+        SDL_VIDEODRIVER = "wayland";
+        QT_QPA_PLATFORM = "wayland";
 
-            export SDL_VIDEODRIVER=wayland
-            export QT_QPA_PLATFORM=wayland
+        QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
 
-            export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-        '';
+        XDG_CURRENT_DESKTOP = "Hyprland";
+        XDG_SESSION_TYPE = "wayland";
+        XDG_SESSION_DESKTOP = "Hyprland";
     };
 
     xdg.configFile."${app}" = {
@@ -44,7 +41,6 @@ in {
 
     wayland.windowManager.hyprland = {
         enable = true;
-        systemd.enable = false;
         
         package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
         plugins = [ 
@@ -57,9 +53,9 @@ in {
             monitor = ${mainMonitor}, 2560x1440@144, 0x0, 1
             monitor = ${secondaryMonitor}, 2560x1440@144, 2560x-745, 1, transform, 3
 
-            exec-once = uwsm app -- waybar 
-            exec-once = uwsm app -- udiskie --tray
-            exec-once = systemctl --user enable --now hypridle.service
+            exec-once = waybar 
+            exec-once = udiskie --tray
+            exec-once = hypridle
             exec-once = hyprctl dispatch workspace 6
 
             windowrule {
@@ -163,9 +159,9 @@ in {
 
             $mainMod = SUPER
 
-            bind = $mainMod, Return, exec, uwsm app -- kitty
+            bind = $mainMod, Return, exec, kitty
             bind = $mainMod, Q, killactive,
-            bind = $mainMod SHIFT, M, exec, uwsm stop
+            bind = $mainMod SHIFT, M, exec, hyprshutdown
             bind = $mainMod SHIFT, F, togglefloating,
             bind = $mainMod, code:65, exec, fuzzel
             bind = $mainMod, J, togglesplit, # dwindle
@@ -177,7 +173,7 @@ in {
 
             bind = $mainMod, F, fullscreen
 
-            bind = $mainMod, L, exec, uwsm app -- hyprlock
+            bind = $mainMod, L, exec, hyprlock
 
             bind = $mainMod, left, movefocus, l
             bind = $mainMod, right, movefocus, r

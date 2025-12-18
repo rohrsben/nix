@@ -6,7 +6,7 @@
 
         settings = {
             default_session = {
-                command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'uwsm start default'";
+                command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'start-hyprland'";
             };
         };
     };

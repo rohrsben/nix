@@ -75,7 +75,7 @@
         "format": "vol<span color='#5C845F'><b>@</b></span>{volume}",
         "format-muted": "vol<span color='#5C845F'><b>@</b></span>muted",
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-        "on-click-right": "hyprctl dispatch exec uwsm app -- pavucontrol", 
+        "on-click-right": "hyprctl dispatch exec pavucontrol", 
         "scroll-step": 2,
 
     },
