@@ -1,3 +1,5 @@
+-- commit 2be96a2
+
 return {
     cmd = { 'lua-language-server' },
     filetypes = { 'lua' },
@@ -36,9 +38,8 @@ return {
     end,
     settings = {
         Lua = {
-            diagnostics = {
-                globals = { 'vim' },
-            },
+            codeLens = { enable = true },
+            hint = { enable = true, semicolon = 'Disable' },
         },
     },
 }

@@ -1,3 +1,5 @@
+-- commit 9a955d0 (heavily altered)
+
 return {
     cmd = { 'tinymist' },
     filetypes = { 'typst' },

@@ -1,3 +1,5 @@
+-- commit ec27b24
+
 local function switch_source_header(bufnr, client)
   local method_name = 'textDocument/switchSourceHeader'
   if not client or not client:supports_method(method_name) then
