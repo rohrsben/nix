@@ -176,10 +176,27 @@ function Inactive()
     }
 end
 
-vim.cmd([[
-    augroup Statusline
-    au!
-    au WinEnter,BufEnter * setlocal statusline=%!v:lua.Active()
-    au WinLeave,BufLeave * setlocal statusline=%!v:lua.Inactive()
-    augroup END
-]])
+local disabled_fts = {
+    ["snacks_picker_input"] = 1,
+    ["snacks_picker_list"] = 1,
+}
+
+vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter' }, {
+    callback = function ()
+        if disabled_fts[vim.bo.filetype] == 1 then
+            return
+        end
+
+        vim.wo.statusline = "%!v:lua.Active()"
+    end
+})
+
+vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave' }, {
+    callback = function ()
+        if disabled_fts[vim.bo.filetype] == 1 then
+            return
+        end
+
+        vim.wo.statusline = "%!v:lua.Inactive()"
+    end
+})
