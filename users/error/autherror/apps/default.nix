@@ -25,6 +25,7 @@
             eza
             fd
             gnused
+            kdePackages.qtwayland
             lazygit
             libnotify
             libsForQt5.qt5.qtwayland
@@ -32,7 +33,6 @@
             p7zip
             pass
             python3
-            kdePackages.qtwayland
             ripgrep
             sops
             xdg-utils
@@ -42,6 +42,7 @@
             btop
             cargo
             gh
+            glow
             grim
             hyprpicker
             imagemagick
@@ -53,13 +54,12 @@
             sshfs
             tdf
             ttyper
+            typst
             wev
             zellij
-            glow
-            typst
 
             # graphical
-            # dolphin-emu
+            calibre
             foliate
             kdePackages.okular
             localsend
@@ -69,10 +69,10 @@
             thunderbird
 
             # supporting / desktop environment
-            udiskie
-            solaar
-            wl-clipboard
             feh
+            solaar
+            udiskie
+            wl-clipboard
         ] ++ [
             inputs.nh.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
