@@ -62,7 +62,6 @@
             calibre
             foliate
             kdePackages.okular
-            localsend
             mpv
             pavucontrol
             telegram-desktop
