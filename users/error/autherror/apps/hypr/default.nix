@@ -13,6 +13,7 @@ in {
         inputs.hypridle.packages.${pkgs.stdenv.hostPlatform.system}.default
         inputs.hyprshutdown.packages.${pkgs.stdenv.hostPlatform.system}.default
         inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
+        inputs.idle-inhibit.packages.${pkgs.stdenv.hostPlatform.system}.default
         grimblast
         pkgs.jq # for grimblast
     ];
@@ -57,6 +58,7 @@ in {
             exec-once = udiskie --tray
             exec-once = hypridle
             exec-once = hyprctl dispatch workspace 6
+            exec-once = wayland-pipewire-idle-inhibit
 
             windowrule {
                 name = ff-library
