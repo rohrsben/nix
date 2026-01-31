@@ -35,21 +35,21 @@
     ],
     
     "mpris": {
-        "format": "<span color='#C67B6C'>|</span> {artist} ~ {title}<span color='#5C845F'><b>@</b></span>{player}",
-        "format-paused": "<span color='#C67B6C'>|</span> {artist} ~ {title}<span color='#C67B6C'><b>@</b></span>{player}",
+        "format": "<span color='#e67e80'>|</span> {artist} ~ {title}<span color='#a7c080'>@</span>{player}",
+        "format-paused": "<span color='#e67e80'>|</span> {artist} ~ {title}<span color='#e67e80'>@</span>{player}",
         "max-length": 150,
         "ignored-players": ["firefox"],
     },
 
     "custom/at": {
-        "format": " <span color='#5C845F'><b>@</b></span> "
+        "format": " <span color='#a7c080'>@</span> "
     },
 
     "clock#1": {
         "format": "{:%A}",
         "tooltip-format": "{calendar}",
         "calendar": {
-            "format": { "today": "<span color='#C67B6C'><b>{}</b></span>" }
+            "format": { "today": "<span color='#e67e80'><b>{}</b></span>" }
         },
     },
 
@@ -65,15 +65,15 @@
 
     "network": {
         "format": "{ifname}",
-        "format-wifi": "wifi<span color='#5C845F'><b>@</b></span>{signalStrength}",
+        "format-wifi": "wifi<span color='#a7c080'>@</span>{signalStrength}",
         "format-disconnected": "disconnected",
         "tooltip-format-wifi": "{essid}",
         "tooltip-format": "{bandwidthDownBytes}{bandwidthUpBytes}",
     },
 
     "wireplumber": {
-        "format": "vol<span color='#5C845F'><b>@</b></span>{volume}",
-        "format-muted": "vol<span color='#5C845F'><b>@</b></span>muted",
+        "format": "vol<span color='#a7c080'>@</span>{volume}",
+        "format-muted": "vol<span color='#e67e80'>@</span>muted",
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "on-click-right": "hyprctl dispatch exec pavucontrol", 
         "scroll-step": 2,
@@ -81,14 +81,14 @@
     },
 
     "custom/mouseBat": {
-        "format": "mouse<span color='#5C845F'><b>@</b></span>{} ",
+        "format": "mouse<span color='#a7c080'>@</span>{} ",
         "interval": 1800,
         "exec": "cat /home/error/.scripts/outputs/mouseBat",
         "tooltip": false,
     },
 
     "custom/separator": {
-        "format": " <span color='#C67B6C'>|</span> ",
+        "format": " <span color='#e67e80'>|</span> ",
     },
 }, {
     "layer": "bottom",

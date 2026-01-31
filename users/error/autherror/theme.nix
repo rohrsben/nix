@@ -9,12 +9,12 @@ in {
 
         theme = {
             package = colloid-gtk;
-            name = "Colloid-Red-Dark-Everforest";
+            name = "Colloid-Dark-Everforest";
         };
 
         iconTheme = {
             package = colloid-icon;
-            name = "Colloid-Grey-Everforest";
+            name = "Colloid-Everforest-Dark";
         };
     };
 
