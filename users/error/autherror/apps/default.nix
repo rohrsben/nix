@@ -57,6 +57,7 @@
             typst
             wev
             zellij
+            nh
 
             # graphical
             calibre
@@ -72,8 +73,6 @@
             solaar
             udiskie
             wl-clipboard
-        ] ++ [
-            inputs.nh.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
     };
 }

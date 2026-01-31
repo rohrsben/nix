@@ -24,11 +24,6 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        nh = {
-            url = "github:viperML/nh";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
         hyprland.url = "github:hyprwm/hyprland";
         hyprlock.url = "github:hyprwm/hyprlock";
         hypridle.url = "github:hyprwm/hypridle";
@@ -41,6 +36,8 @@
             url = "github:shezdy/hyprsplit";
             inputs.hyprland.follows = "hyprland";
         };
+
+        idle-inhibit.url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";
 
         sops-nix = {
             url = "github:Mic92/sops-nix/a4c33bfecb93458d90f9eb26f1cf695b47285243";
