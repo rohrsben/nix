@@ -35,7 +35,7 @@
     ],
     
     "mpris": {
-        "format": "<span color='#e67e80'>|</span> {artist} ~ {title}<span color='#a7c080'>@</span>{player}",
+        "format": "<span color='#e67e80'>|</span> {artist} <span color='#e67e80'>~</span> {title}<span color='#a7c080'>@</span>{player}",
         "format-paused": "<span color='#e67e80'>|</span> {artist} ~ {title}<span color='#e67e80'>@</span>{player}",
         "max-length": 150,
         "ignored-players": ["firefox"],
