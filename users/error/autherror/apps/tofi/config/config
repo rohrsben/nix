@@ -3,7 +3,7 @@ font = "JetBrainsMono Nerd Font"
 font-size = 24
 
 # prompt theme
-prompt-color = #C67B6C
+prompt-color = #e67e80
 prompt-background-padding = 0
 prompt-background-corner-radius = 0
 
@@ -16,17 +16,17 @@ placeholder-background-padding = 0
 placeholder-background-corner-radius = 0
 
 # input text
-input-color = #676251
+input-color = #d3c6aa
 input-background-padding = 0
 input-background-corner-radius = 0
 
 # default result text
-default-result-color = #AFA997
+default-result-color = #d3c6aa
 default-result-background-padding = 0
 default-result-background-corner-radius = 0
 
 # selection text
-selection-color = #5C845F
+selection-color = #93b259
 selection-background-padding = 0
 selection-background-corner-radius = 0
 
@@ -34,14 +34,14 @@ selection-background-corner-radius = 0
 selection-match-color = #0000000
 
 # window themeing
-background-color = #EDEBE9 
+background-color = #425047 
 width = 512
 height = 288
 
 # border
-border-color = #70665C
+border-color = #4e5047
 outline-width = 0
-border-width = 8
+border-width = 0
 corner-radius = 15
 
 # padding
