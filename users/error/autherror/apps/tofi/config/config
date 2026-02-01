@@ -30,9 +30,6 @@ selection-color = #93b259
 selection-background-padding = 0
 selection-background-corner-radius = 0
 
-# matching portion of selection text
-selection-match-color = #0000000
-
 # window themeing
 background-color = #425047 
 width = 512
@@ -53,4 +50,3 @@ padding-right = 25
 
 # various
 terminal = kitty
-mathing-algorithm = normal
