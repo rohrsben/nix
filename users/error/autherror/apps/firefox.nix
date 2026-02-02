@@ -10,7 +10,7 @@ in {
 
     textfox = {
         enable = true;
-        profile = "error";
+        profiles = [ "error" ];
         config = {
             font = {
                 family = "JetBrainsMono Nerd Font";
