@@ -1,4 +1,4 @@
-{ inputs, pkgs, conf, lib, ... }:
+{ pkgs, conf, lib, ... }:
 
 {
     users.users.error = {
@@ -37,8 +37,7 @@
                 lazygit
                 ripgrep
                 sops
-            ] ++ [
-                inputs.nh.packages.${pkgs.stdenv.hostPlatform.system}.default
+                nh
             ];
 
             file."run-me.sh" = {
