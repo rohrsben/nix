@@ -1,7 +1,10 @@
 { inputs, pkgs, config, ... }:
 
 let
-    ts-parsers = inputs.personal.packages.${pkgs.stdenv.hostPlatform.system}.treesitter-parsers;
+    ts-parsers = pkgs.symlinkJoin {
+        name = "ts-parsers";
+        paths = pkgs.vimPlugins.nvim-treesitter.withAllGrammars.dependencies;
+    };
 in {
     home = {
         packages = [
