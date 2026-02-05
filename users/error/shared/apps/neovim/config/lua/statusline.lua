@@ -29,6 +29,12 @@ end
 
 local function mode_text(type)
     local info = modes[vim.api.nvim_get_mode().mode]
+
+    -- TODO not sure why this happens
+    if info == nil then
+        return hl('mode_misc') .. ' NIL '
+    end
+
     return fmt('%s %s ', hl('mode_' .. info.hl), info[type])
 end
 
