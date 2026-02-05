@@ -1,20 +1,20 @@
 { inputs, pkgs, ... }:
 
 let
-    colloid-gtk = inputs.personal.packages.${pkgs.stdenv.hostPlatform.system}.colloid-gtk;
-    colloid-icon = inputs.personal.packages.${pkgs.stdenv.hostPlatform.system}.colloid-icon;
+    gtk = inputs.personal.packages.${pkgs.stdenv.hostPlatform.system}.gtk;
+    icon = inputs.personal.packages.${pkgs.stdenv.hostPlatform.system}.icon;
 in {
     gtk = {
         enable = true;
 
         theme = {
-            package = colloid-gtk;
-            name = "Colloid-Red-Dark-Everforest";
+            package = gtk;
+            name = "Everforest-Red-Dark-Medium";
         };
 
         iconTheme = {
-            package = colloid-icon;
-            name = "Colloid-Everforest-Dark";
+            package = icon;
+            name = "Everforest-Dark";
         };
     };
 
