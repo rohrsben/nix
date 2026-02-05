@@ -16,6 +16,7 @@ in {
         inputs.idle-inhibit.packages.${pkgs.stdenv.hostPlatform.system}.default
         grimblast
         pkgs.jq # for grimblast
+        pkgs.hyprpolkitagent
     ];
 
     home.sessionVariables = {
@@ -38,8 +39,6 @@ in {
         recursive = true;
     };
 
-    # TODO hyprpolkit agent
-
     wayland.windowManager.hyprland = {
         enable = true;
         
@@ -59,6 +58,7 @@ in {
             exec-once = hypridle
             exec-once = hyprctl dispatch workspace 6
             exec-once = wayland-pipewire-idle-inhibit
+            exec-once = systemctl --user start hyprpolkitagent
 
             windowrule {
                 name = ff-library
