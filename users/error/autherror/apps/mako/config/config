@@ -13,26 +13,22 @@ height=200
 padding=15
 outer-margin=20
 border-radius=10
-border-size=5
+border-size=0
 
 icon-location=right
 max-icon-size=64
 
-text-color=#70665C
-border-color=#5C845F
-background-color=#EDEBE9
+text-color=#d3c6aa
+border-color=#425047
+background-color=#425047
 
 default-timeout=4500
 
-
-
 [urgency=low]
-border-color=#70665C
-background-color=#d1d0c7
+background-color=#4d4c43
 
 [urgency=high]
-border-color=#C67B6C
-background-color=#F8EBE9
+background-color=#e66868
 default-timeout=0
 
 [app-name="Spotify"]
