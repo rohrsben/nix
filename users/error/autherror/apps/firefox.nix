@@ -12,6 +12,7 @@ in {
         enable = true;
         profiles = [ "error" ];
         config = {
+            displayTitles = false;
             font = {
                 family = "JetBrainsMono Nerd Font";
             };
@@ -20,6 +21,11 @@ in {
                     margin = "1.0rem";
                 };
             };
+            extraConfig = ''
+                menupopup {
+                    color-scheme: dark !important;
+                }
+            '';
         };
     };
 
