@@ -60,6 +60,7 @@
             nh
 
             # graphical
+            anki
             calibre
             foliate
             kdePackages.okular
