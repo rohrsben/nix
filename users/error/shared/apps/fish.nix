@@ -23,7 +23,6 @@
             icat = "kitten icat";
             ssh = "kitten ssh";
             cd = "z";
-            restart = "systemctl stop tailscaled.service && systemctl reboot";
         };
 
         functions = {

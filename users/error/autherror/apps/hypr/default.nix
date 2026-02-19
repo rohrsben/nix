@@ -167,6 +167,7 @@ in {
             bind = $mainMod SHIFT, F, togglefloating,
             bind = $mainMod, code:65, exec, tofi-drun --drun-launch=true
             bind = $mainMod, J, togglesplit, # dwindle
+            bind = $mainMod, P, exec, ~/.scripts/powermenu.sh
 
             bind = $mainMod, G, togglegroup
             bind = $mainMod SHIFT, G, lockactivegroup, toggle
@@ -211,6 +212,26 @@ in {
 
             bind = Shift, Print, exec, ${grimblast}/bin/grimblast --notify --freeze save area ${config.xdg.userDirs.pictures}/screenshots/$(date +'%b%d-%T.png')
             bind = ,Print, exec, ${grimblast}/bin/grimblast --notify save area ${config.xdg.userDirs.pictures}/screenshots/$(date +'%b%d-%T.png')
+        '';
+    };
+
+    home.file.".scripts/powermenu.sh" = {
+        executable = true;
+        text = ''
+            #!/usr/bin/env fish
+
+            set options "Restart
+            Power off"
+
+            set result (echo $options | tofi --prompt-text="" --width=290 --height=180 --padding-top=0 --padding-bottom=0 --padding-left=50 --padding-right=0)
+
+            if test -n "$result"
+                if test "$result" = "Restart"
+                    systemctl stop tailscaled.service && systemctl reboot
+                else if test "$result" = "Power off"
+                    systemctl stop tailscaled.service && systemctl poweroff
+                end
+            end
         '';
     };
 }
