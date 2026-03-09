@@ -24,43 +24,22 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        hyprland.url = "github:hyprwm/hyprland";
-        hyprlock.url = "github:hyprwm/hyprlock";
-        hypridle.url = "github:hyprwm/hypridle";
-        hyprshutdown.url = "github:hyprwm/hyprshutdown";
-        hyprland-contrib = {
-            url = "github:hyprwm/contrib";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-        hyprsplit =  {
-            url = "github:shezdy/hyprsplit";
-            inputs.hyprland.follows = "hyprland";
-        };
-
-        idle-inhibit.url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";
-
         sops-nix = {
-            url = "github:Mic92/sops-nix/a4c33bfecb93458d90f9eb26f1cf695b47285243";
+            url = "github:Mic92/sops-nix";
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
-
+        hyprsplit.url = "github:shezdy/hyprsplit?ref=v0.54.1";
         awww.url = "git+https://codeberg.org/LGFae/awww";
 
+        idle-inhibit.url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";
+        neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
         textfox.url = "github:adriankarlen/textfox";
-        grub2-themes.url = "github:vinceliuice/grub2-themes";
     };
 
     outputs = { self, ... } @inputs:
         let
             hosts = {
-                reinstall = {
-                    hostName = "reinstall";
-                    platform = "x86_64-linux";
-                    stateVer = "24.11";
-                };
-
                 desktop = {
                     hostName = "autherror";
                     platform = "x86_64-linux";
@@ -80,7 +59,6 @@
         in {
             nixosConfigurations = {
                 "autherror" = mkNixosHost hosts.desktop;
-                "reinstall" = mkNixosHost hosts.reinstall;
             };
         };
 }
