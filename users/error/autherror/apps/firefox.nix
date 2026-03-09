@@ -16,11 +16,6 @@ in {
             font = {
                 family = "JetBrainsMono Nerd Font";
             };
-            tabs = {
-                vertical = {
-                    margin = "1.0rem";
-                };
-            };
             extraConfig = ''
                 menupopup {
                     color-scheme: dark !important;
