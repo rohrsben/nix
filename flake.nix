@@ -29,7 +29,11 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        hyprsplit.url = "github:shezdy/hyprsplit?ref=v0.54.1";
+        hyprland.url = "github:hyprwm/Hyprland?ref=v0.54.1";
+        hyprsplit = {
+            url = "github:shezdy/hyprsplit?rev=v0.54.1";
+            inputs.hyprland.follows = "hyprland";
+        };
         awww.url = "git+https://codeberg.org/LGFae/awww";
 
         idle-inhibit.url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";

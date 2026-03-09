@@ -21,7 +21,7 @@
                 enable = true;
                 efiSupport = true;
                 enableCryptodisk = true;
-                theme = "${pkgs.minimal-grub-theme}/minimal";
+                theme = "${pkgs.minimal-grub-theme}";
                 # this is needed for efi, see https://discourse.nixos.org/t/question-about-grub-and-nodev/37867/6
                 device = "nodev"; 
                 extraEntries = ''
@@ -46,7 +46,7 @@
     };
 
     fonts = {
-        fontconfig.defaultFonts.emoji = "OpenMoji Color";
+        fontconfig.defaultFonts.emoji = [ "OpenMoji Color" ];
         packages = [
             pkgs.openmoji-color
             pkgs.dejavu_fonts
@@ -132,8 +132,10 @@
         bluetooth = {
             enable = true;
             settings = {
-                DiscoverableTimeout = 30;
-                FastConnectable = true;
+                General = {
+                    DiscoverableTimeout = 30;
+                    FastConnectable = true;
+                };
             };
         };
         graphics.enable = true;
