@@ -41,11 +41,13 @@
             age
             btop
             cargo
+            devenv
             gh
             glow
             grim
             hyprpicker
             imagemagick
+            nh
             pandoc
             playerctl
             rsync
@@ -57,7 +59,6 @@
             typst
             wev
             zellij
-            nh
 
             # graphical
             anki
