@@ -169,7 +169,10 @@
             alsa.enable = true;
         };
         gvfs.enable = true; # used in calibre to mount kindle
-        tailscale.enable = true;
+        tailscale = {
+            enable = true;
+            extraSetFlags = [ "--ssh" ];
+        };
         udisks2 = {
             enable = true;
             mountOnMedia = true;
@@ -213,7 +216,7 @@
                 wantedBy = [ "timers.target" ];
                 timerConfig = {
                     Unit = "homeBackup.service";
-                    onCalendar = "daily";
+                    OnCalendar = "daily";
                 };
             };
             mouseBat = {
