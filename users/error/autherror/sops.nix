@@ -8,7 +8,7 @@
     sops = {
         age.keyFile = "/home/error/.config/sops/age/keys.txt";
 
-        defaultSopsFile = ./../../../secrets/secrets.yaml;
+        defaultSopsFile = ../../../secrets/secrets.yaml;
         validateSopsFiles = false;
 
         secrets = {

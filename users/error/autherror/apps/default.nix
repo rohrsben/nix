@@ -3,16 +3,31 @@
 {
     imports = [
         ./hypr
+        ./kitty
         ./mako
+        ./neovim
         ./tofi
         ./waybar
 
         ./awww.nix
-        ./direnv.nix
         ./discord-canary.nix
         ./firefox.nix
+        ./fish.nix
         ./spotify.nix
+        ./yazi.nix
+
+        inputs.nix-index-database.homeModules.nix-index
     ];
+
+    programs = {
+        zoxide.enable = true;
+        nix-index-database.comma.enable = true;
+        fzf.enable = true;
+        direnv = {
+            enable = true;
+            nix-direnv.enable = true;
+        };
+    };
 
     home = {
         username = "error";
@@ -69,6 +84,7 @@
             pavucontrol
             telegram-desktop
             thunderbird
+            discord-canary
 
             # supporting / desktop environment
             feh
