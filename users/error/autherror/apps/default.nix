@@ -10,7 +10,6 @@
         ./waybar
 
         ./awww.nix
-        ./discord-canary.nix
         ./firefox.nix
         ./fish.nix
         ./spotify.nix

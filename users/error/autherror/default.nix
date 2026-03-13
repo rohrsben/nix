@@ -16,19 +16,10 @@
         imports = [ 
             ./apps
 
+            ./git.nix
             ./sops.nix
             ./theme.nix
             ./xdg.nix
-
-            ../shared/git.nix
-
-            ../shared/apps/fish.nix
-            ../shared/apps/fzf.nix
-            ../shared/apps/kitty
-            ../shared/apps/neovim
-            ../shared/apps/nix-index.nix
-            ../shared/apps/yazi.nix
-            ../shared/apps/zoxide.nix
         ];
     };
 }
