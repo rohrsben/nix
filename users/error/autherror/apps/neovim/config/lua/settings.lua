@@ -224,5 +224,5 @@ vim.lsp.enable {
     'tinymist',
     'clangd',
     'rust_analyzer',
-    'vtsls',
+    'nixd',
 }
