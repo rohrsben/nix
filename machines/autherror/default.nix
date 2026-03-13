@@ -7,8 +7,6 @@
         ../../users/error/autherror
     ];
 
-    documentation.man.generateCaches = false;
-
     boot = {
         kernelModules = [ "kvm-intel" ];
         initrd = {
