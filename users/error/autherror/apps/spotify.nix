@@ -1,11 +1,8 @@
 { pkgs, ... }:
 
-let
-    app = "spotify";
-    configDir = ./config/${app};
-in {
+{
     home.packages = [
-        pkgs.${app}
+        pkgs.spotify
     ];
 
     xdg.desktopEntries."spotify" = {

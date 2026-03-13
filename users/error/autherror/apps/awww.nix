@@ -2,7 +2,6 @@
 
 let
     awwwDaemon = "${inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww}/bin/awww-daemon";
-    backgrounds = "/home/error/nix/users/error/hm/apps/config/outofstore/backgrounds/";
 in {
     systemd.user.services.awwwDaemon = {
         Unit = {

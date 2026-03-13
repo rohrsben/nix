@@ -1,4 +1,4 @@
-{ lib, pkgs, conf, config, ... }:
+{ pkgs, config, ... }:
 
 {
     sops.secrets.error-pass.neededForUsers = true;

@@ -8,7 +8,7 @@ in {
         pkgs.${app}
     ];
 
-   xdg.configFile."${app}" = {
+    xdg.configFile."${app}" = {
         source = "${configDir}";
         recursive = true;
     }; 

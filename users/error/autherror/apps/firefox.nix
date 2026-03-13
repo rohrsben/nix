@@ -1,9 +1,6 @@
-{ config, inputs, ... }:
+{ inputs, ... }:
 
-let
-    app = "firefox";
-    configDir = ./config/${app};
-in {
+{
     imports = [
         inputs.textfox.homeManagerModules.default
     ];
