@@ -86,14 +86,6 @@ in {
                     toolbar = true;
                     bookmarks = [
                         {
-                            name = "rust-book";
-                            url = "https://rust-book.cs.brown.edu/";
-                        }
-                        {
-                            name = "june";
-                            url = "https://junehomes.com";
-                        }
-                        {
                             name = "nix";
                             bookmarks = [
                                 {
