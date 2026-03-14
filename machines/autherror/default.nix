@@ -83,10 +83,11 @@
 
     networking = {
         hostName = "autherror";
-        networkmanager = {
+        wireless.iwd = {
             enable = true;
-            wifi.macAddress = "random";
-            settings.connection."autoconnect-retries" = 0;
+            settings = {
+                General.AddressRandomization = "network";
+            };
         };
     };
 
@@ -145,6 +146,15 @@
     };
 
     services = {
+        resolved = {
+            enable = true;
+            settings.Resolve = {
+                DNSOverTLS = true;
+                DNS = [ "9.9.9.9" "1.1.1.1" ];
+                LLMNR = false;
+                MulticastDNS = false;
+            };
+        };
         chrony = {
             enable = true;
             enableNTS = true;
