@@ -1,0 +1,1 @@
+-- plugin requires no config

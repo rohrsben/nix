@@ -1,6 +1,4 @@
-vim.pack.add({'https://github.com/MagicDuck/grug-far.nvim'})
-
-vim.keymap.set('n', '<leader>q', function () 
+vim.keymap.set('n', '<leader>q', function ()
     vim.cmd('write')
     require('grug-far').open {
         transient = true,
@@ -10,7 +8,7 @@ vim.keymap.set('n', '<leader>q', function ()
     }
 end, {noremap = true, silent = true, desc = 'Grug Far'})
 
-vim.keymap.set('n', '<leader>Q', function () 
+vim.keymap.set('n', '<leader>Q', function ()
     vim.cmd('wal')
     require('grug-far').open {
         transient = true,
