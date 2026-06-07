@@ -83,6 +83,14 @@
 
     networking = {
         hostName = "autherror";
+        useNetworkd = true;
+
+        # allow spotify connect
+        firewall = {
+            allowedUDPPorts = [ 4070 5353 57261 ];
+            allowedTCPPorts = [ 4070 57261 ];
+        };
+
         wireless.iwd = {
             enable = true;
             settings = {
@@ -218,6 +226,10 @@
     system.stateVersion = "24.11";
 
     systemd = {
+        network = {
+            enable = true;
+        };
+
         timers = {
             homeBackup = {
                 description = "Backup for /home";
