@@ -114,7 +114,7 @@ end
 local function filetype()
     local ft = vim.bo.filetype
 
-    local ft_hl = hl(vim.lsp.document_color.is_enabled(0) and 'filetype_color' or 'filetype_no_color')
+    local ft_hl = hl(vim.lsp.document_color.is_enabled({bufnr = 0}) and 'filetype_color' or 'filetype_no_color')
 
     return ft == '' and '' or fmt('%s %s%s |', ft_hl, ft, hl('lineinfo'))
 end
