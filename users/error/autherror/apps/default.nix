@@ -90,6 +90,7 @@
             solaar
             udiskie
             wl-clipboard
+            runapp
         ];
     };
 }

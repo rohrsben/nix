@@ -100,7 +100,7 @@
     };
 
     nix = {
-        package = pkgs.lixPackageSets.stable.lix;
+        package = pkgs.lixPackageSets.latest.lix;
         settings.experimental-features = [ "nix-command" "flakes" ];
         gc = {
             automatic = true;
@@ -129,6 +129,7 @@
         localsend.enable = true;
         hyprland = {
             enable = true;
+            withUWSM = true;
             xwayland.enable = true;
         };
     };
@@ -195,7 +196,7 @@
         };
         greetd = {
             enable = true;
-            settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'start-hyprland'";
+            settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'uwsm start default'";
         };
         udev.extraRules = ''
             SUBSYSTEM=="usb" ATTRS{idVendor}=="0483", ATTRS{idProduct}=="d11d", MODE="0660", TAG+="uaccess", TAG+="udev-acl", TAG+="DuckyPad Pro"

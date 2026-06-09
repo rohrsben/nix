@@ -29,9 +29,9 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        hyprland.url = "github:hyprwm/Hyprland?ref=v0.54.1";
+        hyprland.url = "github:hyprwm/Hyprland";
         hyprsplit = {
-            url = "github:shezdy/hyprsplit?rev=v0.54.1";
+            url = "github:shezdy/hyprsplit";
             inputs.hyprland.follows = "hyprland";
         };
         awww.url = "git+https://codeberg.org/LGFae/awww";
