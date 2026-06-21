@@ -1,68 +1,43 @@
+# DO-NOT-EDIT. This file was auto-generated using github:vic/flake-file.
+# Use `nix run .#write-flake` to regenerate it.
 {
-    description = "autherror system config";
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
-    inputs = {
-        nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
-        personal = {
-            url = "github:rohrsben/personal-nix";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
-        nix-index-database = {
-            url = "github:nix-community/nix-index-database";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
-        disko = {
-            url = "github:nix-community/disko";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
-        home-manager = {
-            url = "github:nix-community/home-manager";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
-        sops-nix = {
-            url = "github:Mic92/sops-nix";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
-        hyprland.url = "github:hyprwm/Hyprland";
-        hyprsplit = {
-            url = "github:shezdy/hyprsplit";
-            inputs.hyprland.follows = "hyprland";
-        };
-        awww.url = "git+https://codeberg.org/LGFae/awww";
-
-        idle-inhibit.url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";
-        neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
-        textfox.url = "github:adriankarlen/textfox";
+  inputs = {
+    den.url = "github:denful/den";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    outputs = { self, ... } @inputs:
-        let
-            hosts = {
-                desktop = {
-                    hostName = "autherror";
-                    platform = "x86_64-linux";
-                    stateVer = "24.11";
-                };
-            };
-
-            mkNixosHost = { hostName, platform, stateVer }@conf: inputs.nixpkgs.lib.nixosSystem {
-                specialArgs = { inherit inputs conf; };
-
-                modules = [
-                    inputs.home-manager.nixosModules.home-manager
-                    ./machines/${hostName}
-                ];
-            };
-
-        in {
-            nixosConfigurations = {
-                "autherror" = mkNixosHost hosts.desktop;
-            };
-        };
+    flake-file.url = "github:vic/flake-file";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprsplit.url = "github:shezdy/hyprsplit";
+    idle-inhibit = {
+      url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    import-tree.url = "github:vic/import-tree";
+    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    personal.url = "github:rohrsben/personal-nix";
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    textfox = {
+      url = "github:adriankarlen/textfox";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
 }

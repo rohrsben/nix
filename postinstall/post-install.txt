@@ -1,0 +1,18 @@
+firefox:
+ - rearrange toolbar (TODO: automate?)
+ - log in to bitwarden
+ - import configs from firefox-configs
+ - default zoom -> 120%
+ - vertical tabs
+
+gh:
+ > gh auth login
+
+tailscale:
+ - remove previous desktop from tailscale web console, if necessary
+ > sudo tailscale up --ssh --auth-key=file:<filepath>
+
+spotify:
+ - login
+ - adjust quality settings
+    - might require opening in terminal to avoid the custom .desktop

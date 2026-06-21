@@ -1,5 +1,1 @@
-backups:
-    - real backgrounds dir -> repo backgrounds dir
-
-reinstall:
-    - move to nixos-anywhere
+- set up a reminder + less manual way to rotate the tailscale initrd key

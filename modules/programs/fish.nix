@@ -1,0 +1,142 @@
+{
+  den.aspects.fish = {
+    nixos = {
+      programs.fish.enable = true;
+    };
+
+    homeManager = { pkgs, ... }: {
+      home.sessionVariables = {
+        hydro_color_pwd = "brblack";
+        hydro_color_prompt = "green";
+      };
+
+      programs.fish = {
+        enable = true;
+        shellAliases = {
+          cat = "bat";
+          cls = "clear; ls";
+          t = "eza -T";
+          ls = "eza";
+          lr = "eza -R --absolute | rg";
+          lsa = "eza -a";
+          lsl = "eza -l";
+          lg = "lazygit";
+          rebuild = "nh os switch /home/error/code/nix/system --hostname autherror";
+          rebuild-boot = "nh os boot /home/error/code/nix/system --hostname autherror";
+          icat = "kitten icat";
+          ssh = "kitten ssh";
+        };
+
+        shellInit = ''
+          devenv hook fish | source
+          zoxide init --cmd=cd fish | source
+        '';
+
+        functions = {
+          autols = {
+            onVariable = "PWD";
+            body = ''
+              eza;
+            '';
+          };
+
+          fish_greeting.body = ''
+            if test "$ADDED_IDENTS" != (systemctl show --property ActiveEnterTimestamp init.scope)
+                add-idents
+            end
+            autols
+          '';
+
+          a.body = ''
+            set -U a (pwd)
+            echo "anchored $a"
+          '';
+
+          ua.body = ''
+            set -U a
+            echo "set sail"
+          '';
+
+          cdd.body = ''
+            argparse 'h' -- $argv
+
+            set hidden -H
+            if set -ql _flag_h
+                set hidden
+            end
+
+            set dir .
+            if test -n "$argv"
+                set dir "$argv"
+            end
+
+            set target (fd $hidden --type d --base-directory "$dir" | fzf --height ~20)
+            if test -z "$target"
+                return 1
+            end
+
+            cd "$dir/$target"
+          '';
+
+          add-idents.body = ''
+            set idents /home/error/.ssh/gh-rohrsben
+            for ident in $idents
+                ssh-add $ident
+            end
+            set -U ADDED_IDENTS (systemctl show --property ActiveEnterTimestamp init.scope)
+          '';
+
+          unnix.body = ''
+            for file in $argv
+                set newname $file-unnix
+                mv $file $newname
+                cat $newname > $file
+            end
+          '';
+
+          renix.body = ''
+            if test -z $argv
+                set files (command ls)
+                for file in $files
+                    if test (string sub --start -5 $file) = unnix
+                        set oldname (string sub --end=-6 $file)
+                        if test -e $oldname
+                            mv $oldname $oldname-edited
+                        end
+                        mv $file $oldname
+                    end
+                end
+            else
+                for file in $argv
+                    mv $file $file-edited
+                    mv $file-unnix $file
+                end
+            end
+          '';
+
+          mv-edited.body = ''
+            set files (ls $argv[1] | rg edited)
+            for file in $files;
+                set name (string sub -e -7 $file)
+                rm $argv[2]/$name
+                mv $argv[1]/$file $argv[2]/$name
+                echo "switched $name"
+            end
+          '';
+        };
+
+        plugins = [
+          {
+            name = "hydro";
+            src = pkgs.fetchFromGitHub {
+              owner = "jorgebucaran";
+              repo = "hydro";
+              rev = "62e4d2cc6e284de830dbb88df8f03d7b1bb68eb8";
+              sha256 = "sha256-fmvG6xsfcfsgjjU10FyhKbxmsrIOCu+0B5hwynFMpsY=";
+            };
+          }
+        ];
+      };
+    };
+  };
+}

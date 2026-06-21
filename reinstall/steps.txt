@@ -1,0 +1,12 @@
+- populate reinstall-files with the following:
+    - disko.key: holds the luks encryption key
+    - tailscale.key: holds the initrd tailscale auth key
+    - wifi: holds the name of iwd conf file
+    - <iwd conf>
+    - identity: identity ssh key
+    
+    - optional:
+      - host: a host ssh ed25519 key. will be copied over to the new system,
+               and a pub key will be generated automatically. this is expected
+               to already be enrolled in the relevant sops files. if not present,
+               a new key pair will be generated and enrolled into sops
