@@ -21,8 +21,8 @@
           lsa = "eza -a";
           lsl = "eza -l";
           lg = "lazygit";
-          rebuild = "nh os switch /home/error/code/nix/system --hostname autherror";
-          rebuild-boot = "nh os boot /home/error/code/nix/system --hostname autherror";
+          rebuild = "nh os switch /home/error/code/system --hostname autherror";
+          rebuild-boot = "nh os boot /home/error/code/system --hostname autherror";
           icat = "kitten icat";
           ssh = "kitten ssh";
         };
