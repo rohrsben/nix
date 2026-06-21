@@ -48,7 +48,7 @@ if [ -f "reinstall-files/host" ]; then
     cp reinstall-files/host host-ssh/ssh_host_ed25519_key
     ssh-keygen -y -f host-ssh/ssh_host_ed25519_key > host-ssh/ssh_host_ed25519_key.pub
 else
-    $shouldGit=1
+    shouldGit=1
     # generate the new key
     ssh-keygen -q -N "" -t ed25519 -f host-ssh/ssh_host_ed25519_key
 
