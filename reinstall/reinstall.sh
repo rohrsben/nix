@@ -41,12 +41,14 @@ sudo mount /dev/disk/by-partlabel/disk-main-keys keys-part
 sudo cp reinstall-files/{tailscale.key,wifi,"$(cat reinstall-files/wifi)"} keys-part
 sudo umount keys-part
 
+shouldGit=0
 # handle host key creation/enrollment
 mkdir host-ssh
 if [ -f "reinstall-files/host" ]; then
     cp reinstall-files/host host-ssh/ssh_host_ed25519_key
     ssh-keygen -y -f host-ssh/ssh_host_ed25519_key > host-ssh/ssh_host_ed25519_key.pub
 else
+    $shouldGit=1
     # generate the new key
     ssh-keygen -q -N "" -t ed25519 -f host-ssh/ssh_host_ed25519_key
 
@@ -81,9 +83,21 @@ sudo chmod 600 /mnt/home/error/.ssh/identity
 sudo chown +1000 /mnt/home/error/.ssh/identity
 
 # clean up
-rm -r age-keys
-rm -r host-ssh
-rm -r keys-part
-rm -r reinstall-files
+sudo rm -rf age-keys
+sudo rm -rf host-ssh
+sudo rm -rf keys-part
+sudo rm -rf reinstall-files
 
-# TODO git commit to update remote secrets
+if [ "$shouldGit" -eq 1 ]; then
+    # keep the example iwd file
+    mkdir reinstall-files
+    echo "[Security]
+Passphrase=password here" > reinstall-files/change_me.psk
+
+    # commit the changes
+    git config --global user.email "rohrsben@gmail.com"
+    git config --global user.name "rohrsben"
+    git add ../.
+    git commit -m "chore: rotate secrets due to reinstall"
+    git push
+fi
