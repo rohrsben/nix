@@ -19,9 +19,17 @@
         export QT_QPA_PLATFORMTHEME=qt6ct
         export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
       '';
+      xdg.portal = {
+        enable = true;
+        extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+        config.common = {
+          default = [ "hyprland" ];
+          "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+        };
+      };
 
       wayland.windowManager.hyprland = {
-        configType = "lua"; # TODO state version thing
+        configType = "lua";
         systemd.enable = false; # for uwsm
         enable = true;
         extraLuaFiles = {

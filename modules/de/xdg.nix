@@ -7,7 +7,7 @@
       ];
     };
 
-    homeManager = { pkgs, config, ... }:
+    homeManager = { config, ... }:
       let
         xdg = "${config.home.homeDirectory}/xdg";
         desktop = "${xdg}/desktop";
@@ -23,15 +23,6 @@
         xdg = {
           enable = true;
 
-          # TODO why is this here?
-          portal = {
-            enable = true;
-            extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-            config.common = {
-              default = [ "hyprland" ];
-              "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
-            };
-          };
           userDirs = {
             enable = true;
             createDirectories = true;
