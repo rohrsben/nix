@@ -1,5 +1,5 @@
 [{
-    "layer": "bottom",
+    "layer": "top",
     "output": "DP-3",
     "fixed-center": true,
     "position": "bottom",
@@ -91,7 +91,7 @@
         "format": " <span color='#e67e80'>|</span> ",
     },
 }, {
-    "layer": "bottom",
+    "layer": "top",
     "output": "DP-1",
     "position": "bottom",
     "margin-left": 12,
