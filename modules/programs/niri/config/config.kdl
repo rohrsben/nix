@@ -1,4 +1,17 @@
+window-rule {
+    match app-id="firefox"
+    open-maximized true
+}
+
+window-rule {
+    geometry-corner-radius 3
+    clip-to-geometry true
+}
+
 input {
+    disable-power-key-handling
+    focus-follows-mouse max-scroll-amount="0%"
+
     keyboard {
         repeat-delay 300
         numlock
@@ -28,36 +41,46 @@ output "DP-1" {
 }
 
 binds {
-    // keyboard
-    Super+Shift+M { quit; }
-    Super+Shift+Left { focus-monitor-left; }
-    Super+Shift+Right { focus-monitor-right; }
-    Super+Shift+K { focus-workspace-up; }
-    Super+Shift+J { focus-workspace-down; }
-    Super+Shift+L { spawn "runapp" "hyprlock"; }
+    // ==== FOCUS ====
+    // monitor
+    Super+Shift+Semicolon { focus-monitor-left; }
+    Super+Shift+Apostrophe { focus-monitor-right; }
 
-    Super+Tab { toggle-overview; }
-    Super+H { focus-column-left; }
-    Super+L { focus-column-right; }
-    Super+K { focus-window-up; }
-    Super+J { focus-window-down; }
-    Super+Return { spawn "runapp" "kitty"; }
-    Super+Space { spawn-sh "runapp $(tofi-drun)"; }
-    Super+Control_L { switch-preset-column-width; }
-
-    Super+P { spawn "~/.scripts/powermenu.sh"; }
-    Super+Q { close-window; }
-
-    Print { screenshot; }
-
-    // mouse
+    // workspace
+    Super+Shift+Bracketleft { focus-workspace-up; }
+    Super+Shift+Slash { focus-workspace-down; }
     Super+Shift+WheelScrollUp { focus-workspace-up; }
     Super+Shift+WheelScrollDown { focus-workspace-down; }
-    Super+WheelScrollUp { focus-column-right; }
-    Super+WheelScrollDown { focus-column-left; }
+
+    // window
+    Super+Semicolon { focus-column-left; }
+    Super+Apostrophe { focus-column-right; }
+    Super+Bracketleft { focus-window-up; }
+    Super+Slash { focus-window-down; }
+    Super+WheelScrollUp { focus-window-up-or-column-left; }
+    Super+WheelScrollDown { focus-window-down-or-column-right; }
+
+    // ==== APPS ====
+    // launching
+    Super+Shift+L { spawn "runapp" "hyprlock"; }
+    Super+Return { spawn "runapp" "kitty"; }
+    Super+Space { spawn-sh "runapp $(tofi-drun)"; }
+
+    // moving + resizing
+    Super+Period { switch-preset-column-width; }
+    Super+F { maximize-column; }
+    Super+Shift+F { fullscreen-window; }
+    Super+J { consume-window-into-column; }
+
+    // ==== NIRI ====
+    Super+Shift+M { quit; }
+    Super+Tab { toggle-overview; }
+    Print { screenshot; }
+    Super+Z { center-visible-columns; }
+    Super+Q { close-window; }
+    Super+P { spawn "~/.scripts/powermenu.sh"; }
 
     // special
-    // code:172 { spawn-sh "playerctl play-pause"; }
     XF86AudioPlay { spawn-sh "playerctl play"; }
     XF86AudioPause { spawn-sh "playerctl pause"; }
     XF86AudioNext { spawn-sh "playerctl next"; }
@@ -70,7 +93,7 @@ binds {
 layout {
     always-center-single-column
     center-focused-column "on-overflow"
-    gaps 3
+    gaps 6
 
     focus-ring { off; }
     border {
@@ -82,6 +105,13 @@ layout {
 
     insert-hint {
         color "#d2c5a8"
+    }
+
+    default-column-width { proportion 0.66667; }
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
     }
 }
 
