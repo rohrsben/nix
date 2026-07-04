@@ -14,7 +14,7 @@
     ],
 
     "modules-left": [
-        "hyprland/workspaces",
+        "niri/workspaces",
         "mpris"
     ],
 
@@ -109,7 +109,7 @@
     ],
 
     "modules-center": [
-        "hyprland/workspaces"
+        "niri/workspaces"
     ],
 
     "clock#1": {

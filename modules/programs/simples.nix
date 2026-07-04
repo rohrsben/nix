@@ -6,7 +6,7 @@
 
   den.aspects.simples = {
     nixos = {
-      programs.ssh.startAgent = true;
+      # programs.ssh.startAgent = true;
     };
 
     homeManager = { host, pkgs, ...}: {

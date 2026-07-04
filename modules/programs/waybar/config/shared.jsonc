@@ -1,10 +1,8 @@
 {
-    "hyprland/workspaces": {
+    "niri/workspaces": {
         "format": "{icon}",
 
         "format-icons": {
-            "empty": "",
-            "active": "",
             "default": "",
         },
 

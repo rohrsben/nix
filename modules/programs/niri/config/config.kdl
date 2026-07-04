@@ -1,0 +1,104 @@
+input {
+    keyboard {
+        repeat-delay 300
+        numlock
+    }
+
+    mouse {
+        accel-profile "flat"
+        // accel-speed 0.7 // -1.0 to 1.0, 0.0 default
+    }
+}
+
+output "DP-3" {
+    mode "2560x1440"
+    scale 1
+    position x=0 y=0
+
+    focus-at-startup
+}
+
+output "DP-1" {
+    mode "2560x1440"
+    scale 1
+    transform "270"
+    position x=2560 y=-745
+
+    hot-corners { off; }
+}
+
+binds {
+    // keyboard
+    Super+Shift+M { quit; }
+    Super+Shift+Left { focus-monitor-left; }
+    Super+Shift+Right { focus-monitor-right; }
+    Super+Shift+K { focus-workspace-up; }
+    Super+Shift+J { focus-workspace-down; }
+    Super+Shift+L { spawn "runapp" "hyprlock"; }
+
+    Super+Tab { toggle-overview; }
+    Super+H { focus-column-left; }
+    Super+L { focus-column-right; }
+    Super+K { focus-window-up; }
+    Super+J { focus-window-down; }
+    Super+Return { spawn "runapp" "kitty"; }
+    Super+Space { spawn-sh "runapp $(tofi-drun)"; }
+    Super+Control_L { switch-preset-column-width; }
+
+    Super+P { spawn "~/.scripts/powermenu.sh"; }
+    Super+Q { close-window; }
+
+    Print { screenshot; }
+
+    // mouse
+    Super+Shift+WheelScrollUp { focus-workspace-up; }
+    Super+Shift+WheelScrollDown { focus-workspace-down; }
+    Super+WheelScrollUp { focus-column-right; }
+    Super+WheelScrollDown { focus-column-left; }
+
+    // special
+    // code:172 { spawn-sh "playerctl play-pause"; }
+    XF86AudioPlay { spawn-sh "playerctl play"; }
+    XF86AudioPause { spawn-sh "playerctl pause"; }
+    XF86AudioNext { spawn-sh "playerctl next"; }
+    XF86AudioPrev { spawn-sh "playerctl previous"; }
+    XF86AudioMute { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioLowerVolume { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"; }
+    XF86AudioRaiseVolume { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+"; }
+}
+
+layout {
+    always-center-single-column
+    center-focused-column "on-overflow"
+    gaps 3
+
+    focus-ring { off; }
+    border {
+        width 2
+        active-color "#5c845f"
+        inactive-color "#b3b3b3"
+        urgent-color "#c67b6c"
+    }
+
+    insert-hint {
+        color "#d2c5a8"
+    }
+}
+
+spawn-at-startup "runapp" "waybar"
+spawn-at-startup "runapp" "udiskie" "--tray"
+spawn-at-startup "runapp" "wayland-pipewire-idle-inhibit"
+// TODO polkit
+
+prefer-no-csd
+screenshot-path "~/xdg/pictures/screenshot_%F_%T.png"
+
+cursor {
+    xcursor-theme "phinger-cursors-dark"
+    xcursor-size 24
+}
+
+hotkey-overlay {
+    skip-at-startup
+    hide-not-bound
+}

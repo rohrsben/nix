@@ -9,7 +9,8 @@
       git
       greetd
       hypridle
-      hyprland
+      # hyprland
+      niri
       hyprlock
       kitty
       localsend
