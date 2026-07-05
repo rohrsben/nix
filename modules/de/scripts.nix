@@ -9,7 +9,7 @@
           set options "Restart
           Power off"
 
-          set result (echo $options | tofi --prompt-text="" --width=290 --height=180 --padding-top=0 --padding-bottom=0 --padding-left=50 --padding-right=0)
+          set result (echo $options | fuzzel -d --width=10 --lines=2 --hide-prompt )
 
           if test -n "$result"
               if test "$result" = "Restart"

@@ -64,7 +64,7 @@ binds {
     // launching
     Super+Shift+L { spawn "runapp" "hyprlock"; }
     Super+Return { spawn "runapp" "kitty"; }
-    Super+Space { spawn-sh "runapp $(tofi-drun)"; }
+    Super+Space { spawn-sh "fuzzel --lines=4 --width=18 --fields='name,exec' --prompt='> ' --launch-prefix=runapp"; }
 
     // moving + resizing
     Super+Period { switch-preset-column-width; }

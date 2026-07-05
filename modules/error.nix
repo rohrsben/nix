@@ -6,20 +6,19 @@
       calibre
       firefox
       fish
+      fuzzel
       git
       greetd
       hypridle
-      # hyprland
-      niri
       hyprlock
       kitty
       localsend
       mako
       neovim
+      niri
       nix-index
       simples
       spotify
-      tofi
       waybar
       yazi
 
