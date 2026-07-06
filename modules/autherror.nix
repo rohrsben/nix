@@ -1,26 +1,27 @@
 { den, ... }: {
   den.aspects.autherror = {
-    includes = [
+    includes = with den.aspects; [
       # lowlevel
-      den.aspects.bluetooth
-      den.aspects.cpu
-      den.aspects.disko
-      den.aspects.grub
-      den.aspects.initrd
-      den.aspects.nvidia
-      den.aspects.zswap
+      bluetooth
+      cpu
+      disko
+      grub
+      initrd
+      nvidia
+      zswap
 
       # os
-      den.aspects.chrony
-      den.aspects.fwupd
-      den.aspects.locale
-      den.aspects.networking
-      den.aspects.pipewire
-      den.aspects.udisks2
+      chrony
+      fwupd
+      locale
+      networking
+      pipewire
+      udisks2
+      podman
 
       # misc
-      den.aspects.fonts
-      den.aspects.nix-config
+      fonts
+      nix-config
     ];
 
     nixos = {
