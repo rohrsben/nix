@@ -16,3 +16,6 @@ spotify:
  - login
  - adjust quality settings
     - might require opening in terminal to avoid the custom .desktop
+
+calibre:
+ - set the library to lts/media/calibre (or something like that)
