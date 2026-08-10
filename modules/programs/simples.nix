@@ -1,9 +1,4 @@
 { inputs, ... }: {
-  flake-file.inputs.devenv = {
-    url = "github:cachix/devenv";
-    inputs.nixpkgs.follows = "nixpkgs";
-  };
-
   den.aspects.simples = {
     nixos = {
       # programs.ssh.startAgent = true;
@@ -47,7 +42,7 @@
         typst
         wev
         xdg-utils
-        inputs.devenv.packages.${host.system}.devenv
+        devenv
 
         # graphical
         anki

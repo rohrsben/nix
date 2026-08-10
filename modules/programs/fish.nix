@@ -27,10 +27,9 @@
           ssh = "kitten ssh";
         };
 
-        # TODO reactivate this... eventually
-        # devenv hook fish | source
         shellInit = ''
           zoxide init --cmd=cd fish | source
+          devenv hook fish | sed 's/and devenv shell/and devenv shell --no-tui --no-reload/g' | source
         '';
 
         functions = {
