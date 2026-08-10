@@ -15,6 +15,7 @@
         shellAliases = {
           cat = "bat";
           cls = "clear; ls";
+          dshell = "devenv shell --no-tui --no-reload";
           t = "eza -T";
           ls = "eza";
           lr = "eza -R --absolute | rg";
@@ -29,7 +30,6 @@
 
         shellInit = ''
           zoxide init --cmd=cd fish | source
-          devenv hook fish | sed 's/and devenv shell/and devenv shell --no-tui --no-reload/g' | source
         '';
 
         functions = {
