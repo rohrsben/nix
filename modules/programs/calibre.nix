@@ -22,11 +22,18 @@
 
             dls = Path("/home/error/downloads")
 
+            def fancy_print(msg):
+                print(f'***{"*"*len(msg)}***')
+                print(f'*  {" "*len(msg)}  *')
+                print(f'*  {msg}  *')
+                print(f'*  {" "*len(msg)}  *')
+                print(f'***{"*"*len(msg)}***')
+
             def notify(msg):
                 subprocess.run(["notify-send", msg])
+                fancy_print(msg)
 
             target = list(dls.glob('*.epub'))[0]
-            print(f"Processing: {target}")
             notify(f'Converting: {target.stem}')
 
             workdir = dls / "workspace"
@@ -48,9 +55,10 @@
                     '-v', f'{workdir}:/app:rw',
                     'ebook-converter:latest', 'source.epub', 'output.kfx'
                 ]
-                subprocess.run(cmd, check=True)
+                subprocess.run(cmd, check=False)
 
                 if not kfx.is_file():
+                    notify('KFX File did not exist!')
                     raise FileNotFoundError("Problem with the conversion")
 
 
@@ -58,15 +66,25 @@
                 if calibre_running.returncode == 0:
                     print('Calibre is running.')
                     cmd = [
-                        'calibredb', '--with-library', 'http://localhost:8080/#calibre',
-                        'add', '--automerge', 'overwrite', f'{kfx}'
+                      'calibredb',
+                      '--with-library',
+                      'http://localhost:8080/#calibre',
+                      'add',
+                      '--automerge',
+                      'overwrite',
+                      f'{kfx}'
                     ]
                     subprocess.run(cmd, check=True)
                 else:
                     print('Calibre is closed')
                     cmd = [
-                        'calibredb', '--with-library', '/home/error/xdg/documents/calibre',
-                        'add', '--automerge', 'overwrite', f'{kfx}'
+                      'calibredb',
+                      '--with-library',
+                      '/home/error/xdg/documents/calibre',
+                      'add',
+                      '--automerge',
+                      'overwrite',
+                      f'{kfx}'
                     ]
                     subprocess.run(cmd, check=True)
 
@@ -74,8 +92,7 @@
                 epub.unlink()
 
             except Exception as e:
-                print(f'Error: {e}')
-                notify('Fuck')
+                notify(f'Error: {e}')
 
                 new_name = epub.parent.parent / f"{target}-failed"
                 epub.rename(new_name)
