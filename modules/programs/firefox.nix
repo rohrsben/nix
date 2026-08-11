@@ -32,10 +32,47 @@
           DisableFirefoxScreenshots = true;
           PrintingEnabled = false;
           OfferToSaveLogins = false;
-          DisablePocket = true;
           DisableProfileImport = true;
           AutofillAddressEnabled = false;
           AutofillCreditCardEnabled = false;
+          PasswordManagerEnabled = false;
+          Permissions = {
+            Location = {
+              Allow = [ ];
+              BlockNewRequests = true;
+            };
+            Notifications = {
+              Allow = [ ];
+              BlockNewRequests = true;
+            };
+          };
+          StartDownloadsInTempDirectory = true;
+          GenerativeAI = {
+            Enabled = false;
+            Locked = true;
+          };
+          UserMessaging = {
+            ExtensionRecommendations = false;
+            FeatureRecommendations = false;
+            UrlbarInterventions = false;
+            SkipOnboarding = true;
+            MoreFromMozilla = false;
+            FirefoxLabs = false;
+          };
+          FirefoxSuggest.WebSuggestions = false;
+          FirefoxHome = {
+            Search = false;
+            Weather = false;
+            TopSites = true;
+            SponsoredTopSites = false;
+            Highlights = false;
+            Pocket = false;
+            Stories = false;
+            SponsoredPocket = false;
+            SponsoredStories = false;
+            Snipets = false;
+          };
+
 
           ExtensionSettings = {
             # ublock origin
@@ -71,6 +108,13 @@
               "installation_mode" = "normal_installed";
               "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/everforest-dark-official/latest.xpi";
             };
+
+            # sidebery
+            "{3c078156-979c-498b-8990-85f7987dd929}" = {
+              "installation_mode" = "normal_installed";
+              "install_url" = "https://addons.mozilla.org/firefox/downloads/latest/sidebery/latest.xpi";
+              "default_area" = "menupanel";
+            };
           };
         };
 
@@ -84,17 +128,12 @@
               toolbar = true;
               bookmarks = [
                 {
-                  name = "nix";
-                  bookmarks = [
-                    {
-                      name = "nix packages";
-                      url = "https://search.nixos.org/packages";
-                    }
-                    {
-                      name = "hm options";
-                      url = "https://home-manager-options.extranix.com";
-                    }
-                  ];
+                  name = "nix packages";
+                  url = "https://search.nixos.org/packages";
+                }
+                {
+                  name = "hm options";
+                  url = "https://home-manager-options.extranix.com";
                 }
               ];
             }];
