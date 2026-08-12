@@ -43,6 +43,7 @@
         wev
         xdg-utils
         devenv
+        helix
 
         # graphical
         anki
