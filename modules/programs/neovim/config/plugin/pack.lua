@@ -7,10 +7,13 @@ vim.api.nvim_create_autocmd('PackChanged', {
         local name = info.data.spec.name
         local kind = info.data.kind
         if name == 'blink.cmp' and kind ~= 'deleted' then
-            vim.system(
-                {'nix', 'build', '.'},
-                { cwd = info.data.path }
-            ):wait()
+            vim.notify('Building blink')
+            local result = vim.system({'nix', 'run', '.#build-plugin'}, {cwd = info.data.path}):wait()
+            if result.code == 0 then
+                vim.notify('Finished building')
+            else
+                vim.notify('Oopsy woopsy bloopsy foopsy')
+            end
         end
     end
 })
@@ -18,8 +21,10 @@ vim.api.nvim_create_autocmd('PackChanged', {
 
 vim.pack.add {
     gh('XXiaoA/atone.nvim'),
-    gh('saghen/blink.lib'),
-    gh('Saghen/blink.cmp'),
+    {
+        src = 'https://github.com/saghen/blink.cmp',
+        version = 'v1.10.2'
+    },
     gh('sainnhe/everforest'),
     gh('j-hui/fidget.nvim'),
     gh('MagicDuck/grug-far.nvim'),
