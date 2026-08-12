@@ -102,10 +102,6 @@ map('v', '<Ctrl-/>', 'gc')
 map('x', '<', '<gv')
 map('x', '>', '>gv')
 
--- cursor centering
-map('i', '<C-z>', '<C-o>zz', { desc = "Center the cursorline in insert"})
-map('n', 'z=', 'z+')
-
 -- j and k operate on visible lines
 map({'n', 'x'}, 'j', [[v:count == 0 ? 'gj' : 'j']], { expr = true })
 map({'n', 'x'}, 'k', [[v:count == 0 ? 'gk' : 'k']], { expr = true })
@@ -113,10 +109,6 @@ map({'n', 'x'}, 'k', [[v:count == 0 ? 'gk' : 'k']], { expr = true })
 -- copy and paste with system clipboard
 map({'n', 'x'}, 'gy', '"+y', { desc = 'Yank to system clipboard'})
 map({'n', 'x'}, 'gp', '"+p', { desc = 'Paste from system clipboard'})
-
--- reselect latest changed/put/yanked text
-map('n', 'gV', '"`[" . strpart(getregtype(), 0, 1) . "`]"',
-    { expr = true, replace_keycodes = false, desc = 'Visually select changed text'})
 
 -- move between splits better
 map('n', '<C-H>', '<C-w>h', { desc = 'Focus on left window' })

@@ -3,13 +3,7 @@ require('mini.git').setup()
 
 require('mini.splitjoin').setup {
     mappings = {
-        toggle = 'gs'
-    }
-}
-
-require('mini.indentscope').setup {
-    draw = {
-        predicate = function(_) return false end
+        toggle = '<leader>s'
     }
 }
 
