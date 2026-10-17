@@ -27,6 +27,7 @@ vim.pack.add {
     },
     gh('sainnhe/everforest'),
     gh('j-hui/fidget.nvim'),
+    gh('chrisgrieser/nvim-lsp-endhints'),
     gh('MagicDuck/grug-far.nvim'),
     gh('nvim-mini/mini.nvim'),
     gh('karb94/neoscroll.nvim'),
