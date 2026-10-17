@@ -46,7 +46,7 @@
         helix
 
         # graphical
-        anki
+        anki-bin
         discord-canary
         foliate
         kdePackages.okular
