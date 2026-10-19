@@ -1,9 +1,5 @@
-{ inputs, ... }: {
+{
   den.aspects.simples = {
-    nixos = {
-      # programs.ssh.startAgent = true;
-    };
-
     homeManager = { host, pkgs, ...}: {
       programs = {
         zoxide.enable = true;
@@ -25,19 +21,15 @@
         fd
         gh
         glow
-        grim
-        hyprpicker
         imagemagick
         nh
         p7zip
         pandoc
         pass
-        playerctl
         python3
         ripgrep
         rsync
         rustc
-        slurp
         sshfs
         typst
         wev
@@ -58,9 +50,7 @@
         feh
         kdePackages.qtwayland
         libnotify
-        # qt5.qtwayland # TODO check if this is needed
         lua
-        runapp
         solaar
         sops
         udiskie

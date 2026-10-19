@@ -2,25 +2,19 @@
   den.aspects.error = {
     includes = with den.aspects; [
       # programs
-      awww
       calibre
       firefox
       fish
-      fuzzel
       git
       greetd
-      hypridle
-      hyprlock
       kitty
       localsend
-      mako
       neovim
       niri
       nix-index
       noctalia
       simples
       spotify
-      waybar
       yazi
 
       # de
