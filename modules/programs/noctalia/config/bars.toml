@@ -1,0 +1,54 @@
+[bar.default]
+margin_ends = 0
+shadow = false
+concave_edge_corners = false
+margin_edge = 0
+radius = 0
+thickness = 25
+
+
+[bar.default.monitor.landscape]
+match = "DP-3"
+position = "left"
+start = ["workspaces", "ws_tb", "taskbar"]
+center = ["clock"]
+end = ["tray", "tray_info", "network"]
+
+
+[bar.default.monitor.portrait]
+position = "bottom"
+match = "DP-1"
+start = ["workspaces", "ws_tb", "taskbar"]
+center = ["clock"]
+end = ["media", "bongo"]
+
+
+[widget.media]
+hide_when_no_media = true
+artist_first = true
+hide_album_art = true
+max_length = 550
+
+[widget.network]
+show_label = false
+
+[widget.taskbar]
+only_active_workspace = true
+
+[widget.bongo]
+type = "noctalia/bongocat:cat"
+audio_spectrum = true
+tappy_mode = true
+
+
+[widget.ws_tb]
+type = "spacer"
+length = 15
+
+[widget.tray_info]
+type = "spacer"
+length = 15
+
+
+[plugins]
+enabled = ["noctalia/bongocat"]

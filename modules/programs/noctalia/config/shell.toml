@@ -1,0 +1,28 @@
+[shell]
+button_borders = true
+font_family = "JetBrains Mono"
+polkit_agent = true
+launch_apps_as_systemd_services = true
+
+[shell.panel]
+launcher_placement = "floating"
+session_placement = "floating"
+session_position = "center"
+
+[shell.launcher]
+categories = false
+show_icons = false
+compact = true
+fetch_exchange_rates = false
+provider_prefix = " "
+
+[location]
+auto_locate = false
+address = "Allston, MA"
+
+[weather]
+enabled = true
+
+[control_center]
+sidebar = "compact"
+hidden_tabs = ["power"]

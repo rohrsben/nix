@@ -1,0 +1,24 @@
+[backdrop]
+enabled = true
+
+[wallpaper]
+enabled = true
+per_monitor_directories = true
+
+[wallpaper.automation]
+enabled = true
+interval_seconds = 80000
+
+[wallpaper.monitor.landscape]
+enabled = true
+match = "DP-3"
+directory = "/home/error/xdg/pictures/backgrounds/landscape/"
+directory_light = "/home/error/xdg/pictures/backgrounds/landscape/light/"
+directory_dark = "/home/error/xdg/pictures/backgrounds/landscape/dark/"
+
+[wallpaper.monitor.portrait]
+enabled = true
+match = "DP-1"
+directory = "/home/error/xdg/pictures/backgrounds/portrait/"
+directory_light = "/home/error/xdg/pictures/backgrounds/portrait/light/"
+directory_dark = "/home/error/xdg/pictures/backgrounds/portrait/dark/"

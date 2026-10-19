@@ -17,6 +17,7 @@
       neovim
       niri
       nix-index
+      noctalia
       simples
       spotify
       waybar
