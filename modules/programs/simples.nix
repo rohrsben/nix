@@ -51,6 +51,7 @@
         kdePackages.qtwayland
         libnotify
         lua
+        runapp
         solaar
         sops
         udiskie
