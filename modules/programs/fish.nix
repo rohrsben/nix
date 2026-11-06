@@ -15,7 +15,6 @@
         shellAliases = {
           cat = "bat";
           cls = "clear; ls";
-          dshell = "devenv shell --no-tui --no-reload";
           t = "eza -T";
           ls = "eza";
           lr = "eza -R --absolute | rg";
@@ -30,6 +29,7 @@
 
         shellInit = ''
           zoxide init --cmd=cd fish | source
+          devenv hook fish -- --no-tui --no-reload | source
         '';
 
         functions = {
@@ -50,11 +50,6 @@
           a.body = ''
             set -U a (pwd)
             echo "anchored $a"
-          '';
-
-          ua.body = ''
-            set -U a
-            echo "set sail"
           '';
 
           cdd.body = ''
