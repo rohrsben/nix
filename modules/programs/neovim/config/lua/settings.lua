@@ -212,9 +212,10 @@ autocmd('TextYankPost', {
 
 -- lsp servers
 vim.lsp.enable {
-    'lua_ls',
-    'tinymist',
     'clangd',
-    'rust_analyzer',
+    'lua_ls',
     'nixd',
+    'pyright',
+    'rust_analyzer',
+    'tinymist',
 }
