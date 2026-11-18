@@ -6,7 +6,6 @@
       firefox
       fish
       git
-      greeter
       kitty
       localsend
       neovim

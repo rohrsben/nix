@@ -13,11 +13,12 @@
       # os
       chrony
       fwupd
+      greeter
       locale
       networking
       pipewire
-      udisks2
       podman
+      udisks2
 
       # misc
       fonts
