@@ -12,7 +12,7 @@ session_position = "center"
 [shell.launcher]
 categories = false
 show_icons = false
-compact = true
+layout = "simple"
 fetch_exchange_rates = false
 provider_prefix = " "
 
